@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ===== Merkkleuren (zie tailwind.config.ts voor de hex-referentie) ===== */
+    --kobalt: 204 78% 43%; /* #187DC1 — hoofdkleur, accenten, hero */
+    --kobalt-foreground: 0 0% 100%;
+    --zonnegeel: 44 80% 46%; /* #D4A017 — secundair accent, spaarzaam */
+    --zonnegeel-foreground: 0 0% 14%;
+    --kastanje: 20 48% 29%; /* #6E3F27 — klein tertiair detail, heel spaarzaam */
+    --kastanje-foreground: 0 0% 100%;
+    --creme: 33 38% 94%; /* #F6F1EB — achtergrond */
+    --antraciet: 0 0% 18%; /* #2D2D2D — tekst */
+
+    /* ===== Semantische tokens (shadcn/ui) ===== */
+    --background: 33 38% 94%; /* creme */
+    --foreground: 0 0% 18%; /* antraciet */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18%;
+
+    /* Primary = kobalt, een fractie donkerder zodat witte tekst én links
+       op creme/wit WCAG AA (4.5:1) halen. De heldere merk-kobalt blijft
+       beschikbaar via `bg-kobalt` / `text-kobalt`. */
+    --primary: 204 81% 37%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 33 30% 89%;
+    --secondary-foreground: 0 0% 18%;
+
+    --muted: 33 26% 90%;
+    --muted-foreground: 0 0% 34%;
+
+    --accent: 204 64% 92%; /* zachte kobalt-tint voor hover-vlakken */
+    --accent-foreground: 204 81% 30%;
+
+    --destructive: 0 70% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 18% 85%;
+    --input: 30 18% 85%;
+    --ring: 204 78% 43%;
+
+    --radius: 1rem; /* rounded-2xl als basis */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "kern";
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-bold text-antraciet;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Zichtbare focus-states voor toetsenbordgebruik (toegankelijkheid) */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Vloeiend scrollen naar anchors, maar onder de sticky header door */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer utilities {
+  /* Beperk lopende tekst tot een prettige leesbreedte */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Respecteer de voorkeur voor minder beweging */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
