@@ -9,10 +9,10 @@ interface LogoProps {
 }
 
 /**
- * Logo (kobalt-versie) voor lichte achtergronden (header + mobiel menu).
- * Linkt naar de homepagina. De hoogte is gereserveerd zodat de layout niet
- * verspringt. Voor donkere achtergronden (footer) gebruiken we de transparante
- * variant — zie Footer.tsx.
+ * Logo (kobalt wordmark met creme pijl-in-de-O) voor lichte achtergronden
+ * (header + mobiel menu). Linkt naar de homepagina. De hoogte is gereserveerd
+ * zodat de layout niet verspringt. Voor donkere achtergronden (footer)
+ * gebruiken we de transparante cream-variant — zie Footer.tsx.
  */
 export function Logo({ className, imgClassName }: LogoProps) {
   return (
@@ -22,11 +22,11 @@ export function Logo({ className, imgClassName }: LogoProps) {
       className={cn("inline-flex items-center rounded-lg", className)}
     >
       <img
-        src="/logo.png"
+        src="/logo-blue.png"
         alt="Brand & Boost"
-        width={167}
-        height={40}
-        className={cn("h-9 w-auto rounded-lg sm:h-10", imgClassName)}
+        width={184}
+        height={44}
+        className={cn("h-9 w-auto sm:h-11", imgClassName)}
       />
     </Link>
   );

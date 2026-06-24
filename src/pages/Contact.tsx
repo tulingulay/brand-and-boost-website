@@ -19,7 +19,7 @@ export default function Contact() {
 
       <PageHero
         eyebrow="Contact"
-        title="Plan een gesprek."
+        title="Plan een strategiegesprek."
         intro="Tijd om jouw merk een boost te geven? Laat je gegevens achter, dan plannen we snel een vrijblijvend gesprek."
       />
 

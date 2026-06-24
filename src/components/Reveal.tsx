@@ -1,19 +1,32 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 
+import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
+export type RevealDirection = "up" | "down" | "left" | "right" | "zoom";
+
+const hiddenByDirection: Record<RevealDirection, string> = {
+  up: "translate-y-8",
+  down: "-translate-y-8",
+  left: "-translate-x-10",
+  right: "translate-x-10",
+  zoom: "scale-95",
+};
+
 interface RevealProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Vertraging in ms voor een subtiel trapsgewijs effect. */
+  /** Vertraging in ms voor een trapsgewijs (cascade) effect. */
   delay?: number;
+  /** Richting waaruit het element in beeld komt. */
+  direction?: RevealDirection;
 }
 
 /**
- * Laat content zacht in beeld faden/sliden zodra die in zicht komt.
- * Respecteert `prefers-reduced-motion`: dan verschijnt alles direct,
- * zonder beweging.
+ * Laat content vloeiend in beeld komen zodra die in zicht scrolt: fade +
+ * beweging vanuit de gekozen richting, met een zachte easing. Respecteert
+ * `prefers-reduced-motion`: dan verschijnt alles direct, zonder beweging.
  */
-export function Reveal({ children, className, delay = 0, style, ...props }: RevealProps) {
+export function Reveal({ children, className, delay = 0, direction = "up", style, ...props }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -21,8 +34,7 @@ export function Reveal({ children, className, delay = 0, style, ...props }: Reve
     const el = ref.current;
     if (!el) return;
 
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
+    if (prefersReducedMotion()) {
       setVisible(true);
       return;
     }
@@ -34,7 +46,7 @@ export function Reveal({ children, className, delay = 0, style, ...props }: Reve
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -48px 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
 
     observer.observe(el);
@@ -45,8 +57,10 @@ export function Reveal({ children, className, delay = 0, style, ...props }: Reve
     <div
       ref={ref}
       className={cn(
-        "transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none",
-        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+        "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        visible
+          ? "translate-x-0 translate-y-0 scale-100 opacity-100"
+          : cn("opacity-0", hiddenByDirection[direction]),
         className,
       )}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms", ...style }}

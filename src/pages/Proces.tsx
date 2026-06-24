@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { SEO } from "@/components/SEO";
+import { StatementBox } from "@/components/StatementBox";
 import { processSteps } from "@/data/process";
 
 export default function Proces() {
@@ -49,6 +50,12 @@ export default function Proces() {
             );
           })}
         </ol>
+
+        <Reveal className="mx-auto mt-14 max-w-3xl">
+          <StatementBox label="Stap 1" cta={{ label: "Plan een strategiegesprek", to: "/contact" }}>
+            Het begint met een goed gesprek. Daarna bouwen we samen verder.
+          </StatementBox>
+        </Reveal>
       </Section>
 
       <CTASection />

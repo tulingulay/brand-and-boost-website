@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { CaseCard } from "@/components/CaseCard";
-import { NumberedCard } from "@/components/NumberedCard";
+import { DecoDots, DecoRings } from "@/components/Decorations";
+import { FeatureCard } from "@/components/FeatureCard";
+import { HeroIconBackground } from "@/components/HeroIconBackground";
+import { ProcessSteps } from "@/components/ProcessSteps";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { ServiceCard } from "@/components/ServiceCard";
+import { StatementBox } from "@/components/StatementBox";
+import { WaveDivider, WAVE_PATH } from "@/components/WaveDivider";
 import { cases } from "@/data/cases";
 import { coreValues } from "@/data/values";
 import { faqs } from "@/data/faq";
-import { processSteps } from "@/data/process";
 import { services } from "@/data/services";
 
 export default function Home() {
@@ -24,68 +28,99 @@ export default function Home() {
     <>
       <SEO
         title="Brand & Boost — Meer dan marketing, een partner in groei."
-        description="Marketingpartner voor ambitieuze MKB-ondernemers. Geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei. Plan een gesprek met Brand & Boost."
+        description="Marketingpartner voor ambitieuze MKB-ondernemers. Geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei. Plan een strategiegesprek met Brand & Boost."
         path="/"
       />
 
-      {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-creme">
+      {/* ===== Hero (full-bleed, gecentreerd) ===== */}
+      <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-gradient-to-b from-kobalt to-[#0e5990]">
+        {/* Subtiele decoratieve glows voor diepte */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-kobalt/10 blur-3xl"
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/10 blur-3xl"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-zonnegeel/10 blur-3xl"
+          className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-zonnegeel/15 blur-3xl"
         />
-        <div className="container relative grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-28">
-          <Reveal>
-            <p className="mb-4 inline-flex items-center rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-accent-foreground">
-              Marketingbureau voor ambitieuze MKB-ondernemers
-            </p>
-            <h1 className="text-display">
-              Meer dan marketing, <span className="text-kobalt">een partner in groei.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lead text-muted-foreground">
-              Geen uurtje-factuurtje, maar een partner die naast je staat en met je meegroeit.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button asChild size="lg">
-                <Link to="/contact">
-                  Plan een gesprek
-                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/diensten">Bekijk onze diensten</Link>
-              </Button>
-            </div>
-          </Reveal>
 
-          <Reveal delay={120} className="lg:justify-self-end">
-            {/* TODO: vervang /public/hero-illustration.svg door definitief
-                hero-beeld of -illustratie. Geef bij een betekenisvol beeld een
-                beschrijvende alt-tekst (nu leeg omdat het decoratief is). */}
-            <img
-              src="/hero-illustration.svg"
-              alt=""
-              width={560}
-              height={460}
-              className="mx-auto w-full max-w-md drop-shadow-[0_24px_48px_rgba(45,45,45,0.12)] lg:max-w-lg"
-            />
-          </Reveal>
-        </div>
+        {/* Marketing-iconen subtiel in de achtergrond */}
+        <HeroIconBackground />
+
+        <Reveal className="container relative z-10 py-24 text-center sm:py-28 lg:py-32">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
+            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-zonnegeel" />
+            Marketingbureau voor ambitieuze MKB-ondernemers
+          </p>
+          <h1 className="mx-auto max-w-4xl text-display text-white">
+            Meer dan marketing, een partner in{" "}
+            <span className="relative inline-block">
+              groei.
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 -bottom-1 h-1.5 rounded-full bg-zonnegeel"
+              />
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lead text-white">
+            Geen uurtje-factuurtje, maar een partner die naast je staat en met je meegroeit.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button asChild size="lg" className="group bg-white text-primary shadow-soft hover:bg-creme">
+              <Link to="/contact">
+                Plan een strategiegesprek
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white bg-transparent text-white hover:bg-white hover:text-antraciet"
+            >
+              <Link to="/diensten">Bekijk onze diensten</Link>
+            </Button>
+          </div>
+          <ul className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2.5">
+            {["Eén aanspreekpunt", "Data-gedreven", "Persoonlijke aandacht"].map((item) => (
+              <li key={item} className="inline-flex items-center gap-2 text-sm font-medium text-white/90">
+                <Check className="h-4 w-4 shrink-0 text-zonnegeel" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        {/* Golvende overgang naar de creme sectie eronder */}
+        <svg
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 z-[1] h-10 w-full fill-creme sm:h-14 lg:h-16"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          focusable="false"
+        >
+          <path d={WAVE_PATH} />
+        </svg>
       </section>
 
       {/* ===== Korte intro (Over ons, ingekort) ===== */}
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
-          <Reveal>
+      <Section
+        className="overflow-hidden"
+        decoration={
+          <>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-16 top-8 h-64 w-64 rounded-full bg-zonnegeel/10 blur-3xl"
+            />
+            <DecoDots className="absolute bottom-10 right-8 hidden text-kobalt/15 lg:block" />
+          </>
+        }
+      >
+        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+          <Reveal direction="left" className="lg:col-span-7">
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">Over ons</p>
             <h2 className="text-h2">Een marketingpartner die met je meegroeit.</h2>
-          </Reveal>
-          <Reveal delay={80}>
-            <p className="text-lead text-muted-foreground">
+            <p className="mt-6 text-lead text-muted-foreground">
               Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Geen groot bureau dat
               afrekent per uur en je daarna laat zwemmen — wel partnerschap, creativiteit en groei, met mensen die
               net als wij energie krijgen van vooruitgang.
@@ -97,12 +132,23 @@ export default function Home() {
               </Link>
             </Button>
           </Reveal>
+          <Reveal direction="right" delay={120} className="lg:col-span-5 lg:mt-12">
+            <StatementBox label="Onze filosofie" rotate>
+              Op ieder potje past een dekseltje.
+            </StatementBox>
+          </Reveal>
         </div>
       </Section>
 
+      <WaveDivider topClass="bg-creme" fillClass="fill-primary" />
+
       {/* ===== Diensten in het kort ===== */}
-      <Section className="bg-white">
+      <Section
+        className="bg-primary"
+        decoration={<DecoDots className="absolute right-8 top-10 text-white/10" />}
+      >
         <SectionHeading
+          light
           eyebrow="Wat we doen"
           title="Diensten die je merk laten groeien."
           intro="Van branding tot vindbaarheid: alles onder één dak, met één aanspreekpunt."
@@ -113,9 +159,19 @@ export default function Home() {
               <ServiceCard service={service} />
             </Reveal>
           ))}
+          <Reveal delay={160}>
+            <StatementBox compact label="Zo fijn">
+              Zeven diensten, één team dat je kent.
+            </StatementBox>
+          </Reveal>
         </div>
         <Reveal className="mt-10">
-          <Button asChild size="lg" variant="outline">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
+          >
             <Link to="/diensten">
               Bekijk alle diensten
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -124,42 +180,55 @@ export default function Home() {
         </Reveal>
       </Section>
 
+      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip />
+
       {/* ===== Waarom Brand & Boost / kernwaarden ===== */}
-      <Section>
-        <SectionHeading
-          eyebrow="Waarom Brand & Boost"
-          title="Vier waarden waar je ons aan herkent."
-        />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {coreValues.map((value, index) => (
-            <Reveal key={value.number} delay={(index % 4) * 80}>
-              <NumberedCard number={value.number} title={value.title} description={value.description} />
+      <Section
+        decoration={
+          <DecoRings className="absolute -right-10 top-12 hidden h-48 w-48 text-zonnegeel/20 lg:block" />
+        }
+      >
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.35fr] lg:items-start lg:gap-14">
+          <div>
+            <SectionHeading eyebrow="Waarom Brand & Boost" title="Vier waarden waar je ons aan herkent." />
+            <Reveal className="mt-8" delay={120}>
+              <StatementBox label="Beloofd">
+                We hoeven niet de grootste te zijn. Wél de stabielste en meest betrokken.
+              </StatementBox>
             </Reveal>
-          ))}
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {coreValues.map((value, index) => (
+              <Reveal key={value.title} delay={(index % 2) * 100}>
+                <FeatureCard
+                  icon={value.icon}
+                  title={value.title}
+                  description={value.description}
+                  accent={value.accent}
+                />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
 
+      <WaveDivider topClass="bg-creme" fillClass="fill-primary" />
+
       {/* ===== Proces in het kort ===== */}
-      <Section className="bg-white">
+      <Section className="bg-primary">
         <SectionHeading
+          light
           eyebrow="Zo werken we"
           title="Van kennismaking tot groei, in vier stappen."
         />
-        <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, index) => (
-            <Reveal key={step.number} delay={(index % 4) * 80} className="h-full">
-              <li className="relative h-full">
-                <span aria-hidden="true" className="font-heading text-4xl font-bold text-kobalt/70">
-                  {step.number}
-                </span>
-                <h3 className="mt-3 font-heading text-lg font-bold text-antraciet">{step.title}</h3>
-                <p className="mt-2 text-muted-foreground">{step.description}</p>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
+        <ProcessSteps />
         <Reveal className="mt-10">
-          <Button asChild size="lg" variant="outline">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
+          >
             <Link to="/proces">
               Bekijk ons proces
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -168,8 +237,12 @@ export default function Home() {
         </Reveal>
       </Section>
 
+      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip />
+
       {/* ===== Portfolio / resultaten teaser ===== */}
-      <Section>
+      <Section
+        decoration={<DecoDots className="absolute left-6 top-10 hidden text-kastanje/15 lg:block" />}
+      >
         <SectionHeading eyebrow="Portfolio" title="Bewijs boven beloftes." intro="Een greep uit het werk waar we samen met ondernemers aan bouwen." />
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {featuredCases.map((item, index) => (
@@ -187,6 +260,8 @@ export default function Home() {
           </Button>
         </Reveal>
       </Section>
+
+      <WaveDivider topClass="bg-creme" fillClass="fill-white" />
 
       {/* ===== Korte FAQ ===== */}
       <Section className="bg-white">
@@ -214,6 +289,8 @@ export default function Home() {
           </Reveal>
         </div>
       </Section>
+
+      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip />
 
       {/* ===== Afsluitende CTA ===== */}
       <CTASection />

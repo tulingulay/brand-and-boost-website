@@ -11,6 +11,7 @@ import OnsVerhaal from "@/pages/OnsVerhaal";
 import Portfolio from "@/pages/Portfolio";
 import Privacyverklaring from "@/pages/Privacyverklaring";
 import Proces from "@/pages/Proces";
+import ServiceDetail from "@/pages/ServiceDetail";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/diensten" element={<Diensten />} />
+        <Route path="/diensten/:slug" element={<ServiceDetail />} />
         <Route path="/ons-verhaal" element={<OnsVerhaal />} />
         <Route path="/proces" element={<Proces />} />
         <Route path="/portfolio" element={<Portfolio />} />

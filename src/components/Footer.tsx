@@ -4,29 +4,48 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { socialIcons } from "@/components/icons";
 import { legalNav, mainNav, site, socials } from "@/data/site";
 
+const linkClass =
+  "rounded-sm text-creme/80 transition-colors hover:text-creme focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-creme focus-visible:ring-offset-2 focus-visible:ring-offset-antraciet";
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto bg-antraciet text-creme">
-      <div className="container py-14 sm:py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
-          {/* Merk + korte zin */}
-          <div className="max-w-sm">
+    <footer className="mt-auto border-t-4 border-zonnegeel bg-antraciet text-creme">
+      <div className="container py-16 sm:py-20">
+        <div className="grid items-center gap-12 text-center md:grid-cols-[1fr_auto_1fr] md:gap-10 md:text-left">
+          {/* Pagina's (links op desktop) */}
+          <nav aria-label="Footermenu" className="md:order-1 md:justify-self-start">
+            <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-creme/60">Pagina&apos;s</h2>
+            <ul className="mt-4 space-y-2.5">
+              {mainNav.map((item) => (
+                <li key={item.href}>
+                  <Link to={item.href} className={linkClass}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Groot logo in het midden */}
+          <div className="order-first flex flex-col items-center md:order-2">
             {/* Transparante (cream) logo-variant — leesbaar op de donkere footer. */}
-            <Link
-              to="/"
-              className="inline-block rounded-lg"
-              aria-label="Brand & Boost — naar de homepagina"
-            >
-              <img src="/logo-transparant.png" alt="Brand & Boost" width={150} height={36} className="h-9 w-auto" />
+            <Link to="/" className="inline-block rounded-lg" aria-label="Brand & Boost — naar de homepagina">
+              <img
+                src="/logo-transparant.png"
+                alt="Brand & Boost"
+                width={420}
+                height={101}
+                className="h-16 w-auto sm:h-20 lg:h-24"
+              />
             </Link>
-            <p className="mt-4 text-creme/75">
-              Meer dan marketing, een partner in groei. Voor ambitieuze MKB-ondernemers die houden van hun vak.
+            <p className="mt-6 max-w-xs text-center text-creme/75">
+              Meer dan marketing, een partner in groei.
             </p>
 
             {socials.length > 0 && (
-              <ul className="mt-6 flex items-center gap-3">
+              <ul className="mt-6 flex items-center justify-center gap-3">
                 {socials.map((social) => {
                   const Icon = socialIcons[social.icon];
                   return (
@@ -47,28 +66,11 @@ export function Footer() {
             )}
           </div>
 
-          {/* Snelle links */}
-          <nav aria-label="Footermenu">
-            <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-creme/60">Pagina&apos;s</h2>
-            <ul className="mt-4 space-y-2.5">
-              {mainNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    to={item.href}
-                    className="rounded-sm text-creme/80 transition-colors hover:text-creme focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-creme focus-visible:ring-offset-2 focus-visible:ring-offset-antraciet"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Contactgegevens */}
-          <div>
+          {/* Contact (rechts op desktop) */}
+          <div className="md:order-3 md:justify-self-end">
             <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-creme/60">Contact</h2>
             <address className="mt-4 space-y-3 not-italic text-creme/85">
-              <p className="flex items-start gap-3">
+              <p className="flex items-start justify-center gap-3 md:justify-start">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-zonnegeel" aria-hidden="true" />
                 <span>
                   {site.address.street}
@@ -76,40 +78,33 @@ export function Footer() {
                   {site.address.postalCode} {site.address.city}
                 </span>
               </p>
-              <p className="flex items-center gap-3">
+              <p className="flex items-center justify-center gap-3 md:justify-start">
                 <Phone className="h-5 w-5 shrink-0 text-zonnegeel" aria-hidden="true" />
-                <a
-                  href={`tel:${site.phoneE164}`}
-                  className="rounded-sm transition-colors hover:text-creme focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-creme focus-visible:ring-offset-2 focus-visible:ring-offset-antraciet"
-                >
+                <a href={`tel:${site.phoneE164}`} className={linkClass}>
                   {site.phoneDisplay}
                 </a>
               </p>
-              <p className="flex items-center gap-3">
+              <p className="flex items-center justify-center gap-3 md:justify-start">
                 <Mail className="h-5 w-5 shrink-0 text-zonnegeel" aria-hidden="true" />
-                <a
-                  href={`mailto:${site.email}`}
-                  className="rounded-sm transition-colors hover:text-creme focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-creme focus-visible:ring-offset-2 focus-visible:ring-offset-antraciet"
-                >
+                <a href={`mailto:${site.email}`} className={`${linkClass} break-all`}>
                   {site.email}
                 </a>
               </p>
             </address>
           </div>
         </div>
+      </div>
 
-        {/* Onderbalk */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-creme/15 pt-6 text-sm text-creme/65 sm:flex-row sm:items-center sm:justify-between">
+      {/* Onderbalk */}
+      <div className="border-t border-creme/15">
+        <div className="container flex flex-col gap-4 py-6 text-center text-sm text-creme/65 sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>
             © {year} {site.name}. KvK {site.kvk}.
           </p>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {legalNav.map((item) => (
               <li key={item.href}>
-                <Link
-                  to={item.href}
-                  className="rounded-sm transition-colors hover:text-creme focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-creme focus-visible:ring-offset-2 focus-visible:ring-offset-antraciet"
-                >
+                <Link to={item.href} className={linkClass}>
                   {item.label}
                 </Link>
               </li>

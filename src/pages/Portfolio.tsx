@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { ReviewCard } from "@/components/ReviewCard";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
+import { StatementBox } from "@/components/StatementBox";
 import { cases } from "@/data/cases";
 import { reviews } from "@/data/reviews";
 
@@ -33,6 +34,20 @@ export default function Portfolio() {
             </Reveal>
           ))}
         </div>
+      </Section>
+
+      {/* ===== Statement / CTA ===== */}
+      <Section>
+        <Reveal>
+          <StatementBox
+            className="lg:ml-auto lg:max-w-3xl"
+            rotate
+            label="Jouw merk als volgende?"
+            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
+          >
+            Laten we kennismaken en kijken hoe we jouw merk laten groeien.
+          </StatementBox>
+        </Reveal>
       </Section>
 
       {/* ===== Reviews ===== */}

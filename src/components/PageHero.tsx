@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { DecoDots } from "@/components/Decorations";
+import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
 
 interface PageHeroProps {
@@ -17,10 +19,17 @@ export function PageHero({ eyebrow, title, intro, children }: PageHeroProps) {
         aria-hidden="true"
         className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-kobalt/10 blur-2xl"
       />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-20 left-1/4 h-56 w-56 rounded-full bg-zonnegeel/10 blur-3xl"
+      />
+      <DecoDots className="absolute right-10 top-12 hidden text-kobalt/15 lg:block" />
       <div className="container relative py-14 sm:py-20">
         <Reveal className="max-w-3xl">
           {eyebrow && (
-            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">{eyebrow}</p>
+            <div className="mb-5">
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </div>
           )}
           <h1 className="text-h1">{title}</h1>
           {intro && <p className="mt-5 text-lead text-muted-foreground">{intro}</p>}

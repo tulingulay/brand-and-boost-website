@@ -1,25 +1,30 @@
+import { AandachtIcon, ContactIcon, DataIcon } from "@/components/BrandIcons";
 import { CTASection } from "@/components/CTASection";
-import { NumberedCard } from "@/components/NumberedCard";
+import { FeatureCard } from "@/components/FeatureCard";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
+import { StatementBox } from "@/components/StatementBox";
 import { Card } from "@/components/ui/card";
 import { coreValues } from "@/data/values";
 
 const brandPromises = [
   {
-    number: "01",
+    icon: AandachtIcon,
+    accent: "zonnegeel" as const,
     title: "Volledige, persoonlijke en energieke aandacht",
     description: "Jij staat centraal, altijd.",
   },
   {
-    number: "02",
+    icon: DataIcon,
+    accent: "kobalt" as const,
     title: "100% inzet, data-gedreven",
     description: "We werken hard én slim, met cijfers als kompas.",
   },
   {
-    number: "03",
+    icon: ContactIcon,
+    accent: "kastanje" as const,
     title: "Eén aanspreekpunt voor al je diensten",
     description: "Heldere communicatie, geen gedoe en geen ruis.",
   },
@@ -83,13 +88,31 @@ export default function OnsVerhaal() {
         </div>
       </Section>
 
+      {/* ===== Statement / CTA ===== */}
+      <Section>
+        <Reveal>
+          <StatementBox
+            className="lg:max-w-3xl"
+            label="Kort gezegd"
+            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
+          >
+            Geen uurtje-factuurtje. Wél een partner die naast je staat en met je meegroeit.
+          </StatementBox>
+        </Reveal>
+      </Section>
+
       {/* ===== Kernwaarden ===== */}
       <Section>
         <SectionHeading eyebrow="Kernwaarden" title="Waar we voor staan." />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {coreValues.map((value, index) => (
-            <Reveal key={value.number} delay={(index % 4) * 80}>
-              <NumberedCard number={value.number} title={value.title} description={value.description} />
+            <Reveal key={value.title} delay={(index % 4) * 80}>
+              <FeatureCard
+                icon={value.icon}
+                title={value.title}
+                description={value.description}
+                accent={value.accent}
+              />
             </Reveal>
           ))}
         </div>
@@ -100,14 +123,13 @@ export default function OnsVerhaal() {
         <SectionHeading eyebrow="Merkbelofte" title="Dit beloven we je." />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {brandPromises.map((promise, index) => (
-            <Reveal key={promise.number} delay={(index % 3) * 80}>
-              <div className="flex h-full flex-col rounded-2xl border border-border bg-creme/60 p-6">
-                <span aria-hidden="true" className="font-heading text-3xl font-bold text-zonnegeel">
-                  {promise.number}
-                </span>
-                <h3 className="mt-3 font-heading text-lg font-bold text-antraciet">{promise.title}</h3>
-                <p className="mt-2 text-muted-foreground">{promise.description}</p>
-              </div>
+            <Reveal key={promise.title} delay={(index % 3) * 80}>
+              <FeatureCard
+                icon={promise.icon}
+                title={promise.title}
+                description={promise.description}
+                accent={promise.accent}
+              />
             </Reveal>
           ))}
         </div>

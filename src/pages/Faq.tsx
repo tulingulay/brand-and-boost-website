@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { SEO } from "@/components/SEO";
+import { StatementBox } from "@/components/StatementBox";
 import { FaqJsonLd } from "@/components/StructuredData";
 import { faqs } from "@/data/faq";
 
@@ -24,16 +25,23 @@ export default function Faq() {
       />
 
       <Section>
-        <Reveal className="mx-auto max-w-3xl">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={faq.question} value={`faq-${index}`}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Reveal>
+        <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start lg:gap-12">
+          <Reveal>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={faq.question} value={`faq-${index}`}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Reveal>
+          <Reveal delay={120} className="lg:sticky lg:top-28">
+            <StatementBox label="Geen antwoord gevonden?" cta={{ label: "Plan een strategiegesprek", to: "/contact" }}>
+              Stel je vraag gewoon rechtstreeks aan ons.
+            </StatementBox>
+          </Reveal>
+        </div>
       </Section>
 
       <CTASection

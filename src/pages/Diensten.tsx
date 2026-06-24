@@ -4,6 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { ServiceCard } from "@/components/ServiceCard";
+import { StatementBox } from "@/components/StatementBox";
 import { services } from "@/data/services";
 
 export default function Diensten() {
@@ -29,6 +30,15 @@ export default function Diensten() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-8">
+          <StatementBox
+            className="lg:max-w-2xl"
+            label="Even sparren?"
+            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
+          >
+            Niet zeker welke dienst je nodig hebt? Wij denken graag met je mee.
+          </StatementBox>
+        </Reveal>
       </Section>
 
       <CTASection

@@ -5,8 +5,8 @@ import type { Review } from "@/data/reviews";
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
-    <Card className="flex h-full flex-col p-6 sm:p-7">
-      <Quote className="h-8 w-8 text-zonnegeel" aria-hidden="true" />
+    <Card className="group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg sm:p-7">
+      <Quote className="h-8 w-8 text-zonnegeel transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
       <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-antraciet">
         {review.quote}
       </blockquote>

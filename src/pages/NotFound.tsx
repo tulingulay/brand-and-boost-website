@@ -30,7 +30,7 @@ export default function NotFound() {
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link to="/contact">
-                Plan een gesprek
+                Plan een strategiegesprek
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>
             </Button>

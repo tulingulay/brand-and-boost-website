@@ -1,0 +1,131 @@
+import { Link, Navigate, useParams } from "react-router-dom";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+
+import { serviceIcons } from "@/components/icons";
+import { CTASection } from "@/components/CTASection";
+import { Reveal } from "@/components/Reveal";
+import { Section, SectionHeading } from "@/components/Section";
+import { SEO } from "@/components/SEO";
+import { ServiceCard } from "@/components/ServiceCard";
+import { StatementBox } from "@/components/StatementBox";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { services } from "@/data/services";
+
+export default function ServiceDetail() {
+  const { slug } = useParams();
+  const service = services.find((s) => s.slug === slug);
+
+  // Onbekende dienst → terug naar het overzicht.
+  if (!service) {
+    return <Navigate to="/diensten" replace />;
+  }
+
+  const Icon = serviceIcons[service.icon];
+  const others = services.filter((s) => s.slug !== service.slug);
+
+  return (
+    <>
+      <SEO
+        title={`${service.title} — Brand & Boost`}
+        description={`${service.description} Lees meer over ${service.title.toLowerCase()} bij Brand & Boost.`}
+        path={`/diensten/${service.slug}`}
+      />
+
+      {/* ===== Hero ===== */}
+      <section className="relative overflow-hidden border-b border-border/60 bg-creme">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-kobalt/10 blur-2xl"
+        />
+        <div className="container relative py-12 sm:py-16">
+          <Reveal className="max-w-3xl">
+            <Link
+              to="/diensten"
+              className="group mb-6 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-primary transition-colors hover:text-kobalt"
+            >
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
+              Alle diensten
+            </Link>
+
+            <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-primary">
+              <Icon className="h-7 w-7" aria-hidden="true" />
+            </span>
+
+            <p className="mb-3 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-wider text-primary">
+              <span aria-hidden="true" className="h-0.5 w-7 rounded-full bg-zonnegeel" />
+              Dienst
+            </p>
+            <h1 className="text-h1">{service.title}</h1>
+            <p className="mt-5 text-lead text-muted-foreground">{service.description}</p>
+
+            <div className="mt-8">
+              <Button asChild size="lg" className="group">
+                <Link to="/contact">
+                  Plan een strategiegesprek
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== Inhoud ===== */}
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+          <Reveal>
+            <h2 className="text-h2">Wat we voor je doen</h2>
+            <p className="mt-4 text-lead text-muted-foreground">{service.intro}</p>
+          </Reveal>
+          <Reveal delay={80}>
+            <Card className="p-6 sm:p-8">
+              <h3 className="font-heading text-h3">Dit houdt het in</h3>
+              <ul className="mt-5 space-y-3.5">
+                {service.highlights.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zonnegeel/20 text-kobalt">
+                      <Check className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* ===== Statement / CTA ===== */}
+      <Section>
+        <Reveal>
+          <StatementBox
+            className="lg:max-w-3xl"
+            rotate
+            label="Aan de slag?"
+            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
+          >
+            Eén gesprek en je weet wat we voor jouw merk kunnen betekenen.
+          </StatementBox>
+        </Reveal>
+      </Section>
+
+      {/* ===== Andere diensten ===== */}
+      <Section className="bg-white">
+        <SectionHeading eyebrow="Diensten" title="Ontdek onze andere diensten." />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {others.map((s, index) => (
+            <Reveal key={s.slug} delay={(index % 3) * 80}>
+              <ServiceCard service={s} />
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <CTASection
+        title="Benieuwd wat dit voor jou kan betekenen?"
+        text="In een vrijblijvend strategiegesprek kijken we samen hoe deze dienst bij jouw merk past."
+      />
+    </>
+  );
+}

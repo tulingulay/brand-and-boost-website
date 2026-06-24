@@ -96,17 +96,18 @@
   }
 }
 
-/* Respecteer de voorkeur voor minder beweging */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+/* Respecteer de voorkeur voor minder beweging. Aangestuurd via de
+   `reduce-motion`-class op <html> (zie src/lib/motion.ts): in productie volgt
+   die de systeemvoorkeur, in de dev-preview blijft de class weg zodat je de
+   animaties kunt zien. */
+html.reduce-motion {
+  scroll-behavior: auto;
+}
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
 }

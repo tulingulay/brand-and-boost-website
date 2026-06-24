@@ -94,7 +94,7 @@ npm run typecheck
 | **Privacyverklaring** ⚠️ verplicht | `src/pages/Privacyverklaring.tsx` — móét ingevuld zijn vóór livegang, want het contactformulier verwerkt persoonsgegevens |
 | **Social links** | `src/data/site.ts` (`socials`) |
 | ~~**OG-image** (1200×630)~~ ✅ afgeleid van het logo | `public/og-image.png` — vervang gerust door een rijkere variant |
-| **Hero-beeld/illustratie** | `public/hero-illustration.svg` |
+| ~~**Hero-beeld**~~ ✅ geplaatst | `public/hero-digitale-groei.jpg` (vrije Unsplash-foto, license-vrij) — vervang gerust door eigen beeld |
 | **Regio-bevestiging FAQ** | `src/data/faq.ts` — klopt "Rotterdam, heel Nederland"? |
 | **Sitemap `lastmod`** | `public/sitemap.xml` bijwerken bij contentwijzigingen |
 
