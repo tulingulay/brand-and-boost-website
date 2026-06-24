@@ -1,5 +1,7 @@
-import { AandachtIcon, ContactIcon, DataIcon } from "@/components/BrandIcons";
+import { AandachtIcon, ContactIcon, DataIcon, MissieIcon, VisieIcon } from "@/components/BrandIcons";
 import { CTASection } from "@/components/CTASection";
+import { DecoDots } from "@/components/Decorations";
+import { Eyebrow } from "@/components/Eyebrow";
 import { FeatureCard } from "@/components/FeatureCard";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
@@ -47,11 +49,12 @@ export default function OnsVerhaal() {
 
       {/* ===== Over ons ===== */}
       <Section>
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <Reveal>
-            <h2 className="text-h2">Over ons</h2>
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
+          <Reveal direction="left">
+            <Eyebrow>Over ons</Eyebrow>
+            <h2 className="mt-4 text-h2">Een marketingpartner die met je meegroeit.</h2>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal direction="right" delay={120}>
             <p className="text-lead text-muted-foreground">
               Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Wij geloven niet in
               grote bureaus die afrekenen per uur en je daarna laten zwemmen. Wij geloven in partnerschap, creativiteit
@@ -62,12 +65,20 @@ export default function OnsVerhaal() {
       </Section>
 
       {/* ===== Missie & Visie ===== */}
-      <Section className="bg-white">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Reveal>
-            <Card className="h-full p-8">
-              <h2 className="text-h3 font-heading">Missie</h2>
-              <p className="mt-4 text-muted-foreground">
+      <Section
+        className="bg-white"
+        decoration={<DecoDots className="absolute left-8 top-12 hidden text-kobalt/10 lg:block" />}
+      >
+        <SectionHeading align="center" eyebrow="Missie & visie" title="Dit drijft ons." />
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <Reveal direction="left">
+            <Card className="group relative h-full overflow-hidden p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg sm:p-10">
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-kobalt" />
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-kobalt/10 text-kobalt transition-transform duration-300 group-hover:-rotate-6">
+                <MissieIcon className="h-7 w-7" />
+              </span>
+              <h3 className="mt-5 font-heading text-h3 font-bold text-antraciet">Missie</h3>
+              <p className="mt-3 text-muted-foreground">
                 Ondernemers volledige, persoonlijke en energieke aandacht geven, zodat marketing geen bron van stress
                 is, maar een motor voor groei. We hoeven niet het grootste of sterkste bureau te zijn. We willen het
                 stabielste en het meest energieke zijn: een team dat doet waar het energie van krijgt, en klanten die
@@ -75,10 +86,14 @@ export default function OnsVerhaal() {
               </p>
             </Card>
           </Reveal>
-          <Reveal delay={80}>
-            <Card className="h-full p-8">
-              <h2 className="text-h3 font-heading">Visie</h2>
-              <p className="mt-4 text-muted-foreground">
+          <Reveal direction="right" delay={120}>
+            <Card className="group relative h-full overflow-hidden p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg sm:p-10">
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-zonnegeel" />
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-zonnegeel/20 text-kobalt transition-transform duration-300 group-hover:-rotate-6">
+                <VisieIcon className="h-7 w-7" />
+              </span>
+              <h3 className="mt-5 font-heading text-h3 font-bold text-antraciet">Visie</h3>
+              <p className="mt-3 text-muted-foreground">
                 Marketing draait om partnerschap, niet om facturen. Grote bureaus die afrekenen per uur en je daarna
                 alleen laten. Daar geloven we niet in. Wij staan voor creativiteit, betrokkenheid en echte groei. Op
                 ieder potje past een dekseltje, een aanpak waarin merk &amp; mens samen groeien.
@@ -137,11 +152,12 @@ export default function OnsVerhaal() {
 
       {/* ===== Voor wie we het doen ===== */}
       <Section>
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <Reveal>
-            <h2 className="text-h2">Voor wie we het doen</h2>
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
+          <Reveal direction="left">
+            <Eyebrow>Voor wie</Eyebrow>
+            <h2 className="mt-4 text-h2">Voor wie we het doen.</h2>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal direction="right" delay={120}>
             <p className="text-lead text-muted-foreground">
               Wij werken het liefst met ondernemers die houden van hun vak. Niet met mensen die hun bedrijf erbij
               doen, maar met mensen die echt willen ondernemen en groeien. We zoeken sparringpartners met ambitie, het

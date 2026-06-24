@@ -174,3 +174,51 @@ export function ContactIcon(props: IconProps) {
     </svg>
   );
 }
+
+/* ===== Proces ===== */
+
+/** Strategie en plan — klembord met plan. */
+export function PlanIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="5" y="4" width="14" height="17" rx="2.5" />
+      <path d="M9.2 4V3.4A1.4 1.4 0 0 1 10.6 2h2.8a1.4 1.4 0 0 1 1.4 1.4V4z" />
+      <path d="M8.5 11l1.6 1.6L13.5 9" />
+      <path d="M9 15.5h6" />
+    </svg>
+  );
+}
+
+/** Uitvoering — raket (aan de slag). */
+export function BouwIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 2.5c2.4 1.7 3.8 4.2 3.8 7 0 1.9-.8 3.4-1.8 4.5H10c-1-1.1-1.8-2.6-1.8-4.5 0-2.8 1.4-5.3 3.8-7z" />
+      <circle cx="12" cy="9" r="1.4" />
+      <path d="M10 14l-1.8 3.6M14 14l1.8 3.6M12 16.5v3" />
+    </svg>
+  );
+}
+
+/* ===== Missie & visie ===== */
+
+/** Missie — kompas (richting). */
+export function MissieIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M15 9l-2.2 4.8L8 16l2.2-4.8z" />
+      <circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/** Visie — oog (vooruitkijken). */
+export function VisieIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M2.5 12s3.6-6 9.5-6 9.5 6 9.5 6-3.6 6-9.5 6-9.5-6-9.5-6z" />
+      <circle cx="12" cy="12" r="2.8" />
+    </svg>
+  );
+}

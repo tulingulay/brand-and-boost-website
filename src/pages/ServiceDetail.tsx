@@ -3,7 +3,10 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 
 import { serviceIcons } from "@/components/icons";
 import { CTASection } from "@/components/CTASection";
+import { DecoDots } from "@/components/Decorations";
+import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
+import { WAVE_PATH } from "@/components/WaveDivider";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -32,35 +35,40 @@ export default function ServiceDetail() {
         path={`/diensten/${service.slug}`}
       />
 
-      {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden border-b border-border/60 bg-creme">
+      {/* ===== Hero (full-bleed kobalt) ===== */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-kobalt to-[#0e5990]">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-kobalt/10 blur-2xl"
+          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
         />
-        <div className="container relative py-12 sm:py-16">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-10 left-1/4 h-56 w-56 rounded-full bg-zonnegeel/15 blur-3xl"
+        />
+        <DecoDots className="absolute right-10 top-10 hidden text-white/10 lg:block" />
+
+        <div className="container relative z-10 py-14 pb-24 sm:py-20 sm:pb-32">
           <Reveal className="max-w-3xl">
             <Link
               to="/diensten"
-              className="group mb-6 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-primary transition-colors hover:text-kobalt"
+              className="group mb-6 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-white/80 transition-colors hover:text-white"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
               Alle diensten
             </Link>
 
-            <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-primary">
+            <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25">
               <Icon className="h-7 w-7" aria-hidden="true" />
             </span>
 
-            <p className="mb-3 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-wider text-primary">
-              <span aria-hidden="true" className="h-0.5 w-7 rounded-full bg-zonnegeel" />
-              Dienst
-            </p>
-            <h1 className="text-h1">{service.title}</h1>
-            <p className="mt-5 text-lead text-muted-foreground">{service.description}</p>
+            <div className="mb-5">
+              <Eyebrow light>Dienst</Eyebrow>
+            </div>
+            <h1 className="text-h1 text-white">{service.title}</h1>
+            <p className="mt-5 text-lead text-white/85">{service.description}</p>
 
             <div className="mt-8">
-              <Button asChild size="lg" className="group">
+              <Button asChild size="lg" className="group bg-white text-primary shadow-soft hover:bg-creme">
                 <Link to="/contact">
                   Plan een strategiegesprek
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -69,6 +77,17 @@ export default function ServiceDetail() {
             </div>
           </Reveal>
         </div>
+
+        {/* Golvende overgang naar de creme sectie eronder */}
+        <svg
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 z-[1] h-8 w-full fill-creme sm:h-12 lg:h-14"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          focusable="false"
+        >
+          <path d={WAVE_PATH} />
+        </svg>
       </section>
 
       {/* ===== Inhoud ===== */}
