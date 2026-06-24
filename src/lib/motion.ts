@@ -2,7 +2,7 @@
  * Toegankelijkheid: respecteer `prefers-reduced-motion`.
  *
  * Uitzondering: tijdens lokaal previewen (de Vite dev-server) forceren we de
- * animaties AAN, zodat je het ontwerp en de bewegingen kunt beoordelen — ook
+ * animaties AAN, zodat je het ontwerp en de bewegingen kunt beoordelen - ook
  * als je systeem "verminder beweging" aan heeft staan. In de productie-build
  * (zoals op de live site) blijft de voorkeur van de bezoeker leidend.
  */

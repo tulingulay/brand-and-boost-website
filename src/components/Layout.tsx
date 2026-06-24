@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { KennismakenBadge } from "@/components/KennismakenBadge";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { OrganizationJsonLd } from "@/components/StructuredData";
 
@@ -24,6 +25,8 @@ export function Layout() {
       </main>
 
       <Footer />
+
+      <KennismakenBadge />
     </div>
   );
 }

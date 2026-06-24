@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Brand & Boost — Meer dan marketing, een partner in groei."
+        title="Brand & Boost · Meer dan marketing, een partner in groei."
         description="Marketingpartner voor ambitieuze MKB-ondernemers. Geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei. Plan een strategiegesprek met Brand & Boost."
         path="/"
       />
@@ -122,7 +122,7 @@ export default function Home() {
             <h2 className="text-h2">Een marketingpartner die met je meegroeit.</h2>
             <p className="mt-6 text-lead text-muted-foreground">
               Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Geen groot bureau dat
-              afrekent per uur en je daarna laat zwemmen — wel partnerschap, creativiteit en groei, met mensen die
+              afrekent per uur en je daarna laat zwemmen, maar partnerschap, creativiteit en groei, met mensen die
               net als wij energie krijgen van vooruitgang.
             </p>
             <Button asChild variant="link" className="mt-4 h-auto px-0 text-base">

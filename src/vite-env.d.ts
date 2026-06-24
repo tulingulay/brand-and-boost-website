@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  /** Web3Forms access key — zie .env.example */
+  /** Web3Forms access key - zie .env.example */
   readonly VITE_WEB3FORMS_KEY: string;
 }
 

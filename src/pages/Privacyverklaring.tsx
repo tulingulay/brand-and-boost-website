@@ -8,7 +8,7 @@ export default function Privacyverklaring() {
   return (
     <>
       <SEO
-        title="Privacyverklaring — Brand & Boost"
+        title="Privacyverklaring · Brand & Boost"
         description="De privacyverklaring van Brand & Boost."
         path="/privacyverklaring"
       />

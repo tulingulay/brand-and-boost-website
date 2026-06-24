@@ -3,7 +3,7 @@ import type { SVGProps } from "react";
 type IconProps = SVGProps<SVGSVGElement>;
 
 /**
- * Custom iconenset voor Brand & Boost — bewust net even anders dan een
+ * Custom iconenset voor Brand & Boost - bewust net even anders dan een
  * standaard icoonbibliotheek, met een geometrische, energieke stijl. Gebruikt
  * voor de kernwaarden, de diensten en de merkbelofte. Alles tekent met
  * `currentColor`.
@@ -21,7 +21,7 @@ const base = {
 
 /* ===== Kernwaarden ===== */
 
-/** Energie — dubbele sparkle. */
+/** Energie - dubbele sparkle. */
 export function EnergieIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -31,7 +31,7 @@ export function EnergieIcon(props: IconProps) {
   );
 }
 
-/** Partnerschap — twee verstrengelde ringen. */
+/** Partnerschap - twee verstrengelde ringen. */
 export function PartnerschapIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -41,7 +41,7 @@ export function PartnerschapIcon(props: IconProps) {
   );
 }
 
-/** Resultaatgericht — oplopende lijn met pijl. */
+/** Resultaatgericht - oplopende lijn met pijl. */
 export function ResultaatIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -52,7 +52,7 @@ export function ResultaatIcon(props: IconProps) {
   );
 }
 
-/** Transparant — geslepen edelsteen (helderheid). */
+/** Transparant - geslepen edelsteen (helderheid). */
 export function TransparantIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -65,7 +65,7 @@ export function TransparantIcon(props: IconProps) {
 
 /* ===== Diensten ===== */
 
-/** Social media management — verbonden netwerk. */
+/** Social media management - verbonden netwerk. */
 export function SocialIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -78,7 +78,7 @@ export function SocialIcon(props: IconProps) {
   );
 }
 
-/** Branding — verfdruppel met glans. */
+/** Branding - verfdruppel met glans. */
 export function BrandingIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -88,7 +88,7 @@ export function BrandingIcon(props: IconProps) {
   );
 }
 
-/** Contentcreatie — beeldframe met lens. */
+/** Contentcreatie - beeldframe met lens. */
 export function ContentIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -99,7 +99,7 @@ export function ContentIcon(props: IconProps) {
   );
 }
 
-/** Webdevelopment — browservenster met code. */
+/** Webdevelopment - browservenster met code. */
 export function WebIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -110,7 +110,7 @@ export function WebIcon(props: IconProps) {
   );
 }
 
-/** Copywriting — tekstregels met pen. */
+/** Copywriting - tekstregels met pen. */
 export function CopyIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -120,7 +120,7 @@ export function CopyIcon(props: IconProps) {
   );
 }
 
-/** SEO/SEA/AEO & GEO — vergrootglas met spark. */
+/** SEO/SEA/AEO & GEO - vergrootglas met spark. */
 export function SeoIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -131,7 +131,7 @@ export function SeoIcon(props: IconProps) {
   );
 }
 
-/** Meta advertenties — vizier op doel. */
+/** Meta advertenties - vizier op doel. */
 export function AdsIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -145,7 +145,7 @@ export function AdsIcon(props: IconProps) {
 
 /* ===== Merkbelofte ===== */
 
-/** Persoonlijke, energieke aandacht — hart. */
+/** Persoonlijke, energieke aandacht - hart. */
 export function AandachtIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -154,7 +154,7 @@ export function AandachtIcon(props: IconProps) {
   );
 }
 
-/** Data-gedreven — meter. */
+/** Data-gedreven - meter. */
 export function DataIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -165,7 +165,7 @@ export function DataIcon(props: IconProps) {
   );
 }
 
-/** Eén aanspreekpunt — gesprek met vinkje. */
+/** Eén aanspreekpunt - gesprek met vinkje. */
 export function ContactIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -177,7 +177,7 @@ export function ContactIcon(props: IconProps) {
 
 /* ===== Proces ===== */
 
-/** Strategie en plan — klembord met plan. */
+/** Strategie en plan - klembord met plan. */
 export function PlanIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -189,7 +189,7 @@ export function PlanIcon(props: IconProps) {
   );
 }
 
-/** Uitvoering — raket (aan de slag). */
+/** Uitvoering - raket (aan de slag). */
 export function BouwIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -202,7 +202,7 @@ export function BouwIcon(props: IconProps) {
 
 /* ===== Missie & visie ===== */
 
-/** Missie — kompas (richting). */
+/** Missie - kompas (richting). */
 export function MissieIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -213,7 +213,7 @@ export function MissieIcon(props: IconProps) {
   );
 }
 
-/** Visie — oog (vooruitkijken). */
+/** Visie - oog (vooruitkijken). */
 export function VisieIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>

@@ -5,14 +5,14 @@
 @layer base {
   :root {
     /* ===== Merkkleuren (zie tailwind.config.ts voor de hex-referentie) ===== */
-    --kobalt: 204 78% 43%; /* #187DC1 — hoofdkleur, accenten, hero */
+    --kobalt: 204 78% 43%; /* #187DC1 - hoofdkleur, accenten, hero */
     --kobalt-foreground: 0 0% 100%;
-    --zonnegeel: 44 80% 46%; /* #D4A017 — secundair accent, spaarzaam */
+    --zonnegeel: 44 80% 46%; /* #D4A017 - secundair accent, spaarzaam */
     --zonnegeel-foreground: 0 0% 14%;
-    --kastanje: 20 48% 29%; /* #6E3F27 — klein tertiair detail, heel spaarzaam */
+    --kastanje: 20 48% 29%; /* #6E3F27 - klein tertiair detail, heel spaarzaam */
     --kastanje-foreground: 0 0% 100%;
-    --creme: 33 38% 94%; /* #F6F1EB — achtergrond */
-    --antraciet: 0 0% 18%; /* #2D2D2D — tekst */
+    --creme: 33 38% 94%; /* #F6F1EB - achtergrond */
+    --antraciet: 0 0% 18%; /* #2D2D2D - tekst */
 
     /* ===== Semantische tokens (shadcn/ui) ===== */
     --background: 33 38% 94%; /* creme */

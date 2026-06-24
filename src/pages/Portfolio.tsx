@@ -13,7 +13,7 @@ export default function Portfolio() {
   return (
     <>
       <SEO
-        title="Portfolio — Brand & Boost"
+        title="Portfolio · Brand & Boost"
         description="Cases en reviews van Brand & Boost. Bekijk het werk dat we samen met ambitieuze MKB-ondernemers maken en wat zij over de samenwerking zeggen."
         path="/portfolio"
       />

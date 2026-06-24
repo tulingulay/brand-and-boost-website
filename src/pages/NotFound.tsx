@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <>
       <SEO
-        title="Pagina niet gevonden — Brand & Boost"
+        title="Pagina niet gevonden · Brand & Boost"
         description="Deze pagina bestaat niet (meer)."
         path="/404"
         noindex

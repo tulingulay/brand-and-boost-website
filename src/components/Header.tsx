@@ -62,7 +62,7 @@ export function Header() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <Button asChild className="hidden sm:inline-flex">
-              <Link to="/contact">Plan een strategiegesprek</Link>
+              <Link to="/contact">Neem contact op</Link>
             </Button>
 
             {/* Menuknop: de "O" uit het logo, met een pijl naar beneden die
@@ -110,7 +110,7 @@ export function Header() {
               </NavLink>
             ))}
             <Button asChild size="lg" className="mt-3 w-full" onClick={() => setOpen(false)}>
-              <Link to="/contact">Plan een strategiegesprek</Link>
+              <Link to="/contact">Neem contact op</Link>
             </Button>
           </nav>
         </div>

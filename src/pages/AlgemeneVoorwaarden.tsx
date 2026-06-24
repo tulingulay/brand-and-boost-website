@@ -8,7 +8,7 @@ export default function AlgemeneVoorwaarden() {
   return (
     <>
       <SEO
-        title="Algemene voorwaarden — Brand & Boost"
+        title="Algemene voorwaarden · Brand & Boost"
         description="De algemene voorwaarden van Brand & Boost."
         path="/algemene-voorwaarden"
       />

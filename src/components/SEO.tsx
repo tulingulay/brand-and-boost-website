@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { site } from "@/data/site";
 
 interface SEOProps {
-  /** Volledige paginatitel, bijv. "Diensten — Brand & Boost". */
+  /** Volledige paginatitel, bijv. "Diensten · Brand & Boost". */
   title: string;
   description: string;
   /** Pad van de pagina, bijv. "/diensten" of "/". */

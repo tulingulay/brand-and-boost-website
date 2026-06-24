@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 
 import { socialIcons } from "@/components/icons";
 import { legalNav, mainNav, site, socials } from "@/data/site";
@@ -30,8 +30,8 @@ export function Footer() {
 
           {/* Groot logo in het midden */}
           <div className="order-first flex flex-col items-center md:order-2">
-            {/* Transparante (cream) logo-variant — leesbaar op de donkere footer. */}
-            <Link to="/" className="inline-block rounded-lg" aria-label="Brand & Boost — naar de homepagina">
+            {/* Transparante (cream) logo-variant, leesbaar op de donkere footer. */}
+            <Link to="/" className="inline-block rounded-lg" aria-label="Brand & Boost, naar de homepagina">
               <img
                 src="/logo-transparant.png"
                 alt="Brand & Boost"
@@ -70,20 +70,6 @@ export function Footer() {
           <div className="md:order-3 md:justify-self-end">
             <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-creme/60">Contact</h2>
             <address className="mt-4 space-y-3 not-italic text-creme/85">
-              <p className="flex items-start justify-center gap-3 md:justify-start">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-zonnegeel" aria-hidden="true" />
-                <span>
-                  {site.address.street}
-                  <br />
-                  {site.address.postalCode} {site.address.city}
-                </span>
-              </p>
-              <p className="flex items-center justify-center gap-3 md:justify-start">
-                <Phone className="h-5 w-5 shrink-0 text-zonnegeel" aria-hidden="true" />
-                <a href={`tel:${site.phoneE164}`} className={linkClass}>
-                  {site.phoneDisplay}
-                </a>
-              </p>
               <p className="flex items-center justify-center gap-3 md:justify-start">
                 <Mail className="h-5 w-5 shrink-0 text-zonnegeel" aria-hidden="true" />
                 <a href={`mailto:${site.email}`} className={`${linkClass} break-all`}>
@@ -91,6 +77,7 @@ export function Footer() {
                 </a>
               </p>
             </address>
+            <p className="mt-3 text-sm text-creme/60">We werken op afspraak.</p>
           </div>
         </div>
       </div>

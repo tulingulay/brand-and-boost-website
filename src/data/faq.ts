@@ -3,7 +3,7 @@
  *
  * LET OP: dit zijn CONCEPT-vragen en -antwoorden. De klant mag ze nog
  * aanpassen, schrappen of aanvullen. Deze lijst voedt zowel de FAQ-pagina
- * als de FAQPage JSON-LD (structured data) — houd vraag en antwoord dus
+ * als de FAQPage JSON-LD (structured data) - houd vraag en antwoord dus
  * inhoudelijk kloppend.
  */
 

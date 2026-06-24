@@ -20,6 +20,7 @@ interface FormValues {
 interface FormErrors {
   naam?: string;
   email?: string;
+  telefoon?: string;
   bericht?: string;
 }
 
@@ -36,6 +37,9 @@ function validate(values: FormValues): FormErrors {
     errors.email = "We hebben je e-mailadres nodig om te kunnen reageren.";
   } else if (!EMAIL_REGEX.test(values.email.trim())) {
     errors.email = "Hmm, dit e-mailadres lijkt niet te kloppen. Check 'm even?";
+  }
+  if (!values.telefoon.trim()) {
+    errors.telefoon = "Laat je telefoonnummer achter, dan kunnen we je terugbellen.";
   }
   if (!values.bericht.trim()) {
     errors.bericht = "Vertel kort waar we je mee kunnen helpen.";
@@ -91,8 +95,8 @@ export function ContactForm() {
           from_name: "Brand & Boost website",
           name: values.naam,
           email: values.email,
-          telefoon: values.telefoon || "—",
-          bedrijf: values.bedrijf || "—",
+          telefoon: values.telefoon,
+          bedrijf: values.bedrijf || "Niet opgegeven",
           message: values.bericht,
           replyto: values.email,
         }),
@@ -126,7 +130,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
-      {/* Honeypot — verborgen voor mensen, niet voor bots */}
+      {/* Honeypot - verborgen voor mensen, niet voor bots */}
       <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
         <label htmlFor="bedrijfsnaam-extra">Laat dit veld leeg</label>
         <input
@@ -186,7 +190,9 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="telefoon">Telefoon</Label>
+          <Label htmlFor="telefoon">
+            Telefoon <span className="text-primary">*</span>
+          </Label>
           <Input
             id="telefoon"
             name="telefoon"
@@ -195,7 +201,15 @@ export function ContactForm() {
             autoComplete="tel"
             value={values.telefoon}
             onChange={(e) => update("telefoon", e.target.value)}
+            aria-invalid={Boolean(errors.telefoon)}
+            aria-describedby={errors.telefoon ? "telefoon-error" : undefined}
+            required
           />
+          {errors.telefoon && (
+            <p id="telefoon-error" role="alert" className="text-sm font-medium text-destructive">
+              {errors.telefoon}
+            </p>
+          )}
         </div>
 
         <div className="space-y-1.5">

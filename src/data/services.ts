@@ -1,10 +1,10 @@
 /**
  * De 7 diensten van Brand & Boost.
- * Concept-copy — mag door de klant aangepast worden. Geen prijzen.
+ * Concept-copy - mag door de klant aangepast worden. Geen prijzen.
  *
  * `icon`      verwijst naar een Lucide-icoon (zie ServiceCard / icons.tsx).
  * `intro`     en `highlights` voeden de detailpagina (/diensten/:slug).
- *             Dit zijn algemene, eerlijke omschrijvingen — vul gerust aan met
+ *             Dit zijn algemene, eerlijke omschrijvingen - vul gerust aan met
  *             concrete voorbeelden, cases of werkwijze.
  */
 

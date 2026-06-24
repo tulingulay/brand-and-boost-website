@@ -10,8 +10,8 @@ export default function Proces() {
   return (
     <>
       <SEO
-        title="Proces — Brand & Boost"
-        description="Van kennismaking en strategie tot uitvoering, optimalisatie en groei. Zo werkt Brand & Boost samen met ondernemers — met energie en één aanspreekpunt."
+        title="Proces · Brand & Boost"
+        description="Van kennismaking en strategie tot uitvoering, optimalisatie en groei. Zo werkt Brand & Boost samen met ondernemers, met energie en één aanspreekpunt."
         path="/proces"
       />
 

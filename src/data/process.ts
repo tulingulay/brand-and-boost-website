@@ -3,7 +3,7 @@ import type { IconComponent } from "@/data/values";
 
 /**
  * Het 4-stappen proces van Brand & Boost.
- * Concept-copy — mag door de klant aangepast worden. `description` is de korte
+ * Concept-copy, mag door de klant aangepast worden. `description` is de korte
  * regel (Home), `detail` + `highlights` de uitgebreide versie (Proces-pagina).
  */
 
@@ -22,7 +22,7 @@ export const processSteps: ProcessStep[] = [
     title: "Kennismaking",
     description: "We leren je merk, je doelen en je situatie kennen in een open gesprek.",
     detail:
-      "Alles begint met een goed gesprek. We duiken in je merk, je ambities en waar je nu staat — zonder verkooppraatjes, wél met oprechte interesse. Zo snappen we precies wat jou drijft en wat je nodig hebt om te groeien.",
+      "Alles begint met een goed gesprek. We duiken in je merk, je ambities en waar je nu staat, met oprechte interesse en zonder poespas. Zo snappen we precies wat jou drijft en wat je nodig hebt om te groeien.",
     highlights: [
       "Open kennismaking, vrijblijvend",
       "We luisteren naar je doelen en uitdagingen",
@@ -48,7 +48,7 @@ export const processSteps: ProcessStep[] = [
     title: "Uitvoering",
     description: "We gaan aan de slag, met energie en oog voor detail. Jij houdt één aanspreekpunt.",
     detail:
-      "Nu wordt het concreet. We gaan met energie aan de slag en houden oog voor detail. Jij hebt steeds één vast aanspreekpunt en korte lijnen, dus je weet altijd waar je aan toe bent — geen gedoe, geen ruis.",
+      "Nu wordt het concreet. We gaan met energie aan de slag en houden oog voor detail. Jij hebt steeds één vast aanspreekpunt en korte lijnen, dus je weet altijd waar je aan toe bent. Geen gedoe, geen ruis.",
     highlights: [
       "We voeren het plan uit met oog voor detail",
       "Eén vast aanspreekpunt, korte lijnen",

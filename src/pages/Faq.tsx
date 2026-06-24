@@ -12,7 +12,7 @@ export default function Faq() {
   return (
     <>
       <SEO
-        title="Veelgestelde vragen — Brand & Boost"
+        title="Veelgestelde vragen · Brand & Boost"
         description="Antwoorden op veelgestelde vragen over Brand & Boost: voor wie we werken, hoe we samenwerken, één aanspreekpunt, data-gedreven werken en meer."
         path="/faq"
       />

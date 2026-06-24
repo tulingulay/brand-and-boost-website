@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, Phone } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import { DecoDots } from "@/components/Decorations";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
-import { site } from "@/data/site";
 
 interface CTASectionProps {
   title?: string;
@@ -23,7 +22,7 @@ const reassurances = ["Vrijblijvend", "Geen verplichtingen", "Persoonlijk antwoo
  */
 export function CTASection({
   title = "Tijd om jouw merk een boost te geven.",
-  text = "Plan een vrijblijvend strategiegesprek en ontdek wat er voor jouw merk mogelijk is — zonder verplichtingen.",
+  text = "Plan een vrijblijvend strategiegesprek en ontdek wat er voor jouw merk mogelijk is, helemaal zonder verplichtingen.",
   buttonLabel = "Plan een strategiegesprek",
   badge = "Klaar voor groei?",
 }: CTASectionProps) {
@@ -50,20 +49,13 @@ export function CTASection({
             <h2 className="mt-5 text-h2 text-white">{title}</h2>
             <p className="mx-auto mt-4 max-w-xl text-lead text-white/90">{text}</p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5">
+            <div className="mt-8 flex justify-center">
               <Button asChild size="lg" className="group bg-white text-primary shadow-soft hover:bg-creme">
                 <Link to="/contact">
                   {buttonLabel}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </Link>
               </Button>
-              <a
-                href={`tel:${site.phoneE164}`}
-                className="group inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-kobalt"
-              >
-                <Phone className="h-4 w-4 transition-transform group-hover:-rotate-12" aria-hidden="true" />
-                of bel {site.phoneDisplay}
-              </a>
             </div>
 
             <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-white/85">

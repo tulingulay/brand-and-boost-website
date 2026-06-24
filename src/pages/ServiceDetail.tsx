@@ -30,7 +30,7 @@ export default function ServiceDetail() {
   return (
     <>
       <SEO
-        title={`${service.title} — Brand & Boost`}
+        title={`${service.title} · Brand & Boost`}
         description={`${service.description} Lees meer over ${service.title.toLowerCase()} bij Brand & Boost.`}
         path={`/diensten/${service.slug}`}
       />

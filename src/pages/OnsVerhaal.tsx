@@ -36,7 +36,7 @@ export default function OnsVerhaal() {
   return (
     <>
       <SEO
-        title="Ons verhaal — Brand & Boost"
+        title="Ons verhaal · Brand & Boost"
         description="Wie we zijn en waar we in geloven: partnerschap, creativiteit en echte groei. Lees de missie, visie en kernwaarden van Brand & Boost."
         path="/ons-verhaal"
       />

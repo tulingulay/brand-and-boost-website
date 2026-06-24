@@ -11,8 +11,8 @@ export default function Diensten() {
   return (
     <>
       <SEO
-        title="Diensten — Brand & Boost"
-        description="Van branding en contentcreatie tot SEO, AEO en Meta advertenties. Bekijk de diensten van Brand & Boost — altijd op maat, met één aanspreekpunt."
+        title="Diensten · Brand & Boost"
+        description="Van branding en contentcreatie tot SEO, AEO en Meta advertenties. Bekijk de diensten van Brand & Boost, altijd op maat, met één aanspreekpunt."
         path="/diensten"
       />
 
