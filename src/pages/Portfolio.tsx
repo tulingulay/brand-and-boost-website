@@ -6,6 +6,7 @@ import { ReviewCard } from "@/components/ReviewCard";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { StatementBox } from "@/components/StatementBox";
+import { WaveDivider } from "@/components/WaveDivider";
 import { cases } from "@/data/cases";
 import { reviews } from "@/data/reviews";
 
@@ -50,6 +51,8 @@ export default function Portfolio() {
         </Reveal>
       </Section>
 
+      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
+
       {/* ===== Reviews ===== */}
       <Section className="bg-white">
         <SectionHeading eyebrow="Reviews" title="Wat klanten over ons zeggen." />
@@ -61,6 +64,8 @@ export default function Portfolio() {
           ))}
         </div>
       </Section>
+
+      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
 
       <CTASection />
     </>

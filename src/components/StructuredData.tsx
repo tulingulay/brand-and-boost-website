@@ -4,32 +4,26 @@ import { site, socials } from "@/data/site";
 import type { FaqItem } from "@/data/faq";
 
 /**
- * Organization + LocalBusiness structured data (JSON-LD).
+ * Organization structured data (JSON-LD).
  * Staat op elke pagina (via de Layout) zodat zoekmachines en AI-tools
- * de bedrijfsgegevens betrouwbaar kunnen oppikken.
+ * de bedrijfsgegevens betrouwbaar kunnen oppikken. Bewust geen telefoon of
+ * fysiek adres: Brand & Boost werkt op afspraak (mailen kan, bellen/langskomen
+ * niet) en is daarom geen LocalBusiness met bezoeklocatie.
  */
 export function OrganizationJsonLd() {
   const sameAs = socials.map((s) => s.href).filter((href) => href && href !== "#");
 
   const data = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
+    "@type": "Organization",
     "@id": `${site.domain}/#organization`,
     name: site.name,
     url: site.domain,
     email: site.email,
-    telephone: site.phoneE164,
     image: `${site.domain}/og-image.png`,
     logo: `${site.domain}/logo.png`,
     description:
       "Brand & Boost is een marketingpartner voor ambitieuze MKB-ondernemers: geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei.",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: site.address.street,
-      postalCode: site.address.postalCode,
-      addressLocality: site.address.city,
-      addressCountry: "NL",
-    },
     areaServed: {
       "@type": "Country",
       name: "Nederland",

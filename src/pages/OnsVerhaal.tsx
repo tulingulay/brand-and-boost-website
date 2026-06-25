@@ -1,15 +1,30 @@
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 import { AandachtIcon, ContactIcon, DataIcon, MissieIcon, VisieIcon } from "@/components/BrandIcons";
 import { CTASection } from "@/components/CTASection";
 import { DecoDots } from "@/components/Decorations";
 import { Eyebrow } from "@/components/Eyebrow";
 import { FeatureCard } from "@/components/FeatureCard";
+import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { StatementBox } from "@/components/StatementBox";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { WaveDivider } from "@/components/WaveDivider";
+import { processSteps } from "@/data/process";
 import { coreValues } from "@/data/values";
+import { cn } from "@/lib/utils";
+
+const teaserAccents = [
+  { badge: "bg-kobalt text-white", text: "text-kobalt" },
+  { badge: "bg-zonnegeel text-antraciet", text: "text-[#9a7209]" },
+  { badge: "bg-kastanje text-white", text: "text-kastanje" },
+  { badge: "bg-kobalt text-white", text: "text-kobalt" },
+];
 
 const brandPromises = [
   {
@@ -43,7 +58,11 @@ export default function OnsVerhaal() {
 
       <PageHero
         eyebrow="Ons verhaal"
-        title="Partnerschap, creativiteit en groei."
+        title={
+          <>
+            Partnerschap, creativiteit en <Highlight variant="underline">groei</Highlight>.
+          </>
+        }
         intro="Wie we zijn, waar we in geloven en voor wie we het doen."
       />
 
@@ -52,7 +71,9 @@ export default function OnsVerhaal() {
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
           <Reveal direction="left">
             <Eyebrow>Over ons</Eyebrow>
-            <h2 className="mt-4 text-h2">Een marketingpartner die met je meegroeit.</h2>
+            <h2 className="mt-4 text-h2">
+              Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
+            </h2>
           </Reveal>
           <Reveal direction="right" delay={120}>
             <p className="text-lead text-muted-foreground">
@@ -62,6 +83,55 @@ export default function OnsVerhaal() {
             </p>
           </Reveal>
         </div>
+      </Section>
+
+      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
+
+      {/* ===== Aanpak (teaser) ===== */}
+      <Section
+        className="bg-white"
+        decoration={<DecoDots className="absolute right-8 top-12 hidden text-kastanje/10 lg:block" />}
+      >
+        <SectionHeading
+          align="center"
+          eyebrow="Onze aanpak"
+          title={
+            <>
+              In vier stappen naar <Highlight>groei</Highlight>.
+            </>
+          }
+          intro="Geen losse acties, maar een heldere route. Zo pakken we het samen aan, met jou steeds aan het stuur."
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, index) => {
+            const accent = teaserAccents[index];
+            return (
+              <Reveal key={step.number} delay={(index % 4) * 80}>
+                <div className="h-full rounded-2xl border-2 border-kastanje/25 bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-kastanje/50 hover:shadow-soft-lg">
+                  <span
+                    className={cn(
+                      "flex h-12 w-12 items-center justify-center rounded-2xl font-heading text-lg font-bold shadow-soft",
+                      accent.badge,
+                    )}
+                  >
+                    {step.number}
+                  </span>
+                  <h3 className="mt-4 font-heading text-lg font-bold text-antraciet">{step.title}</h3>
+                  <p className={cn("mt-1 text-sm font-semibold", accent.text)}>{step.subtitle}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+        <Reveal className="mt-10 text-center">
+          <Button asChild variant="link" className="h-auto px-0 text-base">
+            <Link to="/proces">
+              Bekijk het volledige proces
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        </Reveal>
       </Section>
 
       {/* ===== Missie & Visie ===== */}
@@ -103,6 +173,8 @@ export default function OnsVerhaal() {
         </div>
       </Section>
 
+      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
+
       {/* ===== Statement / CTA ===== */}
       <Section>
         <Reveal>
@@ -133,6 +205,8 @@ export default function OnsVerhaal() {
         </div>
       </Section>
 
+      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
+
       {/* ===== Merkbelofte ===== */}
       <Section className="bg-white">
         <SectionHeading eyebrow="Merkbelofte" title="Dit beloven we je." />
@@ -149,6 +223,8 @@ export default function OnsVerhaal() {
           ))}
         </div>
       </Section>
+
+      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
 
       {/* ===== Voor wie we het doen ===== */}
       <Section>

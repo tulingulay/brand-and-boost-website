@@ -8,13 +8,14 @@ import { CaseCard } from "@/components/CaseCard";
 import { DecoDots, DecoRings } from "@/components/Decorations";
 import { FeatureCard } from "@/components/FeatureCard";
 import { HeroIconBackground } from "@/components/HeroIconBackground";
+import { Highlight } from "@/components/Highlight";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { ServiceCard } from "@/components/ServiceCard";
 import { StatementBox } from "@/components/StatementBox";
-import { WaveDivider, WAVE_PATH } from "@/components/WaveDivider";
+import { WaveDivider, WAVE_PATH, WAVE_TOP } from "@/components/WaveDivider";
 import { cases } from "@/data/cases";
 import { coreValues } from "@/data/values";
 import { faqs } from "@/data/faq";
@@ -54,13 +55,7 @@ export default function Home() {
           </p>
           <h1 className="mx-auto max-w-4xl text-display text-white">
             Meer dan marketing, een partner in{" "}
-            <span className="relative inline-block">
-              groei.
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-0 -bottom-1 h-1.5 rounded-full bg-zonnegeel"
-              />
-            </span>
+            <Highlight variant="underline">groei.</Highlight>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lead text-white">
             Geen uurtje-factuurtje, maar een partner die naast je staat en met je meegroeit.
@@ -100,6 +95,13 @@ export default function Home() {
           focusable="false"
         >
           <path d={WAVE_PATH} />
+          <path
+            d={WAVE_TOP}
+            className="fill-none stroke-kastanje"
+            strokeWidth={3}
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+          />
         </svg>
       </section>
 
@@ -119,7 +121,9 @@ export default function Home() {
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
           <Reveal direction="left" className="lg:col-span-7">
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">Over ons</p>
-            <h2 className="text-h2">Een marketingpartner die met je meegroeit.</h2>
+            <h2 className="text-h2">
+              Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
+            </h2>
             <p className="mt-6 text-lead text-muted-foreground">
               Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Geen groot bureau dat
               afrekent per uur en je daarna laat zwemmen, maar partnerschap, creativiteit en groei, met mensen die
@@ -140,7 +144,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-primary" />
+      <WaveDivider topClass="bg-creme" fillClass="fill-primary" accent />
 
       {/* ===== Diensten in het kort ===== */}
       <Section
@@ -150,7 +154,11 @@ export default function Home() {
         <SectionHeading
           light
           eyebrow="Wat we doen"
-          title="Diensten die je merk laten groeien."
+          title={
+            <>
+              Diensten die je merk laten <Highlight color="zonnegeel">groeien</Highlight>.
+            </>
+          }
           intro="Van branding tot vindbaarheid: alles onder één dak, met één aanspreekpunt."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -180,7 +188,7 @@ export default function Home() {
         </Reveal>
       </Section>
 
-      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip />
+      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip accent />
 
       {/* ===== Waarom Brand & Boost / kernwaarden ===== */}
       <Section
@@ -212,7 +220,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-primary" />
+      <WaveDivider topClass="bg-creme" fillClass="fill-primary" accent />
 
       {/* ===== Proces in het kort ===== */}
       <Section className="bg-primary">
@@ -237,7 +245,7 @@ export default function Home() {
         </Reveal>
       </Section>
 
-      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip />
+      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip accent />
 
       {/* ===== Portfolio / resultaten teaser ===== */}
       <Section
@@ -261,7 +269,7 @@ export default function Home() {
         </Reveal>
       </Section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-white" />
+      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
 
       {/* ===== Korte FAQ ===== */}
       <Section className="bg-white">
@@ -290,7 +298,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip />
+      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
 
       {/* ===== Afsluitende CTA ===== */}
       <CTASection />

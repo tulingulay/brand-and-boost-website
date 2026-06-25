@@ -6,7 +6,7 @@ import { CTASection } from "@/components/CTASection";
 import { DecoDots } from "@/components/Decorations";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
-import { WAVE_PATH } from "@/components/WaveDivider";
+import { WaveDivider, WAVE_PATH, WAVE_TOP } from "@/components/WaveDivider";
 import { Section, SectionHeading } from "@/components/Section";
 import { SEO } from "@/components/SEO";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -87,6 +87,13 @@ export default function ServiceDetail() {
           focusable="false"
         >
           <path d={WAVE_PATH} />
+          <path
+            d={WAVE_TOP}
+            className="fill-none stroke-kastanje"
+            strokeWidth={3}
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+          />
         </svg>
       </section>
 
@@ -129,6 +136,8 @@ export default function ServiceDetail() {
         </Reveal>
       </Section>
 
+      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
+
       {/* ===== Andere diensten ===== */}
       <Section className="bg-white">
         <SectionHeading eyebrow="Diensten" title="Ontdek onze andere diensten." />
@@ -140,6 +149,8 @@ export default function ServiceDetail() {
           ))}
         </div>
       </Section>
+
+      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
 
       <CTASection
         title="Benieuwd wat dit voor jou kan betekenen?"

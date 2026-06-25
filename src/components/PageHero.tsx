@@ -3,11 +3,11 @@ import * as React from "react";
 import { DecoDots } from "@/components/Decorations";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
-import { WAVE_PATH } from "@/components/WaveDivider";
+import { WAVE_PATH, WAVE_TOP } from "@/components/WaveDivider";
 
 interface PageHeroProps {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   intro?: string;
   children?: React.ReactNode;
 }
@@ -52,6 +52,13 @@ export function PageHero({ eyebrow, title, intro, children }: PageHeroProps) {
         focusable="false"
       >
         <path d={WAVE_PATH} />
+        <path
+          d={WAVE_TOP}
+          className="fill-none stroke-kastanje"
+          strokeWidth={3}
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
       </svg>
     </section>
   );

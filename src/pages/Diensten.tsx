@@ -1,4 +1,5 @@
 import { CTASection } from "@/components/CTASection";
+import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
@@ -18,7 +19,11 @@ export default function Diensten() {
 
       <PageHero
         eyebrow="Diensten"
-        title="Alles wat je merk nodig heeft om te groeien."
+        title={
+          <>
+            Alles wat je merk nodig heeft om te <Highlight variant="underline">groeien</Highlight>.
+          </>
+        }
         intro="Zeven diensten, één aanspreekpunt. We werken op maat en kijken samen wat op dit moment het meest oplevert."
       />
 
