@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 
-import { serviceIllustrations } from "@/components/ServiceIllustrations";
 import { Card } from "@/components/ui/card";
 import type { Service } from "@/data/services";
 
 export function ServiceCard({ service }: { service: Service }) {
-  const Illustration = serviceIllustrations[service.icon];
-
   return (
     <Link
       to={`/diensten/${service.slug}`}
@@ -15,9 +12,14 @@ export function ServiceCard({ service }: { service: Service }) {
       className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <Card className="flex h-full flex-col overflow-hidden border-2 border-kastanje/30 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-kastanje/60 group-hover:shadow-soft-lg">
-        {/* Custom illustratie */}
+        {/* Stockfoto */}
         <div className="relative aspect-[16/9] overflow-hidden border-b border-kastanje/20">
-          <Illustration className="h-full w-full transition-transform duration-500 group-hover:scale-[1.06]" />
+          <img
+            src={service.image}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+          />
         </div>
 
         <div className="flex flex-1 flex-col p-6">

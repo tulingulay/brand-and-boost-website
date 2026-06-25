@@ -11,26 +11,26 @@ const markerClass: Record<HighlightColor, string> = {
   kastanje: "bg-kastanje/20",
 };
 
-/** Penseelkleur voor de underline-variant. */
-const strokeClass: Record<HighlightColor, string> = {
-  zonnegeel: "text-zonnegeel",
-  kobalt: "text-kobalt",
-  kastanje: "text-kastanje",
+/** Streepkleur voor de underline-variant. */
+const barClass: Record<HighlightColor, string> = {
+  zonnegeel: "bg-zonnegeel",
+  kobalt: "bg-kobalt",
+  kastanje: "bg-kastanje",
 };
 
 interface HighlightProps {
   children: React.ReactNode;
   /** Accentkleur. Standaard zonnegeel. */
   color?: HighlightColor;
-  /** "marker" = highlighter achter het woord, "underline" = penseelstreep eronder. */
+  /** "marker" = highlighter achter het woord, "underline" = rechte streep eronder. */
   variant?: "marker" | "underline";
   className?: string;
 }
 
 /**
  * Markeert een kernwoord in een kop of zin, als warm merkaccent. Twee stijlen:
- * een highlighter-swash achter het woord ("marker") of een losse penseelstreep
- * eronder ("underline"). De swash/streep ligt achter de tekst (decoratief).
+ * een highlighter-swash achter het woord ("marker") of een rechte streep
+ * eronder ("underline"). Het accent ligt achter de tekst (decoratief).
  */
 export function Highlight({ children, color = "zonnegeel", variant = "marker", className }: HighlightProps) {
   return (
@@ -39,25 +39,15 @@ export function Highlight({ children, color = "zonnegeel", variant = "marker", c
         <span
           aria-hidden="true"
           className={cn(
-            "absolute inset-x-[-0.12em] bottom-[0.06em] top-[0.34em] -rotate-[1.4deg] rounded-[0.28em]",
+            "absolute inset-x-[-0.12em] bottom-[0.06em] top-[0.34em] rounded-[0.22em]",
             markerClass[color],
           )}
         />
       ) : (
-        <svg
+        <span
           aria-hidden="true"
-          viewBox="0 0 120 12"
-          preserveAspectRatio="none"
-          className={cn("absolute inset-x-0 -bottom-[0.16em] h-[0.34em] w-full", strokeClass[color])}
-        >
-          <path
-            d="M2 8c28-5 58 3 88-2 13-2 23 1 28 0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={5}
-            strokeLinecap="round"
-          />
-        </svg>
+          className={cn("absolute inset-x-0 -bottom-[0.04em] h-[0.15em] rounded-full", barClass[color])}
+        />
       )}
       <span className="relative">{children}</span>
     </span>
