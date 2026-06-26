@@ -81,28 +81,6 @@ npm run typecheck
 
 ---
 
-## ✅ TODO-checklist (vóór livegang invullen)
-
-| Onderdeel | Waar |
-|---|---|
-| ~~**Logo**~~ ✅ geplaatst | `public/logo.png` (header) + `public/logo-transparant.png` (footer) |
-| **Favicon** (optioneel) | `public/favicon.svg` — nu een kobalt "B"; vervang door een echt icoon-mark als je dat hebt |
-| **Web3Forms access key** | `.env` → `VITE_WEB3FORMS_KEY` (haal gratis op via [web3forms.com](https://web3forms.com), koppel aan info@brandandboost.nl) |
-| **Echte cases** | `src/data/cases.ts` + beelden in `public/cases/` |
-| **Echte reviews** | `src/data/reviews.ts` |
-| **Algemene voorwaarden** | `src/pages/AlgemeneVoorwaarden.tsx` |
-| **Privacyverklaring** ⚠️ verplicht | `src/pages/Privacyverklaring.tsx` — móét ingevuld zijn vóór livegang, want het contactformulier verwerkt persoonsgegevens |
-| **Social links** | `src/data/site.ts` (`socials`) |
-| ~~**OG-image** (1200×630)~~ ✅ afgeleid van het logo | `public/og-image.png` — vervang gerust door een rijkere variant |
-| ~~**Hero-beeld**~~ ✅ geplaatst | `public/hero-digitale-groei.jpg` (vrije Unsplash-foto, license-vrij) — vervang gerust door eigen beeld |
-| **Regio-bevestiging FAQ** | `src/data/faq.ts` — klopt "Rotterdam, heel Nederland"? |
-| **Sitemap `lastmod`** | `public/sitemap.xml` bijwerken bij contentwijzigingen |
-
-> Tip: het contactformulier stuurt inzendingen naar **info@brandandboost.nl**
-> via Web3Forms. Zonder ingevulde key werkt het formulier niet — het toont dan
-> een nette foutmelding met een directe mailto-link.
-
----
 
 ## Beeld & assets
 
