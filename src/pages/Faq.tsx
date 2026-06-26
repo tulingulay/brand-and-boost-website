@@ -4,7 +4,6 @@ import { ArrowRight, Search, X } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
-import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
 import { FaqJsonLd } from "@/components/StructuredData";
 import { faqCategories, faqs } from "@/data/faq";
@@ -40,10 +39,7 @@ export default function Faq() {
       <section className="bg-creme">
         <div className="container pt-28 pb-section sm:pt-36">
           <Reveal>
-            <SectionLabel>FAQ</SectionLabel>
-          </Reveal>
-          <Reveal delay={90}>
-            <h1 className="mt-7 max-w-[15ch] text-display font-bold text-antraciet">Veelgestelde vragen.</h1>
+            <h1 className="max-w-[15ch] text-display font-bold text-antraciet">Veelgestelde vragen.</h1>
           </Reveal>
 
           {/* Custom zoekbalk */}
@@ -124,7 +120,7 @@ export default function Faq() {
                 results.map(({ category, ci, items }) => (
                   <Reveal key={category.title}>
                     <div>
-                      <SectionLabel index={String(ci + 1).padStart(2, "0")}>{category.title}</SectionLabel>
+                      <h2 className="font-heading text-2xl font-bold text-antraciet">{category.title}</h2>
                       <Accordion type="single" collapsible className="mt-5 border-t border-antraciet/15">
                         {items.map((faq, i) => (
                           <AccordionItem key={faq.question} value={`${ci}-${i}`} className="border-antraciet/15">

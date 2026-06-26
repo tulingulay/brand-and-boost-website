@@ -1,9 +1,9 @@
 import { CTASection } from "@/components/CTASection";
 import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
+import { PortfolioFlipCard } from "@/components/PortfolioFlipCards";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
-import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
 import { cases } from "@/data/cases";
 import { reviews } from "@/data/reviews";
@@ -28,10 +28,12 @@ export default function Portfolio() {
         intro="Cases, resultaten en de woorden van ondernemers met wie wij samenwerken."
       />
 
-      {/* ===== 01 — Cases ===== */}
+      {/* ===== Cases (flip-card + vraag/boost/resultaat) ===== */}
       <Section className="bg-creme">
-        <SectionLabel index="01">Cases</SectionLabel>
-        <h2 className="mt-6 max-w-2xl text-h2 text-antraciet">Een greep uit ons werk.</h2>
+        <h2 className="max-w-2xl text-h2 text-antraciet">Een greep uit ons werk.</h2>
+        <p className="mt-4 max-w-xl text-muted-foreground">
+          Hover over een logo en het werk dat wij voor deze ondernemers maakten komt tevoorschijn.
+        </p>
 
         <ol className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
           {cases.map((item, index) => (
@@ -39,9 +41,7 @@ export default function Portfolio() {
               <Reveal>
                 <article className="grid grid-cols-12 items-start gap-x-8 gap-y-6">
                   <div className={cn("col-span-12 lg:col-span-6", index % 2 === 1 && "lg:order-2 lg:col-start-7")}>
-                    <div className="overflow-hidden border border-antraciet/15">
-                      <img src={item.image} alt={item.imageAlt} className="aspect-[16/10] w-full object-cover" />
-                    </div>
+                    <PortfolioFlipCard item={item} />
                   </div>
                   <div className={cn("col-span-12 lg:col-span-5", index % 2 === 1 ? "lg:order-1" : "lg:col-start-8")}>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-kobalt">{item.client}</p>
@@ -71,28 +71,30 @@ export default function Portfolio() {
         </ol>
       </Section>
 
-      {/* ===== 02 — Reviews (kobalt vlak, pull-quotes) ===== */}
-      <Section className="bg-kobalt text-creme">
-        <SectionLabel index="02" light>
-          Reviews
-        </SectionLabel>
-        <h2 className="mt-6 max-w-2xl text-h2 text-creme">Wat klanten over ons zeggen.</h2>
+      {/* ===== Reviews (zonnegeel vlak, pull-quotes) ===== */}
+      <Section className="bg-zonnegeel text-antraciet">
+        <h2 className="max-w-2xl text-h2 text-antraciet">Wat klanten over ons zeggen.</h2>
 
-        <div className="mt-12 border-t border-creme/20">
+        <div className="mt-12 border-t border-antraciet/15">
           {reviews.map((review, index) => (
             <Reveal key={index}>
-              <figure className="grid grid-cols-12 gap-x-6 gap-y-3 border-b border-creme/20 py-12 sm:py-16">
+              <figure
+                className={cn(
+                  "grid grid-cols-12 gap-x-6 gap-y-3 py-10 sm:py-14",
+                  index < reviews.length - 1 && "border-b border-antraciet/15",
+                )}
+              >
                 <span
                   aria-hidden="true"
-                  className="col-span-12 font-heading text-index font-bold leading-[0.6] text-zonnegeel lg:col-span-2"
+                  className="col-span-12 font-heading text-index font-bold leading-[0.6] text-kobalt lg:col-span-2"
                 >
                   &ldquo;
                 </span>
                 <div className="col-span-12 lg:col-span-9 lg:col-start-3">
-                  <blockquote className="font-heading text-2xl font-semibold leading-snug text-creme sm:text-[2rem]">
+                  <blockquote className="font-heading text-2xl font-semibold leading-snug text-antraciet sm:text-[2rem]">
                     {review.quote}
                   </blockquote>
-                  <figcaption className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-creme/70">
+                  <figcaption className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/55">
                     {review.name} · {review.company}
                   </figcaption>
                 </div>

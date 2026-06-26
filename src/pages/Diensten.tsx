@@ -29,7 +29,7 @@ export default function Diensten() {
 
       <Section className="bg-creme">
         <SectionLabel index="01">Alle diensten</SectionLabel>
-        <h2 className="mt-6 max-w-2xl text-h2 text-antraciet">Kies waar jouw merk nu het meest aan heeft.</h2>
+        <h2 className="max-w-2xl text-h2 text-antraciet">Kies waar jouw merk nu het meest aan heeft.</h2>
         <div className="mt-12">
           <ServiceShowcase />
         </div>
@@ -40,7 +40,7 @@ export default function Diensten() {
         <div className="grid grid-cols-12 gap-x-8 gap-y-10">
           <Reveal className="col-span-12 lg:col-span-4">
             <SectionLabel index="02">Onze tools</SectionLabel>
-            <h2 className="mt-6 text-h2 text-antraciet">Waar wij mee werken.</h2>
+            <h2 className="text-h2 text-antraciet">Waar wij mee werken.</h2>
             <p className="mt-4 text-muted-foreground">
               De programma's die wij dagelijks inzetten om jouw merk te ontwerpen, bouwen en laten groeien.
             </p>

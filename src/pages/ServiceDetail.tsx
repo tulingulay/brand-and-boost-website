@@ -51,7 +51,7 @@ export default function ServiceDetail() {
                 <SectionLabel>Dienst</SectionLabel>
               </Reveal>
               <Reveal delay={90}>
-                <h1 className="mt-6 text-display font-bold text-antraciet">{service.title}</h1>
+                <h1 className="text-display font-bold text-antraciet">{service.title}</h1>
               </Reveal>
               <Reveal delay={160}>
                 <p className="mt-6 max-w-xl text-lead text-muted-foreground">{service.description}</p>
@@ -103,7 +103,7 @@ export default function ServiceDetail() {
         <SectionLabel index="02" light>
           Diensten
         </SectionLabel>
-        <h2 className="mt-6 max-w-2xl text-h2 text-creme">Ontdek onze andere diensten.</h2>
+        <h2 className="max-w-2xl text-h2 text-creme">Ontdek onze andere diensten.</h2>
         <div className="mt-12">
           <ServiceIndex services={others} light />
         </div>

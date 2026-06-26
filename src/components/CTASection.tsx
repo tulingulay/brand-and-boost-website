@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import { Reveal } from "@/components/Reveal";
-import { SectionLabel } from "@/components/SectionLabel";
 import { Button } from "@/components/ui/button";
 
 interface CTASectionProps {
   title?: string;
   text?: string;
   buttonLabel?: string;
+  /** Niet meer getoond, maar behouden zodat bestaande aanroepen blijven werken. */
   badge?: string;
 }
 
@@ -22,15 +22,13 @@ export function CTASection({
   title = "Tijd om jouw merk een boost te geven.",
   text = "Plan een vrijblijvend strategiegesprek en ontdek wat er voor jouw merk mogelijk is.",
   buttonLabel = "Plan een strategiegesprek",
-  badge = "Klaar voor groei?",
 }: CTASectionProps) {
   return (
     <section className="bg-kobalt text-creme">
       <div className="container py-section">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-8">
           <Reveal className="col-span-12 lg:col-span-8">
-            <SectionLabel light>{badge}</SectionLabel>
-            <h2 className="mt-7 max-w-[16ch] text-h1 text-creme">{title}</h2>
+            <h2 className="max-w-[16ch] text-h1 text-creme">{title}</h2>
             <p className="mt-6 max-w-xl text-lead text-creme/80">{text}</p>
           </Reveal>
 

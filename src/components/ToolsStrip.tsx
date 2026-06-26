@@ -11,17 +11,19 @@ export function ToolsStrip() {
       {tools.map((tool) => (
         <li
           key={tool.name}
-          className="flex h-28 items-center justify-center border-b border-r border-antraciet/15 px-5"
+          className="group/tool flex h-28 items-center justify-center border-b border-r border-antraciet/15 px-5"
         >
           {tool.logo ? (
             <img
               src={tool.logo}
               alt={tool.name}
               loading="lazy"
-              className="h-9 w-auto max-w-[75%] opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              className="h-9 w-auto max-w-[75%] opacity-70 grayscale transition duration-300 group-hover/tool:opacity-100 group-hover/tool:grayscale-0"
             />
           ) : (
-            <span className="text-center font-heading text-base font-semibold text-antraciet/55">{tool.name}</span>
+            <span className="text-center font-heading text-base font-semibold text-antraciet/55 transition-colors group-hover/tool:text-antraciet">
+              {tool.name}
+            </span>
           )}
         </li>
       ))}

@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { Reveal } from "@/components/Reveal";
-import { SectionLabel } from "@/components/SectionLabel";
 import { cn } from "@/lib/utils";
 
 interface SectionProps {
@@ -26,41 +25,27 @@ export function Section({ id, className, innerClassName, decoration, children }:
 }
 
 interface SectionHeadingProps {
+  /** Niet meer getoond, maar behouden zodat bestaande aanroepen blijven werken. */
   eyebrow?: string;
-  /** Indexnummer voor de signatuur-kicker, bv. "02". */
+  /** Niet meer getoond, maar behouden zodat bestaande aanroepen blijven werken. */
   index?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   align?: "left" | "center";
-  /** Lichte variant voor op een donker (kobalt/kastanje) vlak. */
+  /** Lichte variant voor op een donker (kobalt) vlak. */
   light?: boolean;
   className?: string;
 }
 
-/** Editorial kop-blok: genummerde kicker, grote titel en intro. */
-export function SectionHeading({
-  eyebrow,
-  index,
-  title,
-  intro,
-  align = "left",
-  light = false,
-  className,
-}: SectionHeadingProps) {
+/** Editorial kop-blok: grote titel en intro. */
+export function SectionHeading({ title, intro, align = "left", light = false, className }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
-      {eyebrow && (
-        <Reveal className={cn("mb-6", align === "center" && "flex justify-center")}>
-          <SectionLabel index={index} light={light}>
-            {eyebrow}
-          </SectionLabel>
-        </Reveal>
-      )}
-      <Reveal delay={eyebrow ? 90 : 0}>
+      <Reveal>
         <h2 className={cn("text-h2", light ? "text-creme" : "text-antraciet")}>{title}</h2>
       </Reveal>
       {intro && (
-        <Reveal delay={eyebrow ? 180 : 90}>
+        <Reveal delay={90}>
           <p className={cn("mt-5 text-lead", light ? "text-creme/80" : "text-muted-foreground")}>{intro}</p>
         </Reveal>
       )}

@@ -5,7 +5,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { Highlight } from "@/components/Highlight";
-import { ProcessNumbered } from "@/components/ProcessNumbered";
 import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/SectionLabel";
 import { ServiceFlipCards } from "@/components/ServiceFlipCards";
@@ -81,8 +80,8 @@ export default function Home() {
           <div className="grid grid-cols-12 gap-x-8 gap-y-8 border-t border-antraciet/15 pt-12 sm:pt-16">
             <Reveal className="col-span-12 lg:col-span-5">
               <SectionLabel index="01">Over ons</SectionLabel>
-              <h2 className="mt-6 text-h2 text-antraciet">
-                Een partner in groei die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
+              <h2 className="text-h2 text-antraciet">
+                Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
               </h2>
             </Reveal>
             <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7" delay={120}>
@@ -91,12 +90,20 @@ export default function Home() {
                 afrekent per uur en je daarna laat zwemmen, maar partnerschap, creativiteit en groei, met mensen die net
                 als wij energie krijgen van vooruitgang.
               </p>
-              <Button asChild variant="link" className="mt-6 h-auto px-0 text-base text-antraciet">
-                <Link to="/ons-verhaal">
-                  Lees ons verhaal
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
+              <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
+                <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+                  <Link to="/ons-verhaal">
+                    Lees ons verhaal
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+                  <Link to="/proces">
+                    Bekijk ons proces
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -110,7 +117,7 @@ export default function Home() {
               <SectionLabel index="02" light>
                 Diensten
               </SectionLabel>
-              <h2 className="mt-6 text-h2 text-creme">
+              <h2 className="text-h2 text-creme">
                 Diensten die je merk laten <Highlight color="zonnegeel">groeien.</Highlight>
               </h2>
             </Reveal>
@@ -142,7 +149,7 @@ export default function Home() {
           <div className="grid grid-cols-12 gap-x-8 gap-y-12">
             <Reveal className="col-span-12 lg:col-span-5">
               <SectionLabel index="03">Waarom Brand &amp; Boost</SectionLabel>
-              <h2 className="mt-6 text-h2 text-antraciet">Waar je ons aan herkent.</h2>
+              <h2 className="text-h2 text-antraciet">Waar je ons aan herkent.</h2>
               <p className="mt-6 max-w-md font-heading text-xl font-semibold leading-snug text-kobalt">
                 Wij hoeven niet de grootste te zijn. Wél de stabielste en meest betrokken.
               </p>
@@ -167,38 +174,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 04 — Proces (zonnegeel vlak) ===== */}
-      <section className="bg-zonnegeel text-antraciet">
-        <div className="container py-section">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-6">
-            <Reveal className="col-span-12 lg:col-span-7">
-              <SectionLabel index="04">Zo werken wij</SectionLabel>
-              <h2 className="mt-6 text-h2 text-antraciet">Van kennismaking tot groei, in vier stappen.</h2>
-            </Reveal>
-          </div>
-
-          <div className="mt-12">
-            <ProcessNumbered />
-          </div>
-
-          <Reveal className="mt-10">
-            <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
-              <Link to="/proces">
-                Bekijk ons proces
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ===== 05 — Portfolio ===== */}
+      {/* ===== 04 — Portfolio ===== */}
       <section className="bg-creme">
         <div className="container py-section">
           <div className="grid grid-cols-12 gap-x-8 gap-y-6">
             <Reveal className="col-span-12 lg:col-span-7">
-              <SectionLabel index="05">Portfolio</SectionLabel>
-              <h2 className="mt-6 text-h2 text-antraciet">Bewijs boven beloftes.</h2>
+              <SectionLabel index="04">Portfolio</SectionLabel>
+              <h2 className="text-h2 text-antraciet">Bewijs boven beloftes.</h2>
             </Reveal>
             <Reveal className="col-span-12 self-end lg:col-span-4 lg:col-start-9" delay={120}>
               <p className="text-muted-foreground">
@@ -237,12 +219,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 06 — Reviews (kobalt vlak) ===== */}
+      {/* ===== 05 — Reviews (kobalt vlak) ===== */}
       <section className="bg-kobalt text-creme">
         <div className="container py-section">
           <div className="grid grid-cols-12 gap-x-8 gap-y-8">
             <Reveal className="col-span-12 lg:col-span-3">
-              <SectionLabel index="06" light>
+              <SectionLabel index="05" light>
                 Reviews
               </SectionLabel>
             </Reveal>
@@ -268,13 +250,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 07 — Veelgestelde vragen (wit vlak) ===== */}
+      {/* ===== 06 — Veelgestelde vragen (wit vlak) ===== */}
       <section className="bg-white">
         <div className="container py-section">
           <div className="grid grid-cols-12 gap-x-8 gap-y-10">
             <Reveal className="col-span-12 lg:col-span-4">
-              <SectionLabel index="07">Veelgestelde vragen</SectionLabel>
-              <h2 className="mt-6 text-h2 text-antraciet">Goed om te weten.</h2>
+              <SectionLabel index="06">Veelgestelde vragen</SectionLabel>
+              <h2 className="text-h2 text-antraciet">Goed om te weten.</h2>
               <Button asChild variant="link" className="mt-6 h-auto px-0 text-base text-antraciet">
                 <Link to="/faq">
                   Naar alle vragen

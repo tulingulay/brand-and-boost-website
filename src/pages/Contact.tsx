@@ -32,7 +32,7 @@ export default function Contact() {
           {/* Formulier */}
           <Reveal className="col-span-12 lg:col-span-7">
             <SectionLabel index="01">Stuur een bericht</SectionLabel>
-            <h2 className="mt-6 text-h2 text-antraciet">Laten wij kennismaken.</h2>
+            <h2 className="text-h2 text-antraciet">Laten wij kennismaken.</h2>
             <p className="mt-4 max-w-lg text-muted-foreground">
               Laat je gegevens achter, dan nemen wij snel persoonlijk contact met je op. Velden met een sterretje zijn
               verplicht.

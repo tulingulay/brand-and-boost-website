@@ -1,6 +1,7 @@
 /**
  * Klantreviews (echt). Petra staat eerst: zij verschijnt op de homepage en als
- * eerste op de portfoliopagina. De derde review volgt later.
+ * eerste op de portfoliopagina. De review van Esther is een ingekorte versie
+ * van een langere review (kern + aanbeveling).
  */
 
 export interface Review {
@@ -21,5 +22,11 @@ export const reviews: Review[] = [
       "De adviezen en hulp van Pien zijn super. Ze is goed bereikbaar en ze reageert altijd snel. Absoluut een aanrader!",
     name: "Barry Scheffer",
     company: "Scheffer Letselschade",
+  },
+  {
+    quote:
+      "Pien is ontzettend fijn om mee samen te werken: professioneel, betrokken en heel prettig in de communicatie. Ze houdt de regie over het hele proces, denkt in oplossingen en neemt echt verantwoordelijkheid. Een echte aanpakker die met je meedenkt. Ik kan Brand & Boost van harte aanbevelen aan iedereen die op zoek is naar een professionele, betrokken en daadkrachtige partner voor social media.",
+    name: "Esther van de Burg Hartog",
+    company: "E. Touch Beauty & Mind",
   },
 ];

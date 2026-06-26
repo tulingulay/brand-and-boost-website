@@ -53,12 +53,9 @@ export interface SocialLink {
 }
 
 /**
- * Social links.
- * TODO: vervang de "#"-placeholders door de echte profiel-URL's
- * (ik lever deze aan).
+ * Social links. Nog geen Instagram/LinkedIn/Facebook, dus leeg: overal waar
+ * socials worden getoond (footer, contact, structured data) zit een
+ * `socials.length > 0`-check, dus ze verdwijnen vanzelf. Vul deze lijst aan
+ * zodra de profielen er zijn.
  */
-export const socials: SocialLink[] = [
-  { label: "Instagram", href: "#", icon: "instagram" },
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
-  { label: "Facebook", href: "#", icon: "facebook" },
-];
+export const socials: SocialLink[] = [];
