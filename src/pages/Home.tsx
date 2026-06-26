@@ -31,7 +31,7 @@ export default function Home() {
         <div className="container pt-28 pb-section sm:pt-36">
           <Reveal>
             <h1 className="max-w-[18ch] text-display font-bold text-antraciet">
-              Meer dan marketing, een partner in <Highlight>groei.</Highlight>
+              Meer dan marketing, een partner in <Highlight variant="underline">groei.</Highlight>
             </h1>
           </Reveal>
 
@@ -146,10 +146,7 @@ export default function Home() {
                 {coreValues.map((value, index) => (
                   <Reveal key={value.title} delay={(index % 2) * 100}>
                     <div className="border-t-2 border-antraciet/15 pt-5">
-                      <span className="font-heading text-sm font-bold tabular-nums text-kobalt">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="mt-2 font-heading text-xl font-bold text-antraciet">{value.title}</h3>
+                      <h3 className="font-heading text-xl font-bold text-antraciet">{value.title}</h3>
                       <p className="mt-2 text-muted-foreground">{value.description}</p>
                     </div>
                   </Reveal>

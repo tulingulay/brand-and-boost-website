@@ -107,10 +107,7 @@ export default function OnsVerhaal() {
           {coreValues.map((value, index) => (
             <Reveal key={value.title} delay={(index % 4) * 90}>
               <div className="h-full border-t-2 border-kobalt pt-6">
-                <span className="font-heading text-5xl font-bold tabular-nums leading-none text-kobalt">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-5 font-heading text-xl font-bold text-antraciet">{value.title}</h3>
+                <h3 className="font-heading text-xl font-bold text-antraciet">{value.title}</h3>
                 <p className="mt-2 text-muted-foreground">{value.description}</p>
               </div>
             </Reveal>
@@ -129,10 +126,7 @@ export default function OnsVerhaal() {
           {brandPromises.map((promise, index) => (
             <Reveal key={promise.title} delay={(index % 3) * 100}>
               <div className="border-t-2 border-zonnegeel pt-6">
-                <span className="font-heading text-sm font-bold tabular-nums text-zonnegeel">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 font-heading text-xl font-bold text-creme">{promise.title}</h3>
+                <h3 className="font-heading text-xl font-bold text-creme">{promise.title}</h3>
                 <p className="mt-2 text-creme/75">{promise.description}</p>
               </div>
             </Reveal>
