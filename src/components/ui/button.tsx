@@ -5,23 +5,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[3px] text-sm font-semibold tracking-[0.01em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&>svg]:transition-transform hover:[&>svg]:translate-x-0.5",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-soft hover:bg-primary/90",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        outline:
-          "border-2 border-primary bg-transparent text-primary hover:bg-accent hover:text-accent-foreground [&>svg]:transition-transform hover:[&>svg]:translate-x-0.5",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline [&>svg]:transition-transform hover:[&>svg]:translate-x-0.5",
+        // Eén herkenbaar knopontwerp, overal hetzelfde: antraciet vlak dat bij
+        // hover warm omslaat naar zonnegeel. Werkt op creme, kobalt én kastanje.
+        default: "bg-antraciet text-creme hover:bg-zonnegeel hover:text-antraciet",
+        // Lichte variant voor donkere (kobalt/kastanje) vlakken.
+        onDark: "bg-creme text-antraciet hover:bg-zonnegeel hover:text-antraciet",
+        // Tekstlink met pijl (secundaire acties, geen tweede knopstijl).
+        link: "gap-1.5 font-semibold text-antraciet underline-offset-[6px] hover:underline",
+        // Legacy aliassen, blijven werken tot elke pagina is omgezet.
+        secondary: "bg-antraciet text-creme hover:bg-zonnegeel hover:text-antraciet",
+        outline: "bg-antraciet text-creme hover:bg-zonnegeel hover:text-antraciet",
+        ghost: "text-antraciet hover:text-kastanje",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       },
       size: {
-        default: "h-11 px-6 py-2",
-        sm: "h-9 px-4",
-        lg: "h-12 px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-12 px-7",
+        sm: "h-10 px-5",
+        lg: "h-14 px-9 text-[0.95rem]",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {

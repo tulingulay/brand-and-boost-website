@@ -1,47 +1,26 @@
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
-import { AandachtIcon, ContactIcon, DataIcon, MissieIcon, VisieIcon } from "@/components/BrandIcons";
 import { CTASection } from "@/components/CTASection";
-import { DecoDots } from "@/components/Decorations";
-import { Eyebrow } from "@/components/Eyebrow";
-import { FeatureCard } from "@/components/FeatureCard";
 import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
+import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
-import { StatementBox } from "@/components/StatementBox";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { WaveDivider } from "@/components/WaveDivider";
-import { processSteps } from "@/data/process";
 import { coreValues } from "@/data/values";
-import { cn } from "@/lib/utils";
-
-const teaserAccents = [
-  { badge: "bg-kobalt text-white", text: "text-kobalt" },
-  { badge: "bg-zonnegeel text-antraciet", text: "text-[#9a7209]" },
-  { badge: "bg-kastanje text-white", text: "text-kastanje" },
-  { badge: "bg-kobalt text-white", text: "text-kobalt" },
-];
+import { processSteps } from "@/data/process";
 
 const brandPromises = [
   {
-    icon: AandachtIcon,
-    accent: "zonnegeel" as const,
     title: "Volledige, persoonlijke en energieke aandacht",
     description: "Jij staat centraal, altijd.",
   },
   {
-    icon: DataIcon,
-    accent: "kobalt" as const,
     title: "100% inzet, data-gedreven",
     description: "We werken hard én slim, met cijfers als kompas.",
   },
   {
-    icon: ContactIcon,
-    accent: "kastanje" as const,
     title: "Eén aanspreekpunt voor al je diensten",
     description: "Heldere communicatie, geen gedoe en geen ruis.",
   },
@@ -66,16 +45,16 @@ export default function OnsVerhaal() {
         intro="Wie we zijn, waar we in geloven en voor wie we het doen."
       />
 
-      {/* ===== Over ons ===== */}
-      <Section>
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
-          <Reveal direction="left">
-            <Eyebrow>Over ons</Eyebrow>
-            <h2 className="mt-4 text-h2">
+      {/* ===== 01 — Over ons ===== */}
+      <Section className="bg-creme">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-8">
+          <Reveal className="col-span-12 lg:col-span-5">
+            <SectionLabel index="01">Over ons</SectionLabel>
+            <h2 className="mt-6 text-h2 text-antraciet">
               Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
             </h2>
           </Reveal>
-          <Reveal direction="right" delay={120}>
+          <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7" delay={120}>
             <p className="text-lead text-muted-foreground">
               Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Wij geloven niet in
               grote bureaus die afrekenen per uur en je daarna laten zwemmen. Wij geloven in partnerschap, creativiteit
@@ -85,159 +64,133 @@ export default function OnsVerhaal() {
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
+      {/* ===== 02 — Missie & Visie (kobalt vlak) ===== */}
+      <Section className="bg-kobalt text-creme">
+        <SectionLabel index="02" light>
+          Missie &amp; visie
+        </SectionLabel>
+        <h2 className="mt-6 max-w-2xl text-h2 text-creme">Dit drijft ons.</h2>
 
-      {/* ===== Aanpak (teaser) ===== */}
-      <Section
-        className="bg-white"
-        decoration={<DecoDots className="absolute right-8 top-12 hidden text-kastanje/10 lg:block" />}
-      >
-        <SectionHeading
-          align="center"
-          eyebrow="Onze aanpak"
-          title={
-            <>
-              In vier stappen naar <Highlight>groei</Highlight>.
-            </>
-          }
-          intro="Geen losse acties, maar een heldere route. Zo pakken we het samen aan, met jou steeds aan het stuur."
-        />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, index) => {
-            const accent = teaserAccents[index];
-            return (
-              <Reveal key={step.number} delay={(index % 4) * 80}>
-                <div className="h-full rounded-2xl border-2 border-kastanje/25 bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-kastanje/50 hover:shadow-soft-lg">
-                  <span
-                    className={cn(
-                      "flex h-12 w-12 items-center justify-center rounded-2xl font-heading text-lg font-bold shadow-soft",
-                      accent.badge,
-                    )}
-                  >
-                    {step.number}
-                  </span>
-                  <h3 className="mt-4 font-heading text-lg font-bold text-antraciet">{step.title}</h3>
-                  <p className={cn("mt-1 text-sm font-semibold", accent.text)}>{step.subtitle}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-        <Reveal className="mt-10 text-center">
-          <Button asChild variant="link" className="h-auto px-0 text-base">
-            <Link to="/proces">
-              Bekijk het volledige proces
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </Button>
-        </Reveal>
-      </Section>
-
-      {/* ===== Missie & Visie ===== */}
-      <Section
-        className="bg-white"
-        decoration={<DecoDots className="absolute left-8 top-12 hidden text-kobalt/10 lg:block" />}
-      >
-        <SectionHeading align="center" eyebrow="Missie & visie" title="Dit drijft ons." />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <Reveal direction="left">
-            <Card className="group relative h-full overflow-hidden p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg sm:p-10">
-              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-kobalt" />
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-kobalt/10 text-kobalt transition-transform duration-300 group-hover:-rotate-6">
-                <MissieIcon className="h-7 w-7" />
-              </span>
-              <h3 className="mt-5 font-heading text-h3 font-bold text-antraciet">Missie</h3>
-              <p className="mt-3 text-muted-foreground">
+        <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-10">
+          <Reveal className="col-span-12 lg:col-span-5">
+            <div className="border-t-2 border-zonnegeel pt-6">
+              <h3 className="font-heading text-2xl font-bold text-creme">Missie</h3>
+              <p className="mt-4 text-creme/80">
                 Ondernemers volledige, persoonlijke en energieke aandacht geven, zodat marketing geen bron van stress
                 is, maar een motor voor groei. We hoeven niet het grootste of sterkste bureau te zijn. We willen het
                 stabielste en het meest energieke zijn: een team dat doet waar het energie van krijgt, en klanten die
                 het oprecht leuk vinden om met ons samen te werken.
               </p>
-            </Card>
+            </div>
           </Reveal>
-          <Reveal direction="right" delay={120}>
-            <Card className="group relative h-full overflow-hidden p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg sm:p-10">
-              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-zonnegeel" />
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-zonnegeel/20 text-kobalt transition-transform duration-300 group-hover:-rotate-6">
-                <VisieIcon className="h-7 w-7" />
-              </span>
-              <h3 className="mt-5 font-heading text-h3 font-bold text-antraciet">Visie</h3>
-              <p className="mt-3 text-muted-foreground">
+          <Reveal className="col-span-12 lg:col-span-5 lg:col-start-7" delay={120}>
+            <div className="border-t-2 border-zonnegeel pt-6">
+              <h3 className="font-heading text-2xl font-bold text-creme">Visie</h3>
+              <p className="mt-4 text-creme/80">
                 Marketing draait om partnerschap, niet om facturen. Grote bureaus die afrekenen per uur en je daarna
                 alleen laten. Daar geloven we niet in. Wij staan voor creativiteit, betrokkenheid en echte groei. Op
                 ieder potje past een dekseltje, een aanpak waarin merk &amp; mens samen groeien.
               </p>
-            </Card>
+            </div>
           </Reveal>
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
+      {/* ===== 03 — Onze aanpak ===== */}
+      <Section className="bg-creme">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-6">
+          <Reveal className="col-span-12 lg:col-span-7">
+            <SectionLabel index="03">Onze aanpak</SectionLabel>
+            <h2 className="mt-6 text-h2 text-antraciet">In vier stappen naar groei.</h2>
+          </Reveal>
+          <Reveal className="col-span-12 self-end lg:col-span-4 lg:col-start-9" delay={120}>
+            <Link
+              to="/proces"
+              className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-antraciet underline-offset-[6px] hover:underline"
+            >
+              Bekijk het volledige proces
+              <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
+            </Link>
+          </Reveal>
+        </div>
 
-      {/* ===== Statement / CTA ===== */}
-      <Section>
-        <Reveal>
-          <StatementBox
-            className="lg:max-w-3xl"
-            label="Kort gezegd"
-            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
-          >
-            Geen uurtje-factuurtje. Wél een partner die naast je staat en met je meegroeit.
-          </StatementBox>
-        </Reveal>
-      </Section>
-
-      {/* ===== Kernwaarden ===== */}
-      <Section>
-        <SectionHeading eyebrow="Kernwaarden" title="Waar we voor staan." />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {coreValues.map((value, index) => (
-            <Reveal key={value.title} delay={(index % 4) * 80}>
-              <FeatureCard
-                icon={value.icon}
-                title={value.title}
-                description={value.description}
-                accent={value.accent}
-              />
+        <ol className="mt-12 grid gap-x-8 gap-y-8 sm:grid-cols-2">
+          {processSteps.map((step, index) => (
+            <Reveal key={step.number} delay={(index % 2) * 100}>
+              <li className="grid grid-cols-12 gap-x-4 border-t-2 border-antraciet/15 pt-5">
+                <span className="col-span-2 font-heading text-2xl font-bold tabular-nums text-kastanje sm:col-span-2">
+                  {step.number}
+                </span>
+                <div className="col-span-10">
+                  <h3 className="font-heading text-xl font-bold text-antraciet">{step.title}</h3>
+                  <p className="mt-1 font-heading text-base font-semibold text-kobalt">{step.subtitle}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
+                </div>
+              </li>
             </Reveal>
           ))}
+        </ol>
+      </Section>
+
+      {/* ===== 04 — Kernwaarden ===== */}
+      <Section className="bg-creme">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-12">
+          <Reveal className="col-span-12 lg:col-span-4">
+            <SectionLabel index="04">Kernwaarden</SectionLabel>
+            <h2 className="mt-6 text-h2 text-antraciet">Waar we voor staan.</h2>
+          </Reveal>
+          <div className="col-span-12 lg:col-span-7 lg:col-start-6">
+            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+              {coreValues.map((value, index) => (
+                <Reveal key={value.title} delay={(index % 2) * 100}>
+                  <div className="border-t-2 border-antraciet/15 pt-5">
+                    <span className="font-heading text-sm font-bold tabular-nums text-kastanje">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-2 font-heading text-xl font-bold text-antraciet">{value.title}</h3>
+                    <p className="mt-2 text-muted-foreground">{value.description}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
+      {/* ===== 05 — Merkbelofte (kastanje vlak) ===== */}
+      <Section className="bg-kastanje text-creme">
+        <SectionLabel index="05" light>
+          Merkbelofte
+        </SectionLabel>
+        <h2 className="mt-6 max-w-2xl text-h2 text-creme">Dit beloven we je.</h2>
 
-      {/* ===== Merkbelofte ===== */}
-      <Section className="bg-white">
-        <SectionHeading eyebrow="Merkbelofte" title="Dit beloven we je." />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-3">
           {brandPromises.map((promise, index) => (
-            <Reveal key={promise.title} delay={(index % 3) * 80}>
-              <FeatureCard
-                icon={promise.icon}
-                title={promise.title}
-                description={promise.description}
-                accent={promise.accent}
-              />
+            <Reveal key={promise.title} delay={(index % 3) * 100}>
+              <div className="border-t-2 border-zonnegeel pt-6">
+                <span className="font-heading text-sm font-bold tabular-nums text-zonnegeel">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 font-heading text-xl font-bold text-creme">{promise.title}</h3>
+                <p className="mt-2 text-creme/75">{promise.description}</p>
+              </div>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
-
-      {/* ===== Voor wie we het doen ===== */}
-      <Section>
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
-          <Reveal direction="left">
-            <Eyebrow>Voor wie</Eyebrow>
-            <h2 className="mt-4 text-h2">Voor wie we het doen.</h2>
+      {/* ===== 06 — Voor wie we het doen ===== */}
+      <Section className="bg-creme">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-8">
+          <Reveal className="col-span-12 lg:col-span-5">
+            <SectionLabel index="06">Voor wie</SectionLabel>
+            <h2 className="mt-6 text-h2 text-antraciet">Voor wie we het doen.</h2>
           </Reveal>
-          <Reveal direction="right" delay={120}>
+          <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7" delay={120}>
             <p className="text-lead text-muted-foreground">
-              Wij werken het liefst met ondernemers die houden van hun vak. Niet met mensen die hun bedrijf erbij
-              doen, maar met mensen die echt willen ondernemen en groeien. We zoeken sparringpartners met ambitie, het
-              liefst in het MKB. En omdat op ieder potje een dekseltje past, denken we graag met iedereen mee.
+              Wij werken het liefst met ondernemers die houden van hun vak. Niet met mensen die hun bedrijf erbij doen,
+              maar met mensen die echt willen ondernemen en groeien. We zoeken sparringpartners met ambitie, het liefst
+              in het MKB. En omdat op ieder potje een dekseltje past, denken we graag met iedereen mee.
             </p>
           </Reveal>
         </div>

@@ -3,10 +3,10 @@ import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
+import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
-import { ServiceCard } from "@/components/ServiceCard";
-import { StatementBox } from "@/components/StatementBox";
-import { services } from "@/data/services";
+import { ServiceShowcase } from "@/components/ServiceShowcase";
+import { ToolsStrip } from "@/components/ToolsStrip";
 
 export default function Diensten() {
   return (
@@ -27,23 +27,28 @@ export default function Diensten() {
         intro="Zeven diensten, één aanspreekpunt. We werken op maat en kijken samen wat op dit moment het meest oplevert."
       />
 
-      <Section>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <Reveal key={service.slug} delay={(index % 3) * 80}>
-              <ServiceCard service={service} />
-            </Reveal>
-          ))}
+      <Section className="bg-creme">
+        <SectionLabel index="01">Alle diensten</SectionLabel>
+        <h2 className="mt-6 max-w-2xl text-h2 text-antraciet">Kies waar jouw merk nu het meest aan heeft.</h2>
+        <div className="mt-12">
+          <ServiceShowcase />
         </div>
-        <Reveal className="mt-8">
-          <StatementBox
-            className="lg:max-w-2xl"
-            label="Even sparren?"
-            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
-          >
-            Niet zeker welke dienst je nodig hebt? Wij denken graag met je mee.
-          </StatementBox>
-        </Reveal>
+      </Section>
+
+      {/* ===== 02 — Tools ===== */}
+      <Section className="bg-white">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-10">
+          <Reveal className="col-span-12 lg:col-span-4">
+            <SectionLabel index="02">Onze tools</SectionLabel>
+            <h2 className="mt-6 text-h2 text-antraciet">Waar we mee werken.</h2>
+            <p className="mt-4 text-muted-foreground">
+              De programma's die we dagelijks inzetten om jouw merk te ontwerpen, bouwen en laten groeien.
+            </p>
+          </Reveal>
+          <Reveal className="col-span-12 lg:col-span-8" delay={120}>
+            <ToolsStrip />
+          </Reveal>
+        </div>
       </Section>
 
       <CTASection

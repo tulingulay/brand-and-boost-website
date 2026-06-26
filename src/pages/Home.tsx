@@ -1,28 +1,23 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
-import { CaseCard } from "@/components/CaseCard";
-import { DecoDots, DecoRings } from "@/components/Decorations";
-import { FeatureCard } from "@/components/FeatureCard";
-import { HeroIconBackground } from "@/components/HeroIconBackground";
 import { Highlight } from "@/components/Highlight";
-import { ProcessSteps } from "@/components/ProcessSteps";
+import { ProcessNumbered } from "@/components/ProcessNumbered";
 import { Reveal } from "@/components/Reveal";
-import { Section, SectionHeading } from "@/components/Section";
+import { SectionLabel } from "@/components/SectionLabel";
+import { ServiceIndex } from "@/components/ServiceIndex";
 import { SEO } from "@/components/SEO";
-import { ServiceCard } from "@/components/ServiceCard";
-import { StatementBox } from "@/components/StatementBox";
-import { WaveDivider, WAVE_PATH, WAVE_TOP } from "@/components/WaveDivider";
 import { cases } from "@/data/cases";
 import { coreValues } from "@/data/values";
 import { faqs } from "@/data/faq";
+import { reviews } from "@/data/reviews";
 import { services } from "@/data/services";
 
 export default function Home() {
-  const homeFaqs = faqs.slice(0, 3);
+  const homeFaqs = faqs.slice(0, 4);
   const featuredCases = cases.slice(0, 2);
 
   return (
@@ -33,272 +28,280 @@ export default function Home() {
         path="/"
       />
 
-      {/* ===== Hero (full-bleed, gecentreerd) ===== */}
-      <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-gradient-to-b from-kobalt to-[#0e5990]">
-        {/* Subtiele decoratieve glows voor diepte */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/10 blur-3xl"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-zonnegeel/15 blur-3xl"
-        />
+      {/* ===== Hero (asymmetrisch, magazine) ===== */}
+      <section className="bg-creme">
+        <div className="container pt-28 pb-section sm:pt-36">
+          <Reveal>
+            <div className="flex items-center gap-3">
+              <span aria-hidden="true" className="h-px w-10 bg-kastanje" />
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/60">
+                Marketingbureau voor ambitieuze MKB-ondernemers
+              </span>
+            </div>
+          </Reveal>
 
-        {/* Marketing-iconen subtiel in de achtergrond */}
-        <HeroIconBackground />
+          <Reveal delay={80}>
+            <h1 className="mt-8 max-w-[18ch] text-display font-bold text-antraciet">
+              Meer dan marketing, een partner in <Highlight>groei.</Highlight>
+            </h1>
+          </Reveal>
 
-        <Reveal className="container relative z-10 py-24 text-center sm:py-28 lg:py-32">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-zonnegeel" />
-            Marketingbureau voor ambitieuze MKB-ondernemers
-          </p>
-          <h1 className="mx-auto max-w-4xl text-display text-white">
-            Meer dan marketing, een partner in{" "}
-            <Highlight variant="underline">groei.</Highlight>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lead text-white">
-            Geen uurtje-factuurtje, maar een partner die naast je staat en met je meegroeit.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="group bg-white text-primary shadow-soft hover:bg-creme">
-              <Link to="/contact">
-                Plan een strategiegesprek
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white bg-transparent text-white hover:bg-white hover:text-antraciet"
-            >
-              <Link to="/diensten">Bekijk onze diensten</Link>
-            </Button>
+          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-10">
+            <Reveal className="col-span-12 lg:col-span-7" delay={120}>
+              <p className="max-w-xl text-lead text-muted-foreground">
+                Geen uurtje-factuurtje, maar een partner die naast je staat en met je meegroeit. Eén aanspreekpunt,
+                data-gedreven, met oprechte aandacht voor jouw merk.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <Button asChild size="lg">
+                  <Link to="/contact">
+                    Plan een strategiegesprek
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+                  <Link to="/diensten">
+                    Bekijk onze diensten
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
+              </div>
+            </Reveal>
+
+            <Reveal className="col-span-12 lg:col-span-4 lg:col-start-9" delay={200}>
+              <div className="border-t-2 border-kastanje pt-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/50">Onze filosofie</p>
+                <p className="mt-3 font-heading text-2xl font-semibold leading-tight text-antraciet sm:text-[1.7rem]">
+                  Op ieder potje past een dekseltje.
+                </p>
+              </div>
+            </Reveal>
           </div>
-          <ul className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2.5">
-            {["Eén aanspreekpunt", "Data-gedreven", "Persoonlijke aandacht"].map((item) => (
-              <li key={item} className="inline-flex items-center gap-2 text-sm font-medium text-white/90">
-                <Check className="h-4 w-4 shrink-0 text-zonnegeel" aria-hidden="true" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-
-        {/* Golvende overgang naar de creme sectie eronder */}
-        <svg
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 z-[1] h-10 w-full fill-creme sm:h-14 lg:h-16"
-          viewBox="0 0 1440 100"
-          preserveAspectRatio="none"
-          focusable="false"
-        >
-          <path d={WAVE_PATH} />
-          <path
-            d={WAVE_TOP}
-            className="fill-none stroke-kastanje"
-            strokeWidth={3}
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
+        </div>
       </section>
 
-      {/* ===== Korte intro (Over ons, ingekort) ===== */}
-      <Section
-        className="overflow-hidden"
-        decoration={
-          <>
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-16 top-8 h-64 w-64 rounded-full bg-zonnegeel/10 blur-3xl"
-            />
-            <DecoDots className="absolute bottom-10 right-8 hidden text-kobalt/15 lg:block" />
-          </>
-        }
-      >
-        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
-          <Reveal direction="left" className="lg:col-span-7">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">Over ons</p>
-            <h2 className="text-h2">
-              Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
-            </h2>
-            <p className="mt-6 text-lead text-muted-foreground">
-              Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Geen groot bureau dat
-              afrekent per uur en je daarna laat zwemmen, maar partnerschap, creativiteit en groei, met mensen die
-              net als wij energie krijgen van vooruitgang.
-            </p>
-            <Button asChild variant="link" className="mt-4 h-auto px-0 text-base">
-              <Link to="/ons-verhaal">
-                Lees ons verhaal
+      {/* ===== 01 — Over ons ===== */}
+      <section className="bg-creme">
+        <div className="container pb-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-8 border-t border-antraciet/15 pt-12 sm:pt-16">
+            <Reveal className="col-span-12 lg:col-span-5">
+              <SectionLabel index="01">Over ons</SectionLabel>
+              <h2 className="mt-6 text-h2 text-antraciet">
+                Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
+              </h2>
+            </Reveal>
+            <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7" delay={120}>
+              <p className="text-lead text-muted-foreground">
+                Brand &amp; Boost is een marketingpartner voor ondernemers die houden van hun vak. Geen groot bureau dat
+                afrekent per uur en je daarna laat zwemmen, maar partnerschap, creativiteit en groei, met mensen die net
+                als wij energie krijgen van vooruitgang.
+              </p>
+              <Button asChild variant="link" className="mt-6 h-auto px-0 text-base text-antraciet">
+                <Link to="/ons-verhaal">
+                  Lees ons verhaal
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 02 — Diensten (kobalt vlak) ===== */}
+      <section className="bg-kobalt text-creme">
+        <div className="container py-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-6">
+            <Reveal className="col-span-12 lg:col-span-7">
+              <SectionLabel index="02" light>
+                Diensten
+              </SectionLabel>
+              <h2 className="mt-6 text-h2 text-creme">
+                Diensten die je merk laten <Highlight color="zonnegeel">groeien.</Highlight>
+              </h2>
+            </Reveal>
+            <Reveal className="col-span-12 self-end lg:col-span-4 lg:col-start-9" delay={120}>
+              <p className="text-creme/80">
+                Van branding tot vindbaarheid: alles onder één dak, met één aanspreekpunt.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-12">
+            <ServiceIndex services={services} light />
+          </div>
+
+          <Reveal className="mt-10">
+            <Button asChild variant="link" className="h-auto px-0 text-base text-creme">
+              <Link to="/diensten">
+                Alle diensten bekijken
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </Reveal>
-          <Reveal direction="right" delay={120} className="lg:col-span-5 lg:mt-12">
-            <StatementBox label="Onze filosofie" rotate>
-              Op ieder potje past een dekseltje.
-            </StatementBox>
-          </Reveal>
         </div>
-      </Section>
+      </section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-primary" accent />
-
-      {/* ===== Diensten in het kort ===== */}
-      <Section
-        className="bg-primary"
-        decoration={<DecoDots className="absolute right-8 top-10 text-white/10" />}
-      >
-        <SectionHeading
-          light
-          eyebrow="Wat we doen"
-          title={
-            <>
-              Diensten die je merk laten <Highlight color="zonnegeel">groeien</Highlight>.
-            </>
-          }
-          intro="Van branding tot vindbaarheid: alles onder één dak, met één aanspreekpunt."
-        />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <Reveal key={service.slug} delay={(index % 3) * 80}>
-              <ServiceCard service={service} />
-            </Reveal>
-          ))}
-          <Reveal delay={160}>
-            <StatementBox compact label="Zo fijn">
-              Zeven diensten, één team dat je kent.
-            </StatementBox>
-          </Reveal>
-        </div>
-        <Reveal className="mt-10">
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
-          >
-            <Link to="/diensten">
-              Bekijk alle diensten
-              <ArrowRight className="h-5 w-5" aria-hidden="true" />
-            </Link>
-          </Button>
-        </Reveal>
-      </Section>
-
-      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip accent />
-
-      {/* ===== Waarom Brand & Boost / kernwaarden ===== */}
-      <Section
-        decoration={
-          <DecoRings className="absolute -right-10 top-12 hidden h-48 w-48 text-zonnegeel/20 lg:block" />
-        }
-      >
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.35fr] lg:items-start lg:gap-14">
-          <div>
-            <SectionHeading eyebrow="Waarom Brand & Boost" title="Vier waarden waar je ons aan herkent." />
-            <Reveal className="mt-8" delay={120}>
-              <StatementBox label="Beloofd">
+      {/* ===== 03 — Waarom Brand & Boost ===== */}
+      <section className="bg-creme">
+        <div className="container py-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-12">
+            <Reveal className="col-span-12 lg:col-span-5">
+              <SectionLabel index="03">Waarom Brand &amp; Boost</SectionLabel>
+              <h2 className="mt-6 text-h2 text-antraciet">Waar je ons aan herkent.</h2>
+              <p className="mt-6 max-w-md font-heading text-xl font-semibold leading-snug text-kastanje">
                 We hoeven niet de grootste te zijn. Wél de stabielste en meest betrokken.
-              </StatementBox>
+              </p>
+            </Reveal>
+
+            <div className="col-span-12 lg:col-span-6 lg:col-start-7">
+              <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+                {coreValues.map((value, index) => (
+                  <Reveal key={value.title} delay={(index % 2) * 100}>
+                    <div className="border-t-2 border-antraciet/15 pt-5">
+                      <span className="font-heading text-sm font-bold tabular-nums text-kastanje">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="mt-2 font-heading text-xl font-bold text-antraciet">{value.title}</h3>
+                      <p className="mt-2 text-muted-foreground">{value.description}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 04 — Proces (kastanje vlak) ===== */}
+      <section className="bg-kastanje text-creme">
+        <div className="container py-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-6">
+            <Reveal className="col-span-12 lg:col-span-7">
+              <SectionLabel index="04" light>
+                Zo werken we
+              </SectionLabel>
+              <h2 className="mt-6 text-h2 text-creme">Van kennismaking tot groei, in vier stappen.</h2>
             </Reveal>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {coreValues.map((value, index) => (
-              <Reveal key={value.title} delay={(index % 2) * 100}>
-                <FeatureCard
-                  icon={value.icon}
-                  title={value.title}
-                  description={value.description}
-                  accent={value.accent}
-                />
+
+          <div className="mt-12">
+            <ProcessNumbered light />
+          </div>
+
+          <Reveal className="mt-10">
+            <Button asChild variant="link" className="h-auto px-0 text-base text-creme">
+              <Link to="/proces">
+                Bekijk ons proces
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== 05 — Portfolio ===== */}
+      <section className="bg-creme">
+        <div className="container py-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-6">
+            <Reveal className="col-span-12 lg:col-span-7">
+              <SectionLabel index="05">Portfolio</SectionLabel>
+              <h2 className="mt-6 text-h2 text-antraciet">Bewijs boven beloftes.</h2>
+            </Reveal>
+            <Reveal className="col-span-12 self-end lg:col-span-4 lg:col-start-9" delay={120}>
+              <p className="text-muted-foreground">
+                Een greep uit het werk waar we samen met ondernemers aan bouwen.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2">
+            {featuredCases.map((item, index) => (
+              <Reveal key={item.id} delay={(index % 2) * 100}>
+                <Link to="/portfolio" className="group/case block">
+                  <div className="overflow-hidden border border-antraciet/15">
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt}
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover/case:scale-[1.04]"
+                    />
+                  </div>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-kastanje">{item.client}</p>
+                  <h3 className="mt-2 font-heading text-2xl font-bold text-antraciet">{item.title}</h3>
+                  <p className="mt-2 max-w-md text-muted-foreground">{item.description}</p>
+                </Link>
               </Reveal>
             ))}
           </div>
-        </div>
-      </Section>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-primary" accent />
-
-      {/* ===== Proces in het kort ===== */}
-      <Section className="bg-primary">
-        <SectionHeading
-          light
-          eyebrow="Zo werken we"
-          title="Van kennismaking tot groei, in vier stappen."
-        />
-        <ProcessSteps />
-        <Reveal className="mt-10">
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
-          >
-            <Link to="/proces">
-              Bekijk ons proces
-              <ArrowRight className="h-5 w-5" aria-hidden="true" />
-            </Link>
-          </Button>
-        </Reveal>
-      </Section>
-
-      <WaveDivider topClass="bg-primary" fillClass="fill-creme" flip accent />
-
-      {/* ===== Portfolio / resultaten teaser ===== */}
-      <Section
-        decoration={<DecoDots className="absolute left-6 top-10 hidden text-kastanje/15 lg:block" />}
-      >
-        <SectionHeading eyebrow="Portfolio" title="Bewijs boven beloftes." intro="Een greep uit het werk waar we samen met ondernemers aan bouwen." />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {featuredCases.map((item, index) => (
-            <Reveal key={item.id} delay={(index % 2) * 80}>
-              <CaseCard item={item} />
-            </Reveal>
-          ))}
-        </div>
-        <Reveal className="mt-10">
-          <Button asChild size="lg" variant="outline">
-            <Link to="/portfolio">
-              Bekijk het portfolio
-              <ArrowRight className="h-5 w-5" aria-hidden="true" />
-            </Link>
-          </Button>
-        </Reveal>
-      </Section>
-
-      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
-
-      {/* ===== Korte FAQ ===== */}
-      <Section className="bg-white">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
-          <SectionHeading
-            eyebrow="Veelgestelde vragen"
-            title="Goed om te weten."
-            intro="Nog meer vragen? Je vindt het complete overzicht op de FAQ-pagina."
-          />
-          <Reveal>
-            <Accordion type="single" collapsible className="w-full">
-              {homeFaqs.map((faq, index) => (
-                <AccordionItem key={faq.question} value={`faq-${index}`}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>{faq.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-            <Button asChild variant="link" className="mt-2 h-auto px-0 text-base">
-              <Link to="/faq">
-                Naar alle vragen
+          <Reveal className="mt-10">
+            <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+              <Link to="/portfolio">
+                Bekijk het portfolio
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </Reveal>
         </div>
-      </Section>
+      </section>
 
-      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
+      {/* ===== 06 — Reviews (kobalt vlak) ===== */}
+      <section className="bg-kobalt text-creme">
+        <div className="container py-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-8">
+            <Reveal className="col-span-12 lg:col-span-3">
+              <SectionLabel index="06" light>
+                Reviews
+              </SectionLabel>
+            </Reveal>
+            <Reveal className="col-span-12 lg:col-span-8 lg:col-start-4" delay={120}>
+              <span aria-hidden="true" className="font-heading text-index font-bold leading-[0.5] text-zonnegeel">
+                &ldquo;
+              </span>
+              <blockquote className="mt-2 font-heading text-h2 font-semibold leading-[1.1] text-creme">
+                {reviews[0].quote}
+              </blockquote>
+              <figcaption className="mt-7 text-sm font-semibold uppercase tracking-[0.16em] text-creme/70">
+                {reviews[0].name} · {reviews[0].company}
+              </figcaption>
+              <Button asChild variant="link" className="mt-7 h-auto px-0 text-base text-creme">
+                <Link to="/portfolio">
+                  Lees meer reviews
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 07 — Veelgestelde vragen (wit vlak) ===== */}
+      <section className="bg-white">
+        <div className="container py-section">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-10">
+            <Reveal className="col-span-12 lg:col-span-4">
+              <SectionLabel index="07">Veelgestelde vragen</SectionLabel>
+              <h2 className="mt-6 text-h2 text-antraciet">Goed om te weten.</h2>
+              <Button asChild variant="link" className="mt-6 h-auto px-0 text-base text-antraciet">
+                <Link to="/faq">
+                  Naar alle vragen
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </Reveal>
+
+            <Reveal className="col-span-12 lg:col-span-7 lg:col-start-6">
+              <Accordion type="single" collapsible className="w-full">
+                {homeFaqs.map((faq, index) => (
+                  <AccordionItem key={faq.question} value={`faq-${index}`}>
+                    <AccordionTrigger className="text-left font-heading text-lg">{faq.question}</AccordionTrigger>
+                    <AccordionContent className="text-base text-muted-foreground">{faq.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* ===== Afsluitende CTA ===== */}
       <CTASection />

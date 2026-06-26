@@ -37,12 +37,19 @@ export default {
         sans: ["Montserrat", "system-ui", "sans-serif"],
       },
       fontSize: {
-        // Vloeiende type-schaal (mobiel -> desktop)
-        display: ["clamp(2.25rem, 6vw, 4rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
-        h1: ["clamp(2rem, 5vw, 3.25rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        h2: ["clamp(1.6rem, 3.5vw, 2.4rem)", { lineHeight: "1.15", letterSpacing: "-0.01em" }],
-        h3: ["clamp(1.25rem, 2.2vw, 1.6rem)", { lineHeight: "1.25" }],
-        lead: ["clamp(1.05rem, 1.6vw, 1.3rem)", { lineHeight: "1.6" }],
+        // Vloeiende, expressieve type-schaal (mobiel -> desktop)
+        display: ["clamp(2.75rem, 7.5vw, 6rem)", { lineHeight: "0.96", letterSpacing: "-0.035em" }],
+        h1: ["clamp(2.25rem, 5.5vw, 4.25rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        h2: ["clamp(1.85rem, 4vw, 3rem)", { lineHeight: "1.06", letterSpacing: "-0.025em" }],
+        h3: ["clamp(1.35rem, 2.3vw, 1.85rem)", { lineHeight: "1.18", letterSpacing: "-0.015em" }],
+        lead: ["clamp(1.1rem, 1.5vw, 1.4rem)", { lineHeight: "1.65" }],
+        // Grote editorial index-nummers (proces, secties)
+        index: ["clamp(3.5rem, 9vw, 8rem)", { lineHeight: "0.85", letterSpacing: "-0.04em" }],
+      },
+      spacing: {
+        // Vast verticaal ritme voor secties
+        section: "clamp(4.5rem, 9vw, 8.5rem)",
+        "section-sm": "clamp(3rem, 6vw, 5rem)",
       },
       colors: {
         // --- Merkkleuren (named, via CSS-variabelen) ---

@@ -1,14 +1,13 @@
 import { CTASection } from "@/components/CTASection";
-import { CaseCard } from "@/components/CaseCard";
+import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { ReviewCard } from "@/components/ReviewCard";
-import { Section, SectionHeading } from "@/components/Section";
+import { Section } from "@/components/Section";
+import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
-import { StatementBox } from "@/components/StatementBox";
-import { WaveDivider } from "@/components/WaveDivider";
 import { cases } from "@/data/cases";
 import { reviews } from "@/data/reviews";
+import { cn } from "@/lib/utils";
 
 export default function Portfolio() {
   return (
@@ -21,51 +20,74 @@ export default function Portfolio() {
 
       <PageHero
         eyebrow="Portfolio"
-        title="Werk waar we trots op zijn."
+        title={
+          <>
+            Werk waar we <Highlight variant="underline">trots</Highlight> op zijn.
+          </>
+        }
         intro="Cases, resultaten en de woorden van ondernemers met wie we samenwerken."
       />
 
-      {/* ===== Cases ===== */}
-      <Section>
-        <SectionHeading eyebrow="Cases" title="Een greep uit ons werk." />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ===== 01 — Cases ===== */}
+      <Section className="bg-creme">
+        <SectionLabel index="01">Cases</SectionLabel>
+        <h2 className="mt-6 max-w-2xl text-h2 text-antraciet">Een greep uit ons werk.</h2>
+
+        <ol className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
           {cases.map((item, index) => (
-            <Reveal key={item.id} delay={(index % 3) * 80}>
-              <CaseCard item={item} />
-            </Reveal>
+            <li key={item.id}>
+              <Reveal>
+                <article className="grid grid-cols-12 items-center gap-x-8 gap-y-6">
+                  <div className={cn("col-span-12 lg:col-span-7", index % 2 === 1 && "lg:order-2 lg:col-start-6")}>
+                    <div className="overflow-hidden border border-antraciet/15">
+                      <img src={item.image} alt={item.imageAlt} className="aspect-[16/10] w-full object-cover" />
+                    </div>
+                  </div>
+                  <div className={cn("col-span-12 lg:col-span-4", index % 2 === 1 ? "lg:order-1" : "lg:col-start-9")}>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-kastanje">{item.client}</p>
+                    <h3 className="mt-3 font-heading text-2xl font-bold text-antraciet sm:text-3xl">{item.title}</h3>
+                    <p className="mt-3 text-muted-foreground">{item.description}</p>
+                    {item.result && (
+                      <p className="mt-4 font-heading text-lg font-semibold text-kobalt">{item.result}</p>
+                    )}
+                  </div>
+                </article>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ol>
       </Section>
 
-      {/* ===== Statement / CTA ===== */}
-      <Section>
-        <Reveal>
-          <StatementBox
-            className="lg:ml-auto lg:max-w-3xl"
-            rotate
-            label="Jouw merk als volgende?"
-            cta={{ label: "Plan een strategiegesprek", to: "/contact" }}
-          >
-            Laten we kennismaken en kijken hoe we jouw merk laten groeien.
-          </StatementBox>
-        </Reveal>
-      </Section>
+      {/* ===== 02 — Reviews (kastanje vlak, pull-quotes) ===== */}
+      <Section className="bg-kastanje text-creme">
+        <SectionLabel index="02" light>
+          Reviews
+        </SectionLabel>
+        <h2 className="mt-6 max-w-2xl text-h2 text-creme">Wat klanten over ons zeggen.</h2>
 
-      <WaveDivider topClass="bg-creme" fillClass="fill-white" accent />
-
-      {/* ===== Reviews ===== */}
-      <Section className="bg-white">
-        <SectionHeading eyebrow="Reviews" title="Wat klanten over ons zeggen." />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 border-t border-creme/20">
           {reviews.map((review, index) => (
-            <Reveal key={index} delay={(index % 3) * 80}>
-              <ReviewCard review={review} />
+            <Reveal key={index}>
+              <figure className="grid grid-cols-12 gap-x-6 gap-y-3 border-b border-creme/20 py-12 sm:py-16">
+                <span
+                  aria-hidden="true"
+                  className="col-span-12 font-heading text-index font-bold leading-[0.6] text-zonnegeel lg:col-span-2"
+                >
+                  &ldquo;
+                </span>
+                <div className="col-span-12 lg:col-span-9 lg:col-start-3">
+                  <blockquote className="font-heading text-2xl font-semibold leading-snug text-creme sm:text-[2rem]">
+                    {review.quote}
+                  </blockquote>
+                  <figcaption className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-creme/70">
+                    {review.name} · {review.company}
+                  </figcaption>
+                </div>
+              </figure>
             </Reveal>
           ))}
         </div>
       </Section>
-
-      <WaveDivider topClass="bg-white" fillClass="fill-creme" flip accent />
 
       <CTASection />
     </>

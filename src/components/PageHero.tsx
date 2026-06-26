@@ -1,9 +1,7 @@
 import * as React from "react";
 
-import { DecoDots } from "@/components/Decorations";
-import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
-import { WAVE_PATH, WAVE_TOP } from "@/components/WaveDivider";
+import { SectionLabel } from "@/components/SectionLabel";
 
 interface PageHeroProps {
   eyebrow?: string;
@@ -13,53 +11,35 @@ interface PageHeroProps {
 }
 
 /**
- * Full-bleed kobalt hero bovenaan de subpagina's (bevat de enige <h1> van de
- * pagina). Loopt met een creme golf over in de sectie eronder.
+ * Editorial paginakop (de enige <h1> van de pagina). Asymmetrisch op een
+ * creme vlak: grote kop links, intro rechts onderaan uitgelijnd. Geen
+ * gradient, geen golf, geen decoratieve blobs.
  */
 export function PageHero({ eyebrow, title, intro, children }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-kobalt to-[#0e5990]">
-      {/* Decoratieve accenten */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-10 left-1/4 h-56 w-56 rounded-full bg-zonnegeel/15 blur-3xl"
-      />
-      <DecoDots className="absolute right-10 top-10 hidden text-white/10 lg:block" />
+    <section className="bg-creme">
+      <div className="container pt-28 pb-section-sm sm:pt-36">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-8">
+          <div className="col-span-12 lg:col-span-7">
+            {eyebrow && (
+              <Reveal>
+                <SectionLabel>{eyebrow}</SectionLabel>
+              </Reveal>
+            )}
+            <Reveal delay={eyebrow ? 90 : 0}>
+              <h1 className="mt-7 max-w-[15ch] text-display font-bold text-antraciet">{title}</h1>
+            </Reveal>
+          </div>
 
-      <div className="container relative z-10 py-16 pb-24 sm:py-24 sm:pb-32">
-        <Reveal className="max-w-3xl">
-          {eyebrow && (
-            <div className="mb-5">
-              <Eyebrow light>{eyebrow}</Eyebrow>
-            </div>
+          {intro && (
+            <Reveal className="col-span-12 lg:col-span-4 lg:col-start-9 lg:self-end" delay={160}>
+              <p className="max-w-md text-lead text-muted-foreground">{intro}</p>
+            </Reveal>
           )}
-          <h1 className="text-h1 text-white">{title}</h1>
-          {intro && <p className="mt-5 text-lead text-white/85">{intro}</p>}
-          {children && <div className="mt-8">{children}</div>}
-        </Reveal>
-      </div>
+        </div>
 
-      {/* Golvende overgang naar de creme sectie eronder */}
-      <svg
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 z-[1] h-8 w-full fill-creme sm:h-12 lg:h-14"
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-        focusable="false"
-      >
-        <path d={WAVE_PATH} />
-        <path
-          d={WAVE_TOP}
-          className="fill-none stroke-kastanje"
-          strokeWidth={3}
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
+        {children && <div className="mt-10">{children}</div>}
+      </div>
     </section>
   );
 }

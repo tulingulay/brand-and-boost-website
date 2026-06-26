@@ -41,7 +41,7 @@ export function KennismakenBadge() {
     <Link
       to="/contact"
       aria-label="Kennismaken? Neem contact op."
-      className="group fixed bottom-5 right-5 z-30 hidden h-28 w-28 items-center justify-center rounded-full bg-zonnegeel text-antraciet shadow-soft-lg transition-transform duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-background md:flex lg:h-32 lg:w-32"
+      className="group fixed bottom-6 right-6 z-30 hidden h-28 w-28 items-center justify-center rounded-full bg-zonnegeel text-antraciet transition-transform duration-300 hover:scale-110 hover:-rotate-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-background md:flex lg:h-32 lg:w-32"
     >
       <svg ref={ringRef} aria-hidden="true" viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
         <defs>
@@ -54,8 +54,8 @@ export function KennismakenBadge() {
         </text>
       </svg>
 
-      <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-antraciet text-zonnegeel transition-transform duration-300 group-hover:rotate-12 lg:h-14 lg:w-14">
-        <ArrowUpRight className="h-6 w-6" aria-hidden="true" />
+      <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-kobalt text-creme ring-4 ring-zonnegeel transition-transform duration-300 group-hover:rotate-[18deg] lg:h-16 lg:w-16">
+        <ArrowUpRight className="h-7 w-7" aria-hidden="true" />
       </span>
     </Link>
   );

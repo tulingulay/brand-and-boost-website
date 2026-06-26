@@ -146,4 +146,20 @@ export const services: Service[] = [
       "Sturen op resultaat en bijsturen op data",
     ],
   },
+  {
+    slug: "custom-drukwerk",
+    title: "Custom drukwerk",
+    description: "Folders, flyers, visitekaartjes en meer, op maat ontworpen en print-klaar.",
+    icon: "palette",
+    image: "/diensten/custom-drukwerk.jpg",
+    offerings: ["Folders & flyers", "Visitekaartjes", "Print-klaar aangeleverd"],
+    intro:
+      "Online en offline versterken elkaar. Wij ontwerpen drukwerk dat naadloos bij je merk past: van folders en flyers tot visitekaartjes en banners. Helemaal op maat en print-klaar aangeleverd, zodat je met een verzorgde, herkenbare uitstraling voor de dag komt.",
+    highlights: [
+      "Ontwerp dat klopt met je online uitstraling",
+      "Folders, flyers, visitekaartjes en meer",
+      "Print-klaar aangeleverd, zonder gedoe",
+      "Eén stijl, online én offline",
+    ],
+  },
 ];
