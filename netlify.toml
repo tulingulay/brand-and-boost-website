@@ -1,0 +1,17 @@
+# Netlify-configuratie voor de Brand & Boost website (Vite + React SPA).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 5 vereist een moderne Node; 20 LTS is stabiel op Netlify.
+  NODE_VERSION = "20"
+
+# Single Page App: laat alle routes via index.html afhandelen door React Router,
+# zodat deep links en verversen op bijv. /contact of /diensten niet op een
+# 404 uitkomen.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
