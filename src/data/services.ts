@@ -29,7 +29,7 @@ export interface Service {
   offerings: string[];
   /** Langere inleiding op de detailpagina. */
   intro: string;
-  /** Wat het inhoudt / waar we op focussen (checklist op de detailpagina). */
+  /** Wat het inhoudt / waar wij op focussen (checklist op de detailpagina). */
   highlights: string[];
 }
 
@@ -47,7 +47,7 @@ export const services: Service[] = [
       "Een contentkalender die past bij je merk en doelen",
       "Content die je doelgroep aanspreekt en uitnodigt tot reactie",
       "Een consistente uitstraling over al je kanalen",
-      "Inzicht in wat werkt, zodat we blijven bijsturen",
+      "Inzicht in wat werkt, zodat wij blijven bijsturen",
     ],
   },
   {
@@ -68,24 +68,24 @@ export const services: Service[] = [
   },
   {
     slug: "contentcreatie",
-    title: "Contentcreatie",
-    description: "Beeld en tekst die opvallen en blijven hangen.",
+    title: "Videocontent",
+    description: "Bewegend beeld dat opvalt en je merk laat leven.",
     icon: "camera",
     image: "/diensten/contentcreatie.jpg",
-    offerings: ["Fotografie & video", "Geschreven content", "Herkenbare stijl"],
+    offerings: ["Video & reels", "Montage", "Herkenbare stijl"],
     intro:
-      "Goede content valt op en blijft hangen. Wij maken beeld en tekst die je verhaal vertellen en je merk versterken, of het nu gaat om foto, video of geschreven content. Altijd in een stijl die bij je past en die je breed kunt inzetten.",
+      "Bewegend beeld blijft hangen. Wij maken video die je verhaal vertelt en je merk laat leven: van reels en socialvideo tot opname en montage. Altijd in een stijl die bij je past en die je breed kunt inzetten.",
     highlights: [
-      "Beeld en video dat past bij je merk",
-      "Teksten die je boodschap helder maken",
+      "Video en reels die passen bij je merk",
+      "Opname en strakke montage",
       "Content die je op meerdere kanalen inzet",
       "Een herkenbare stijl die overal terugkomt",
     ],
   },
   {
     slug: "webdevelopment",
-    title: "Webdevelopment",
-    description: "Websites die werken, snel laden en fijn voelen op elk scherm.",
+    title: "Website",
+    description: "Een website die werkt, snel laadt en fijn voelt op elk scherm.",
     icon: "code",
     image: "/diensten/webdevelopment.jpg",
     offerings: ["Webdesign", "Websites & webshops", "Snel & vindbaar"],
@@ -116,33 +116,33 @@ export const services: Service[] = [
   },
   {
     slug: "seo-sea-aeo-geo",
-    title: "SEO, SEA, AEO & GEO",
-    description: "Beter vindbaar in Google én in AI-zoekmachines.",
+    title: "SEO, GEO & AEO",
+    description: "Beter vindbaar in Google én in de nieuwe AI-zoekmachines.",
     icon: "search",
     image: "/diensten/seo-sea-aeo-geo.jpg",
-    offerings: ["SEO & SEA", "AEO & GEO", "Sturen op data"],
+    offerings: ["SEO", "GEO & AEO", "Sturen op data"],
     intro:
-      "Gevonden worden is het halve werk. We zorgen dat je beter vindbaar bent in Google én in de nieuwe generatie AI-zoekmachines. Een aanpak die op cijfers stuurt, zodat je weet waar je inzet naartoe gaat en wat het oplevert.",
+      "Gevonden worden is het halve werk. Wij zorgen dat je beter vindbaar bent in Google én in de nieuwe generatie AI-zoekmachines. Een aanpak die op cijfers stuurt, zodat je weet waar je inzet naartoe gaat en wat het oplevert.",
     highlights: [
       "Beter vindbaar in Google (SEO)",
-      "Gerichte advertenties via Google (SEA)",
-      "Vindbaar in AI-zoekmachines (AEO & GEO)",
+      "Vindbaar in AI-zoekmachines (GEO & AEO)",
+      "Sterke, vindbare content",
       "Sturen op data en op wat echt verschil maakt",
     ],
   },
   {
     slug: "meta-advertenties",
-    title: "Meta advertenties",
-    description: "Advertenties op Facebook en Instagram die echt iets opleveren.",
+    title: "Meta advertenties + SEA",
+    description: "Advertenties op Facebook, Instagram en in Google (SEA) die echt iets opleveren.",
     icon: "target",
     image: "/diensten/meta-advertenties.jpg",
-    offerings: ["Facebook & Instagram", "Scherpe targeting", "Sturen op resultaat"],
+    offerings: ["Meta (Facebook & Instagram)", "Google Ads (SEA)", "Sturen op resultaat"],
     intro:
-      "Adverteren op Facebook en Instagram werkt pas als het klopt: de juiste boodschap, bij de juiste mensen, op het juiste moment. Wij zetten campagnes op die passen bij je merk en sturen op resultaat, niet op onderbuikgevoel.",
+      "Adverteren werkt pas als het klopt: de juiste boodschap, bij de juiste mensen, op het juiste moment. Wij zetten campagnes op Facebook en Instagram én zoekadvertenties in Google (SEA) op, passend bij je merk en sturend op resultaat, niet op onderbuikgevoel.",
     highlights: [
       "Campagnes op Facebook en Instagram",
+      "Zoekadvertenties via Google (SEA)",
       "Scherpe targeting op je doelgroep",
-      "Advertenties die passen bij je merk",
       "Sturen op resultaat en bijsturen op data",
     ],
   },

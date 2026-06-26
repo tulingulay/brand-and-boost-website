@@ -1,8 +1,6 @@
 /**
- * Klantreviews.
- *
- * TODO: dit zijn PLACEHOLDER-reviews. Vervang quote, naam en bedrijf door
- * echte reviews. Plaats alleen quotes die je daadwerkelijk hebt gekregen.
+ * Klantreviews (echt). Petra staat eerst: zij verschijnt op de homepage en als
+ * eerste op de portfoliopagina. De derde review volgt later.
  */
 
 export interface Review {
@@ -14,20 +12,14 @@ export interface Review {
 export const reviews: Review[] = [
   {
     quote:
-      "TODO: echte klantquote. Wat maakte de samenwerking met Brand & Boost waardevol?",
-    name: "TODO: naam klant",
-    company: "TODO: bedrijfsnaam",
+      "Ik ben heel tevreden met mijn site. Hij had echt een update nodig. Pien en Isa hebben de tijd genomen om mij en mijn bedrijf te leren kennen. Hierdoor heb ik een mooie site gekregen die bij mijn bedrijf past. En weer helemaal up to date is.",
+    name: "Petra Scheffer",
+    company: "You and Me Beauty Salon",
   },
   {
     quote:
-      "TODO: echte klantquote. Wat maakte de samenwerking met Brand & Boost waardevol?",
-    name: "TODO: naam klant",
-    company: "TODO: bedrijfsnaam",
-  },
-  {
-    quote:
-      "TODO: echte klantquote. Wat maakte de samenwerking met Brand & Boost waardevol?",
-    name: "TODO: naam klant",
-    company: "TODO: bedrijfsnaam",
+      "De adviezen en hulp van Pien zijn super. Ze is goed bereikbaar en ze reageert altijd snel. Absoluut een aanrader!",
+    name: "Barry Scheffer",
+    company: "Scheffer Letselschade",
   },
 ];

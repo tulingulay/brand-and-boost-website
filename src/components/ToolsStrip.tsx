@@ -1,9 +1,9 @@
 import { tools } from "@/data/tools";
 
 /**
- * Editorial logo-wand van de programma's waar we mee werken. Logo's staan in
+ * Editorial logo-wand van de programma's waar wij mee werken. Logo's staan in
  * grijswaarden en kleuren in bij hover (één nette interactie); tools zonder
- * beschikbaar logo tonen we als wordmark.
+ * beschikbaar logo tonen wij als wordmark.
  */
 export function ToolsStrip() {
   return (

@@ -12,7 +12,7 @@ interface LogoProps {
  * Logo (kobalt wordmark met creme pijl-in-de-O) voor lichte achtergronden
  * (header + mobiel menu). Linkt naar de homepagina. De hoogte is gereserveerd
  * zodat de layout niet verspringt. Voor donkere achtergronden (footer)
- * gebruiken we de transparante cream-variant, zie Footer.tsx.
+ * gebruiken wij de transparante cream-variant, zie Footer.tsx.
  */
 export function Logo({ className, imgClassName }: LogoProps) {
   return (

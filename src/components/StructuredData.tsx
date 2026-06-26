@@ -23,7 +23,7 @@ export function OrganizationJsonLd() {
     image: `${site.domain}/og-image.png`,
     logo: `${site.domain}/logo.png`,
     description:
-      "Brand & Boost is een marketingpartner voor ambitieuze MKB-ondernemers: geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei.",
+      "Brand & Boost is een partner in groei voor ambitieuze MKB-ondernemers: geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei.",
     areaServed: {
       "@type": "Country",
       name: "Nederland",

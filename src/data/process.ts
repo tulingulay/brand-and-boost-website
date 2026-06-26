@@ -23,12 +23,12 @@ export const processSteps: ProcessStep[] = [
     number: "01",
     title: "Kennismaking",
     subtitle: "Eerst luisteren, dan pas plannen.",
-    description: "We leren je merk, je doelen en je situatie kennen in een open gesprek.",
+    description: "Wij leren je merk, je doelen en je situatie kennen in een open gesprek.",
     detail:
-      "Alles begint met een goed gesprek. We duiken in je merk, je ambities en waar je nu staat, met oprechte interesse en zonder poespas. Zo snappen we precies wat jou drijft en wat je nodig hebt om te groeien.",
+      "Alles begint met een goed gesprek. Wij duiken in je merk, je ambities en waar je nu staat, met oprechte interesse en zonder poespas. Zo snappen wij precies wat jou drijft en wat je nodig hebt om te groeien.",
     highlights: [
       "Open kennismaking, vrijblijvend",
-      "We luisteren naar je doelen en uitdagingen",
+      "Wij luisteren naar je doelen en uitdagingen",
       "Een eerlijke eerste blik op wat mogelijk is",
     ],
     icon: ContactIcon,
@@ -37,9 +37,9 @@ export const processSteps: ProcessStep[] = [
     number: "02",
     title: "Strategie en plan",
     subtitle: "De route naar groei, helder op papier.",
-    description: "We vertalen je ambitie naar een helder plan met richting en prioriteiten.",
+    description: "Wij vertalen je ambitie naar een helder plan met richting en prioriteiten.",
     detail:
-      "Daarna vertalen we je ambitie naar een helder plan. Samen bepalen we de richting, leggen we prioriteiten en kiezen we de aanpak die het meeste oplevert. Geen vaag verhaal, maar een concreet plan waar je achter staat.",
+      "Daarna vertalen wij je ambitie naar een helder plan. Samen bepalen wij de richting, leggen wij prioriteiten en kiezen wij de aanpak die het meeste oplevert. Geen vaag verhaal, maar een concreet plan waar je achter staat.",
     highlights: [
       "Strategie op basis van jouw doelen",
       "Duidelijke prioriteiten en planning",
@@ -51,11 +51,11 @@ export const processSteps: ProcessStep[] = [
     number: "03",
     title: "Uitvoering",
     subtitle: "Mouwen opstropen en bouwen.",
-    description: "We gaan aan de slag, met energie en oog voor detail. Jij houdt één aanspreekpunt.",
+    description: "Wij gaan aan de slag, met energie en oog voor detail. Jij houdt één aanspreekpunt.",
     detail:
-      "Nu wordt het concreet. We gaan met energie aan de slag en houden oog voor detail. Jij hebt steeds één vast aanspreekpunt en korte lijnen, dus je weet altijd waar je aan toe bent. Geen gedoe, geen ruis.",
+      "Nu wordt het concreet. Wij gaan met energie aan de slag en houden oog voor detail. Jij hebt steeds één vast aanspreekpunt en korte lijnen, dus je weet altijd waar je aan toe bent. Geen gedoe, geen ruis.",
     highlights: [
-      "We voeren het plan uit met oog voor detail",
+      "Wij voeren het plan uit met oog voor detail",
       "Eén vast aanspreekpunt, korte lijnen",
       "Regelmatig een update over de voortgang",
     ],
@@ -65,11 +65,11 @@ export const processSteps: ProcessStep[] = [
     number: "04",
     title: "Optimalisatie en groei",
     subtitle: "Meten, bijsturen, doorgroeien.",
-    description: "We meten, sturen bij en blijven verbeteren op wat echt werkt.",
+    description: "Wij meten, sturen bij en blijven verbeteren op wat echt werkt.",
     detail:
-      "Een merk groeit door te blijven verbeteren. We meten wat werkt, sturen bij op de cijfers en bouwen door op wat écht verschil maakt. Zo wordt marketing geen eenmalig project, maar een motor voor blijvende groei.",
+      "Een merk groeit door te blijven verbeteren. Wij meten wat werkt, sturen bij op de cijfers en bouwen door op wat écht verschil maakt. Zo wordt marketing geen eenmalig project, maar een motor voor blijvende groei.",
     highlights: [
-      "We sturen op data en op resultaat",
+      "Wij sturen op data en op resultaat",
       "Continu bijschaven en optimaliseren",
       "Samen bouwen aan blijvende groei",
     ],

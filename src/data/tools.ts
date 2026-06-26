@@ -1,6 +1,6 @@
 /**
  * Programma's waar Brand & Boost mee werkt. `logo` verwijst naar een SVG in
- * /public/tools; ontbreekt het logo, dan tonen we de naam als wordmark.
+ * /public/tools; ontbreekt het logo, dan tonen wij de naam als wordmark.
  */
 
 export interface Tool {

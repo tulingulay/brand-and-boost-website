@@ -23,19 +23,19 @@ export const coreValues: CoreValue[] = [
   {
     title: "Energie",
     description:
-      "We brengen energie in alles wat we doen. Je voelt het in onze aanpak, onze ideeën en de manier waarop we samenwerken.",
+      "Wij brengen energie in alles wat wij doen. Je voelt het in onze aanpak, onze ideeën en de manier waarop wij samenwerken.",
     icon: EnergieIcon,
     accent: "zonnegeel",
   },
   {
     title: "Partnerschap",
-    description: "We staan naast je, niet tegenover je. Eén team, één doel: jouw groei.",
+    description: "Wij staan naast je, niet tegenover je. Eén team, één doel: jouw groei.",
     icon: PartnerschapIcon,
     accent: "kobalt",
   },
   {
     title: "Resultaatgericht",
-    description: "Creativiteit met richting. We werken data-gedreven en sturen op wat echt verschil maakt.",
+    description: "Creativiteit met richting. Wij werken data-gedreven en sturen op wat echt verschil maakt.",
     icon: ResultaatIcon,
     accent: "kastanje",
   },

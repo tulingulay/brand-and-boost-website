@@ -15,28 +15,18 @@ interface PageHeroProps {
  * creme vlak: grote kop links, intro rechts onderaan uitgelijnd. Geen
  * gradient, geen golf, geen decoratieve blobs.
  */
-export function PageHero({ eyebrow, title, intro, children }: PageHeroProps) {
+export function PageHero({ eyebrow, title, children }: PageHeroProps) {
   return (
     <section className="bg-creme">
       <div className="container pt-28 pb-section-sm sm:pt-36">
-        <div className="grid grid-cols-12 gap-x-8 gap-y-8">
-          <div className="col-span-12 lg:col-span-7">
-            {eyebrow && (
-              <Reveal>
-                <SectionLabel>{eyebrow}</SectionLabel>
-              </Reveal>
-            )}
-            <Reveal delay={eyebrow ? 90 : 0}>
-              <h1 className="mt-7 max-w-[15ch] text-display font-bold text-antraciet">{title}</h1>
-            </Reveal>
-          </div>
-
-          {intro && (
-            <Reveal className="col-span-12 lg:col-span-4 lg:col-start-9 lg:self-end" delay={160}>
-              <p className="max-w-md text-lead text-muted-foreground">{intro}</p>
-            </Reveal>
-          )}
-        </div>
+        {eyebrow && (
+          <Reveal>
+            <SectionLabel>{eyebrow}</SectionLabel>
+          </Reveal>
+        )}
+        <Reveal delay={eyebrow ? 90 : 0}>
+          <h1 className="mt-7 max-w-[15ch] text-display font-bold text-antraciet">{title}</h1>
+        </Reveal>
 
         {children && <div className="mt-10">{children}</div>}
       </div>

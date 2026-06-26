@@ -17,9 +17,9 @@ export default function NotFound() {
       <section className="bg-creme">
         <div className="container flex min-h-[60vh] flex-col items-center justify-center py-20 text-center">
           <p className="font-heading text-7xl font-bold text-kobalt sm:text-8xl">404</p>
-          <h1 className="mt-4 text-h2">Deze pagina konden we niet vinden.</h1>
+          <h1 className="mt-4 text-h2">Deze pagina konden wij niet vinden.</h1>
           <p className="mt-4 max-w-md text-lead text-muted-foreground">
-            Misschien is de link verouderd of klopt het adres net niet. Geen zorgen, we helpen je weer op weg.
+            Misschien is de link verouderd of klopt het adres net niet. Geen zorgen, wij helpen je weer op weg.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">

@@ -6,7 +6,7 @@ interface SectionLabelProps {
   /** Indexnummer, bv. "01". Het signatuurelement van de site. */
   index?: string;
   children: React.ReactNode;
-  /** Lichte variant voor op een donker (kobalt/kastanje) vlak. */
+  /** Lichte variant voor op een donker (kobalt/kobalt) vlak. */
   light?: boolean;
   className?: string;
 }
@@ -20,7 +20,7 @@ export function SectionLabel({ index, children, light = false, className }: Sect
   return (
     <div className={cn("flex items-center gap-3", className)}>
       {index && (
-        <span className={cn("font-heading text-sm font-bold tabular-nums", light ? "text-zonnegeel" : "text-kastanje")}>
+        <span className={cn("font-heading text-sm font-bold tabular-nums", light ? "text-zonnegeel" : "text-kobalt")}>
           {index}
         </span>
       )}

@@ -18,7 +18,7 @@ export default function Proces() {
         eyebrow="Proces"
         title={
           <>
-            Zo werken we <Highlight variant="underline">samen</Highlight>.
+            Zo werken wij <Highlight variant="underline">samen</Highlight>.
           </>
         }
         intro="Een heldere aanpak in vier stappen. Met energie, oog voor detail en steeds één vast aanspreekpunt."
@@ -32,7 +32,7 @@ export default function Proces() {
               Van eerste gesprek tot blijvende <Highlight>groei</Highlight>.
             </>
           }
-          intro="Zonder heldere aanpak geen groei. Daarom werken we in vier vaste stappen, steeds samen met jou en met één vast aanspreekpunt. Zo weet je altijd waar we staan en waar we naartoe werken."
+          intro="Zonder heldere aanpak geen groei. Daarom werken wij in vier vaste stappen, steeds samen met jou en met één vast aanspreekpunt. Zo weet je altijd waar wij staan en waar wij naartoe werken."
         />
 
         <div className="mt-14 sm:mt-20">

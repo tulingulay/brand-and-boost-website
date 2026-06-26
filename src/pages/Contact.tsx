@@ -13,7 +13,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact · Brand & Boost"
-        description="Even kennismaken met Brand & Boost? Laat een bericht achter via het formulier of mail ons direct. We werken op afspraak en denken graag met je mee over jouw groei."
+        description="Even kennismaken met Brand & Boost? Laat een bericht achter via het formulier of mail ons direct. Wij werken op afspraak en denken graag met je mee over jouw groei."
         path="/contact"
       />
 
@@ -21,10 +21,10 @@ export default function Contact() {
         eyebrow="Contact"
         title={
           <>
-            Kennismaken? Daar houden we <Highlight variant="underline">van</Highlight>.
+            Kennismaken? Daar houden wij <Highlight variant="underline">van</Highlight>.
           </>
         }
-        intro="Heb je een vraag, een idee of gewoon zin om te sparren? Laat een bericht achter, dan plannen we snel een vrijblijvend gesprek. We werken op afspraak, zodat we echt de tijd voor je nemen."
+        intro="Heb je een vraag, een idee of gewoon zin om te sparren? Laat een bericht achter, dan plannen wij snel een vrijblijvend gesprek. Wij werken op afspraak, zodat wij echt de tijd voor je nemen."
       />
 
       <Section className="bg-creme">
@@ -32,12 +32,12 @@ export default function Contact() {
           {/* Formulier */}
           <Reveal className="col-span-12 lg:col-span-7">
             <SectionLabel index="01">Stuur een bericht</SectionLabel>
-            <h2 className="mt-6 text-h2 text-antraciet">Laten we kennismaken.</h2>
+            <h2 className="mt-6 text-h2 text-antraciet">Laten wij kennismaken.</h2>
             <p className="mt-4 max-w-lg text-muted-foreground">
-              Laat je gegevens achter, dan nemen we snel persoonlijk contact met je op. Velden met een sterretje zijn
+              Laat je gegevens achter, dan nemen wij snel persoonlijk contact met je op. Velden met een sterretje zijn
               verplicht.
             </p>
-            <div className="mt-8 border-t-2 border-kastanje pt-8">
+            <div className="mt-8 border-t-2 border-kobalt pt-8">
               <ContactForm />
             </div>
           </Reveal>
@@ -52,14 +52,14 @@ export default function Contact() {
               >
                 {site.email}
               </a>
-              <p className="mt-2 text-sm text-muted-foreground">We reageren meestal binnen één werkdag.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Wij reageren meestal binnen één werkdag.</p>
             </div>
 
             <div className="mt-10 border-t-2 border-antraciet/15 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/50">Altijd op afspraak</p>
               <p className="mt-3 text-muted-foreground">
-                We werken volledig op afspraak, zodat we echt de tijd voor je nemen. Laat je telefoonnummer achter, dan
-                bellen of mailen we je snel terug om een moment te plannen dat jou uitkomt.
+                Wij werken volledig op afspraak, zodat wij echt de tijd voor je nemen. Laat je telefoonnummer achter, dan
+                bellen of mailen wij je snel terug om een moment te plannen dat jou uitkomt.
               </p>
             </div>
 

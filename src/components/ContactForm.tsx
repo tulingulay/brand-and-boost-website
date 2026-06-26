@@ -31,18 +31,18 @@ const emptyValues: FormValues = { naam: "", email: "", telefoon: "", bedrijf: ""
 function validate(values: FormValues): FormErrors {
   const errors: FormErrors = {};
   if (!values.naam.trim()) {
-    errors.naam = "Vul je naam in, dan weten we met wie we praten.";
+    errors.naam = "Vul je naam in, dan weten wij met wie wij praten.";
   }
   if (!values.email.trim()) {
-    errors.email = "We hebben je e-mailadres nodig om te kunnen reageren.";
+    errors.email = "Wij hebben je e-mailadres nodig om te kunnen reageren.";
   } else if (!EMAIL_REGEX.test(values.email.trim())) {
     errors.email = "Hmm, dit e-mailadres lijkt niet te kloppen. Check 'm even?";
   }
   if (!values.telefoon.trim()) {
-    errors.telefoon = "Laat je telefoonnummer achter, dan kunnen we je terugbellen.";
+    errors.telefoon = "Laat je telefoonnummer achter, dan kunnen wij je terugbellen.";
   }
   if (!values.bericht.trim()) {
-    errors.bericht = "Vertel kort waar we je mee kunnen helpen.";
+    errors.bericht = "Vertel kort waar wij je mee kunnen helpen.";
   }
   return errors;
 }
@@ -120,7 +120,7 @@ export function ContactForm() {
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
         <h3 className="mt-4 font-heading text-xl font-bold text-antraciet">Bedankt voor je bericht!</h3>
-        <p className="mt-2 text-muted-foreground">Bedankt, we nemen snel contact met je op.</p>
+        <p className="mt-2 text-muted-foreground">Bedankt, wij nemen snel contact met je op.</p>
         <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
           Nog een bericht sturen
         </Button>
@@ -233,7 +233,7 @@ export function ContactForm() {
           name="bericht"
           value={values.bericht}
           onChange={(e) => update("bericht", e.target.value)}
-          placeholder="Waar kunnen we je mee helpen?"
+          placeholder="Waar kunnen wij je mee helpen?"
           aria-invalid={Boolean(errors.bericht)}
           aria-describedby={errors.bericht ? "bericht-error" : undefined}
           required

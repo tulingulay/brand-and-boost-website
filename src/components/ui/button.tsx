@@ -9,17 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Eén herkenbaar knopontwerp, overal hetzelfde: antraciet vlak dat bij
-        // hover warm omslaat naar zonnegeel. Werkt op creme, kobalt én kastanje.
-        default: "bg-antraciet text-creme hover:bg-zonnegeel hover:text-antraciet",
-        // Lichte variant voor donkere (kobalt/kastanje) vlakken.
-        onDark: "bg-creme text-antraciet hover:bg-zonnegeel hover:text-antraciet",
+        // Eén herkenbaar knopontwerp, overal hetzelfde: zonnegeel vlak dat bij
+        // hover omslaat naar kobaltblauw. Werkt op creme, kobalt en wit.
+        default: "bg-zonnegeel text-antraciet hover:bg-kobalt hover:text-creme",
+        onDark: "bg-zonnegeel text-antraciet hover:bg-kobalt hover:text-creme",
         // Tekstlink met pijl (secundaire acties, geen tweede knopstijl).
         link: "gap-1.5 font-semibold text-antraciet underline-offset-[6px] hover:underline",
         // Legacy aliassen, blijven werken tot elke pagina is omgezet.
-        secondary: "bg-antraciet text-creme hover:bg-zonnegeel hover:text-antraciet",
-        outline: "bg-antraciet text-creme hover:bg-zonnegeel hover:text-antraciet",
-        ghost: "text-antraciet hover:text-kastanje",
+        secondary: "bg-zonnegeel text-antraciet hover:bg-kobalt hover:text-creme",
+        outline: "bg-zonnegeel text-antraciet hover:bg-kobalt hover:text-creme",
+        ghost: "text-antraciet hover:text-kobalt",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       },
       size: {

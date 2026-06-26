@@ -18,7 +18,7 @@ interface ServiceIndexProps {
  */
 export function ServiceIndex({ services, light = false }: ServiceIndexProps) {
   const line = light ? "border-creme/20" : "border-antraciet/15";
-  const num = light ? "text-zonnegeel" : "text-kastanje";
+  const num = light ? "text-zonnegeel" : "text-kobalt";
   const title = light ? "text-creme" : "text-antraciet";
   const desc = light ? "text-creme/70" : "text-muted-foreground";
 

@@ -3,7 +3,7 @@ import { processSteps } from "@/data/process";
 import { cn } from "@/lib/utils";
 
 interface ProcessNumberedProps {
-  /** Lichte variant voor op een donker (kobalt/kastanje) vlak. */
+  /** Lichte variant voor op een donker (kobalt/kobalt) vlak. */
   light?: boolean;
   /** Toon de uitgebreide detailtekst (Proces-pagina) i.p.v. de korte regel. */
   detailed?: boolean;
@@ -16,7 +16,7 @@ interface ProcessNumberedProps {
  */
 export function ProcessNumbered({ light = false, detailed = false }: ProcessNumberedProps) {
   const line = light ? "border-creme/20" : "border-antraciet/15";
-  const num = light ? "text-zonnegeel" : "text-kastanje";
+  const num = light ? "text-zonnegeel" : "text-kobalt";
   const title = light ? "text-creme" : "text-antraciet";
   const sub = light ? "text-creme/90" : "text-kobalt";
   const desc = light ? "text-creme/70" : "text-muted-foreground";

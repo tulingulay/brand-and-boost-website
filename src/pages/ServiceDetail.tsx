@@ -77,7 +77,7 @@ export default function ServiceDetail() {
       <Section className="bg-creme">
         <div className="grid grid-cols-12 gap-x-8 gap-y-10">
           <Reveal className="col-span-12 lg:col-span-7">
-            <SectionLabel index="01">Wat we voor je doen</SectionLabel>
+            <SectionLabel index="01">Wat wij voor je doen</SectionLabel>
             <p className="mt-6 text-lead text-muted-foreground">{service.intro}</p>
           </Reveal>
 
@@ -111,7 +111,7 @@ export default function ServiceDetail() {
 
       <CTASection
         title="Benieuwd wat dit voor jou kan betekenen?"
-        text="In een vrijblijvend strategiegesprek kijken we samen hoe deze dienst bij jouw merk past."
+        text="In een vrijblijvend strategiegesprek kijken wij samen hoe deze dienst bij jouw merk past."
       />
     </>
   );

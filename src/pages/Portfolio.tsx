@@ -14,7 +14,7 @@ export default function Portfolio() {
     <>
       <SEO
         title="Portfolio · Brand & Boost"
-        description="Cases en reviews van Brand & Boost. Bekijk het werk dat we samen met ambitieuze MKB-ondernemers maken en wat zij over de samenwerking zeggen."
+        description="Cases en reviews van Brand & Boost. Bekijk het werk dat wij samen met ambitieuze MKB-ondernemers maken en wat zij over de samenwerking zeggen."
         path="/portfolio"
       />
 
@@ -22,10 +22,10 @@ export default function Portfolio() {
         eyebrow="Portfolio"
         title={
           <>
-            Werk waar we <Highlight variant="underline">trots</Highlight> op zijn.
+            Werk waar wij <Highlight variant="underline">trots</Highlight> op zijn.
           </>
         }
-        intro="Cases, resultaten en de woorden van ondernemers met wie we samenwerken."
+        intro="Cases, resultaten en de woorden van ondernemers met wie wij samenwerken."
       />
 
       {/* ===== 01 — Cases ===== */}
@@ -37,19 +37,32 @@ export default function Portfolio() {
           {cases.map((item, index) => (
             <li key={item.id}>
               <Reveal>
-                <article className="grid grid-cols-12 items-center gap-x-8 gap-y-6">
-                  <div className={cn("col-span-12 lg:col-span-7", index % 2 === 1 && "lg:order-2 lg:col-start-6")}>
+                <article className="grid grid-cols-12 items-start gap-x-8 gap-y-6">
+                  <div className={cn("col-span-12 lg:col-span-6", index % 2 === 1 && "lg:order-2 lg:col-start-7")}>
                     <div className="overflow-hidden border border-antraciet/15">
                       <img src={item.image} alt={item.imageAlt} className="aspect-[16/10] w-full object-cover" />
                     </div>
                   </div>
-                  <div className={cn("col-span-12 lg:col-span-4", index % 2 === 1 ? "lg:order-1" : "lg:col-start-9")}>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-kastanje">{item.client}</p>
+                  <div className={cn("col-span-12 lg:col-span-5", index % 2 === 1 ? "lg:order-1" : "lg:col-start-8")}>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-kobalt">{item.client}</p>
                     <h3 className="mt-3 font-heading text-2xl font-bold text-antraciet sm:text-3xl">{item.title}</h3>
-                    <p className="mt-3 text-muted-foreground">{item.description}</p>
-                    {item.result && (
-                      <p className="mt-4 font-heading text-lg font-semibold text-kobalt">{item.result}</p>
-                    )}
+
+                    <div className="mt-6 space-y-5">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">De vraag</p>
+                        <p className="mt-1.5 text-muted-foreground">{item.challenge}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">Onze boost</p>
+                        <p className="mt-1.5 text-muted-foreground">{item.approach}</p>
+                      </div>
+                      <div className="border-t-2 border-zonnegeel pt-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">
+                          Het resultaat
+                        </p>
+                        <p className="mt-1.5 font-heading text-lg font-semibold text-kobalt">{item.result}</p>
+                      </div>
+                    </div>
                   </div>
                 </article>
               </Reveal>
@@ -58,8 +71,8 @@ export default function Portfolio() {
         </ol>
       </Section>
 
-      {/* ===== 02 — Reviews (kastanje vlak, pull-quotes) ===== */}
-      <Section className="bg-kastanje text-creme">
+      {/* ===== 02 — Reviews (kobalt vlak, pull-quotes) ===== */}
+      <Section className="bg-kobalt text-creme">
         <SectionLabel index="02" light>
           Reviews
         </SectionLabel>
