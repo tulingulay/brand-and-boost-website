@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 
+import { CookieConsent } from "@/components/CookieConsent";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { KennismakenBadge } from "@/components/KennismakenBadge";
@@ -27,6 +28,7 @@ export function Layout() {
       <Footer />
 
       <KennismakenBadge />
+      <CookieConsent />
     </div>
   );
 }

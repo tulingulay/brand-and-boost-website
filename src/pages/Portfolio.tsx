@@ -93,6 +93,7 @@ export default function Portfolio() {
                 <div className="col-span-12 lg:col-span-9 lg:col-start-3">
                   <blockquote className="font-heading text-2xl font-semibold leading-snug text-antraciet sm:text-[2rem]">
                     {review.quote}
+                    <span aria-hidden="true" className="text-kobalt">&rdquo;</span>
                   </blockquote>
                   <figcaption className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/55">
                     {review.name} · {review.company}

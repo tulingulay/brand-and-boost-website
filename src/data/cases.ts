@@ -62,7 +62,7 @@ export const cases: CaseItem[] = [
       "Volledige ontzorging via ons modulaire social media beheer. Na een grondige technische opschoning van de Meta Business Suite, verzorgen wij nu maandelijks de strategische contentkalender, professionele copywriting en de volledige inplanning van haar posts en stories.",
     result:
       "Een consistent, professioneel ritme op de social media kanalen dat de doelgroep continu inspireert, terwijl Esther zich 100% kan focussen op haar klanten in de salon.",
-    image: "/cases/case-placeholder-3.svg",
-    imageAlt: "Social media van E. Touch Beauty & Mind",
+    image: "/cases/e-touch.jpg",
+    imageAlt: "Instagram-feed van E. Touch Beauty & Mind",
   },
 ];

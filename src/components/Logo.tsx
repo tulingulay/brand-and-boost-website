@@ -26,7 +26,7 @@ export function Logo({ className, imgClassName }: LogoProps) {
         alt="Brand & Boost"
         width={184}
         height={44}
-        className={cn("h-9 w-auto sm:h-11", imgClassName)}
+        className={cn("h-10 w-auto sm:h-12", imgClassName)}
       />
     </Link>
   );

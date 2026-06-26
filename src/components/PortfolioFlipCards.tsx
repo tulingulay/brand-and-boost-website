@@ -15,16 +15,16 @@ export function PortfolioFlipCard({ item }: { item: CaseItem }) {
       <div className="relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d] group-hover/flip:[transform:rotateY(180deg)] group-focus/flip:[transform:rotateY(180deg)] motion-reduce:transition-none">
         {/* Voorkant: logo */}
         <div className="absolute inset-0 flex flex-col rounded-[3px] border border-antraciet/15 bg-white [backface-visibility:hidden]">
-          <div className="flex flex-1 items-center justify-center p-6">
+          <div className="flex flex-1 items-center justify-center p-4">
             {item.logo ? (
               <img
                 src={item.logo}
                 alt={item.title}
                 loading="lazy"
-                className="max-h-20 w-auto max-w-[70%] object-contain"
+                className="max-h-32 w-auto max-w-[85%] object-contain sm:max-h-40"
               />
             ) : (
-              <span className="text-center font-heading text-2xl font-bold leading-tight text-antraciet">
+              <span className="text-center font-heading text-3xl font-bold leading-tight text-antraciet">
                 {item.title}
               </span>
             )}

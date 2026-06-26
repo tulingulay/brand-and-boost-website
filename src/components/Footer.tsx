@@ -13,13 +13,17 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t-2 border-antraciet/10 bg-creme text-antraciet">
       <div className="container py-section-sm">
+        {/* Gecentreerd logo */}
+        <div className="flex justify-center border-b border-antraciet/15 pb-12">
+          <Link to="/" className="inline-block rounded-lg" aria-label="Brand & Boost, naar de homepagina">
+            <img src="/logo-blue.png" alt="Brand & Boost" width={184} height={44} className="h-20 w-auto sm:h-24" />
+          </Link>
+        </div>
+
         {/* Merkstatement + contact */}
-        <div className="grid grid-cols-12 gap-x-8 gap-y-10 border-b border-antraciet/15 pb-14">
+        <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-10 border-b border-antraciet/15 pb-14">
           <div className="col-span-12 lg:col-span-7">
-            <Link to="/" className="inline-block rounded-lg" aria-label="Brand & Boost, naar de homepagina">
-              <img src="/logo-blue.png" alt="Brand & Boost" width={184} height={44} className="h-20 w-auto sm:h-24" />
-            </Link>
-            <p className="mt-7 max-w-[15ch] font-heading text-h2 font-bold text-antraciet">
+            <p className="max-w-[15ch] font-heading text-h2 font-bold text-antraciet">
               Meer dan marketing, een partner in groei.
             </p>
           </div>

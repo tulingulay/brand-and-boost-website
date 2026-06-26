@@ -11,6 +11,7 @@ export interface Tool {
 export const tools: Tool[] = [
   { name: "WordPress", logo: "/tools/wordpress.svg" },
   { name: "ChatGPT", logo: "/tools/chatgpt.svg" },
+  { name: "Claude", logo: "/tools/claude.svg" },
   { name: "Wix", logo: "/tools/wix.svg" },
   { name: "Lovable", logo: "/tools/lovable.svg" },
   { name: "Meta Business Suite", logo: "/tools/meta.svg" },

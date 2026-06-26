@@ -78,7 +78,7 @@ export function ContactForm() {
       return;
     }
 
-    // TODO: zonder VITE_WEB3FORMS_KEY (zie .env) kan er niets verzonden worden.
+    // Zonder VITE_WEB3FORMS_KEY (zie .env.example) kan er niets verzonden worden.
     if (!accessKey) {
       setStatus("error");
       return;
@@ -91,14 +91,16 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: "Nieuw bericht via brandandboost.nl",
+          subject: `Nieuw bericht via brandandboost.nl — ${values.naam}`,
           from_name: "Brand & Boost website",
+          // Speciale Web3Forms-velden: afzendernaam + reply-to naar de aanvrager.
           name: values.naam,
           email: values.email,
-          telefoon: values.telefoon,
-          bedrijf: values.bedrijf || "Niet opgegeven",
-          message: values.bericht,
           replyto: values.email,
+          // Leesbare labels zoals ze in de e-mail verschijnen.
+          Telefoon: values.telefoon,
+          Bedrijf: values.bedrijf || "Niet opgegeven",
+          Bericht: values.bericht,
         }),
       });
       const data = await response.json();
@@ -120,7 +122,7 @@ export function ContactForm() {
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
         <h3 className="mt-4 font-heading text-xl font-bold text-antraciet">Bedankt voor je bericht!</h3>
-        <p className="mt-2 text-muted-foreground">Bedankt, wij nemen snel contact met je op.</p>
+        <p className="mt-2 text-muted-foreground">Wij nemen snel contact met je op.</p>
         <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
           Nog een bericht sturen
         </Button>

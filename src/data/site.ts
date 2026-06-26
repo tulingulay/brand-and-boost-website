@@ -42,6 +42,7 @@ export const mainNav: NavItem[] = [
 export const legalNav: NavItem[] = [
   { label: "Algemene voorwaarden", href: "/algemene-voorwaarden" },
   { label: "Privacyverklaring", href: "/privacyverklaring" },
+  { label: "Cookiebeleid", href: "/cookiebeleid" },
 ];
 
 export type SocialIcon = "instagram" | "linkedin" | "facebook";

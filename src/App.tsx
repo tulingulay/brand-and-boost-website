@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import AlgemeneVoorwaarden from "@/pages/AlgemeneVoorwaarden";
 import Contact from "@/pages/Contact";
+import Cookiebeleid from "@/pages/Cookiebeleid";
 import Diensten from "@/pages/Diensten";
 import Faq from "@/pages/Faq";
 import Home from "@/pages/Home";
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />
         <Route path="/privacyverklaring" element={<Privacyverklaring />} />
+        <Route path="/cookiebeleid" element={<Cookiebeleid />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

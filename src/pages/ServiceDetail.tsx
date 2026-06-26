@@ -2,13 +2,16 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 
 import { CTASection } from "@/components/CTASection";
+import { PortfolioFlipCard } from "@/components/PortfolioFlipCards";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
 import { ServiceIndex } from "@/components/ServiceIndex";
 import { Button } from "@/components/ui/button";
+import { cases } from "@/data/cases";
 import { services } from "@/data/services";
+import { cn } from "@/lib/utils";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -20,6 +23,10 @@ export default function ServiceDetail() {
   }
 
   const others = services.filter((s) => s.slug !== service.slug);
+  // Portfolio-cases die als voorbeeld bij deze dienst horen (in de opgegeven volgorde).
+  const serviceCases = (service.caseIds ?? [])
+    .map((id) => cases.find((c) => c.id === id))
+    .filter((c): c is (typeof cases)[number] => Boolean(c));
 
   return (
     <>
@@ -97,6 +104,62 @@ export default function ServiceDetail() {
           </Reveal>
         </div>
       </Section>
+
+      {/* ===== Praktijkvoorbeeld(en) uit het portfolio ===== */}
+      {serviceCases.length > 0 && (
+        <Section className="bg-white">
+          <SectionLabel>Praktijk</SectionLabel>
+          <h2 className="max-w-2xl text-h2 text-antraciet">
+            {serviceCases.length > 1 ? "Voorbeelden uit de praktijk." : "Een voorbeeld uit de praktijk."}
+          </h2>
+
+          <ol className="mt-12 space-y-16 sm:mt-16 sm:space-y-24">
+            {serviceCases.map((item, index) => (
+              <li key={item.id}>
+                <Reveal>
+                  <article className="grid grid-cols-12 items-start gap-x-8 gap-y-6">
+                    <div className={cn("col-span-12 lg:col-span-6", index % 2 === 1 && "lg:order-2 lg:col-start-7")}>
+                      <PortfolioFlipCard item={item} />
+                    </div>
+                    <div className={cn("col-span-12 lg:col-span-5", index % 2 === 1 ? "lg:order-1" : "lg:col-start-8")}>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-kobalt">{item.client}</p>
+                      <h3 className="mt-3 font-heading text-2xl font-bold text-antraciet sm:text-3xl">{item.title}</h3>
+
+                      <div className="mt-6 space-y-5">
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">De vraag</p>
+                          <p className="mt-1.5 text-muted-foreground">{item.challenge}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">
+                            Onze boost
+                          </p>
+                          <p className="mt-1.5 text-muted-foreground">{item.approach}</p>
+                        </div>
+                        <div className="border-t-2 border-zonnegeel pt-4">
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">
+                            Het resultaat
+                          </p>
+                          <p className="mt-1.5 font-heading text-lg font-semibold text-kobalt">{item.result}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+
+          <Reveal className="mt-12">
+            <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+              <Link to="/portfolio">
+                Bekijk het volledige portfolio
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </Reveal>
+        </Section>
+      )}
 
       {/* ===== 02 — Andere diensten (kobalt vlak) ===== */}
       <Section className="bg-kobalt text-creme">

@@ -31,6 +31,8 @@ export interface Service {
   intro: string;
   /** Wat het inhoudt / waar wij op focussen (checklist op de detailpagina). */
   highlights: string[];
+  /** Slugs (id's) van portfolio-cases die als voorbeeld bij deze dienst horen. */
+  caseIds?: string[];
 }
 
 export const services: Service[] = [
@@ -49,6 +51,7 @@ export const services: Service[] = [
       "Een consistente uitstraling over al je kanalen",
       "Inzicht in wat werkt, zodat wij blijven bijsturen",
     ],
+    caseIds: ["e-touch"],
   },
   {
     slug: "branding",
@@ -97,6 +100,7 @@ export const services: Service[] = [
       "Gebouwd met oog voor vindbaarheid",
       "Makkelijk uit te breiden als je groeit",
     ],
+    caseIds: ["scheffer-letselschade", "you-and-me-beauty-salon"],
   },
   {
     slug: "copywriting",

@@ -30,16 +30,7 @@ export default function Home() {
       <section className="bg-creme">
         <div className="container pt-28 pb-section sm:pt-36">
           <Reveal>
-            <div className="flex items-center gap-3">
-              <span aria-hidden="true" className="h-px w-10 bg-kobalt" />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/60">
-                Marketingbureau voor ambitieuze MKB-ondernemers
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <h1 className="mt-8 max-w-[18ch] text-display font-bold text-antraciet">
+            <h1 className="max-w-[18ch] text-display font-bold text-antraciet">
               Meer dan marketing, een partner in <Highlight>groei.</Highlight>
             </h1>
           </Reveal>
@@ -118,13 +109,8 @@ export default function Home() {
                 Diensten
               </SectionLabel>
               <h2 className="text-h2 text-creme">
-                Diensten die je merk laten <Highlight color="zonnegeel">groeien.</Highlight>
+                Diensten die je merk laten groeien.
               </h2>
-            </Reveal>
-            <Reveal className="col-span-12 self-end lg:col-span-4 lg:col-start-9" delay={120}>
-              <p className="text-creme/80">
-                Van branding tot vindbaarheid: alles onder één dak, met één aanspreekpunt.
-              </p>
             </Reveal>
           </div>
 
@@ -182,23 +168,23 @@ export default function Home() {
               <SectionLabel index="04">Portfolio</SectionLabel>
               <h2 className="text-h2 text-antraciet">Bewijs boven beloftes.</h2>
             </Reveal>
-            <Reveal className="col-span-12 self-end lg:col-span-4 lg:col-start-9" delay={120}>
-              <p className="text-muted-foreground">
-                Een greep uit het werk waar wij samen met ondernemers aan bouwen.
-              </p>
-            </Reveal>
           </div>
 
           <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2">
             {featuredCases.map((item, index) => (
               <Reveal key={item.id} delay={(index % 2) * 100}>
                 <Link to="/portfolio" className="group/case block">
-                  <div className="overflow-hidden border border-antraciet/15">
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt}
-                      className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover/case:scale-[1.04]"
-                    />
+                  <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[3px] border border-antraciet/15 bg-white p-8 transition-colors duration-300 group-hover/case:border-kobalt">
+                    {item.logo ? (
+                      <img
+                        src={item.logo}
+                        alt={item.title}
+                        loading="lazy"
+                        className="max-h-28 w-auto max-w-[70%] object-contain transition-transform duration-500 group-hover/case:scale-[1.04] sm:max-h-32"
+                      />
+                    ) : (
+                      <span className="text-center font-heading text-3xl font-bold text-antraciet">{item.title}</span>
+                    )}
                   </div>
                   <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-kobalt">{item.client}</p>
                   <h3 className="mt-2 font-heading text-2xl font-bold text-antraciet">{item.title}</h3>
@@ -219,27 +205,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 05 — Reviews (kobalt vlak) ===== */}
-      <section className="bg-kobalt text-creme">
+      {/* ===== 05 — Reviews (zonnegeel vlak) ===== */}
+      <section className="bg-zonnegeel text-antraciet">
         <div className="container py-section">
           <div className="grid grid-cols-12 gap-x-8 gap-y-8">
             <Reveal className="col-span-12 lg:col-span-3">
-              <SectionLabel index="05" light>
-                Reviews
-              </SectionLabel>
+              <SectionLabel index="05">Reviews</SectionLabel>
             </Reveal>
             <Reveal className="col-span-12 lg:col-span-8 lg:col-start-4" delay={120}>
-              <span aria-hidden="true" className="font-heading text-index font-bold leading-[0.5] text-zonnegeel">
+              <span aria-hidden="true" className="font-heading text-index font-bold leading-[0.5] text-kobalt">
                 &ldquo;
               </span>
-              <blockquote className="mt-2 font-heading text-h2 font-semibold leading-[1.1] text-creme">
+              <blockquote className="mt-2 font-heading text-h2 font-semibold leading-[1.1] text-antraciet">
                 {reviews[0].quote}
-                <span aria-hidden="true" className="text-zonnegeel">&rdquo;</span>
+                <span aria-hidden="true" className="text-kobalt">&rdquo;</span>
               </blockquote>
-              <figcaption className="mt-7 text-sm font-semibold uppercase tracking-[0.16em] text-creme/70">
+              <figcaption className="mt-7 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/55">
                 {reviews[0].name} · {reviews[0].company}
               </figcaption>
-              <Button asChild variant="link" className="mt-7 h-auto px-0 text-base text-creme">
+              <Button asChild variant="link" className="mt-7 h-auto px-0 text-base text-antraciet">
                 <Link to="/portfolio">
                   Lees meer reviews
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

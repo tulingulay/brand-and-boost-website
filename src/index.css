@@ -89,6 +89,46 @@
   }
 }
 
+@layer components {
+  /* Leesbare opmaak voor lange juridische tekst (AV, privacy, cookies). */
+  .legal {
+    @apply text-muted-foreground;
+  }
+  .legal > * + * {
+    @apply mt-4;
+  }
+  .legal h2 {
+    @apply mt-12 font-heading text-xl font-bold text-antraciet sm:text-2xl;
+  }
+  .legal h2:first-child {
+    @apply mt-0;
+  }
+  .legal h3 {
+    @apply mt-8 font-heading text-lg font-bold text-antraciet;
+  }
+  .legal p {
+    @apply leading-relaxed;
+  }
+  .legal ul {
+    @apply list-disc space-y-2 pl-6 marker:text-kobalt;
+  }
+  .legal ol {
+    @apply list-decimal space-y-2 pl-6 marker:font-semibold marker:text-kobalt;
+  }
+  .legal li {
+    @apply leading-relaxed;
+  }
+  .legal li > p {
+    @apply mt-0;
+  }
+  .legal a {
+    @apply font-semibold text-kobalt underline-offset-2 hover:underline;
+  }
+  .legal strong {
+    @apply font-semibold text-antraciet;
+  }
+}
+
 @layer utilities {
   /* Beperk lopende tekst tot een prettige leesbreedte */
   .text-balance {

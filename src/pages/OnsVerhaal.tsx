@@ -97,7 +97,7 @@ export default function OnsVerhaal() {
           eyebrow="Kernwaarden"
           title={
             <>
-              Waar wij voor <Highlight color="zonnegeel">staan.</Highlight>
+              Waar wij voor staan.
             </>
           }
           intro="De vier waarden waaraan je ons herkent, in alles wat wij doen."

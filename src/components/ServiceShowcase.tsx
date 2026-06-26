@@ -30,12 +30,9 @@ export function ServiceShowcase() {
               to={`/diensten/${service.slug}`}
               className="group/row grid grid-cols-12 items-baseline gap-x-4 gap-y-2 py-6 sm:py-8"
             >
-              <span className="col-span-2 font-heading text-base font-bold tabular-nums text-kobalt sm:col-span-1">
-                {String(i + 1).padStart(2, "0")}
-              </span>
               <h3
                 className={cn(
-                  "col-span-9 font-heading text-2xl font-semibold leading-[1.05] transition-all duration-300 group-hover/row:translate-x-1.5 sm:col-span-9 sm:text-[2rem]",
+                  "col-span-11 font-heading text-2xl font-semibold leading-[1.05] transition-all duration-300 group-hover/row:translate-x-1.5 sm:text-[2rem]",
                   i === active ? "text-kobalt" : "text-antraciet",
                 )}
               >
@@ -44,7 +41,7 @@ export function ServiceShowcase() {
               <span className="col-span-1 justify-self-end text-kobalt transition-transform duration-300 group-hover/row:-translate-y-0.5 group-hover/row:translate-x-0.5">
                 <ArrowUpRight className="h-6 w-6" aria-hidden="true" />
               </span>
-              <p className="col-span-10 col-start-3 max-w-md text-sm text-muted-foreground sm:col-start-2 lg:hidden">
+              <p className="col-span-12 max-w-md text-sm text-muted-foreground lg:hidden">
                 {service.description}
               </p>
             </Link>

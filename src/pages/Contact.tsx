@@ -21,7 +21,7 @@ export default function Contact() {
         eyebrow="Contact"
         title={
           <>
-            Kennismaken? Daar houden wij <Highlight variant="underline">van</Highlight>.
+            <Highlight variant="underline">Kennismaken</Highlight>? Daar houden wij van.
           </>
         }
         intro="Heb je een vraag, een idee of gewoon zin om te sparren? Laat een bericht achter, dan plannen wij snel een vrijblijvend gesprek. Wij werken op afspraak, zodat wij echt de tijd voor je nemen."
