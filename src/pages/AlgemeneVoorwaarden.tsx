@@ -12,7 +12,7 @@ export default function AlgemeneVoorwaarden() {
         path="/algemene-voorwaarden"
       />
 
-      <PageHero eyebrow="Juridisch" title="Algemene voorwaarden" />
+      <PageHero title="Algemene voorwaarden" />
 
       <Section>
         <LegalContent>
@@ -133,7 +133,7 @@ export default function AlgemeneVoorwaarden() {
           <h2>Artikel 5. Wijziging en meerwerk</h2>
           <p>
             <strong>5.1</strong> Indien opdrachtgever de opdracht tussentijds wenst te wijzigen, zal Brand &amp; Boost deze
-            wijziging – indien mogelijk – doorvoeren.
+            wijziging waar mogelijk doorvoeren.
           </p>
           <p>
             <strong>5.2</strong> Extra werkzaamheden worden aangemerkt als meerwerk en gefactureerd tegen de geldende
@@ -169,7 +169,7 @@ export default function AlgemeneVoorwaarden() {
             livegang en/of facturatie.
           </p>
           <p>
-            <strong>6.4</strong> Na acceptatie – expliciet of stilzwijgend – vervalt het recht om alsnog correcties,
+            <strong>6.4</strong> Na acceptatie, expliciet of stilzwijgend, vervalt het recht om alsnog correcties,
             revisies of klachten in te dienen.
           </p>
           <p>

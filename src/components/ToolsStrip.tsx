@@ -21,7 +21,7 @@ export function ToolsStrip() {
               className="h-9 w-auto max-w-[75%] opacity-70 grayscale transition duration-300 group-hover/tool:opacity-100 group-hover/tool:grayscale-0"
             />
           ) : (
-            <span className="text-center font-heading text-base font-semibold text-antraciet/55 transition-colors group-hover/tool:text-antraciet">
+            <span className="text-center font-heading text-base font-semibold text-antraciet/70 transition-colors group-hover/tool:text-antraciet">
               {tool.name}
             </span>
           )}

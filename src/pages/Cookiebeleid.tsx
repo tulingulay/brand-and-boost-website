@@ -4,6 +4,7 @@ import { LegalContent } from "@/components/LegalContent";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { SEO } from "@/components/SEO";
+import { site } from "@/data/site";
 
 export default function Cookiebeleid() {
   return (
@@ -14,95 +15,60 @@ export default function Cookiebeleid() {
         path="/cookiebeleid"
       />
 
-      <PageHero eyebrow="Juridisch" title="Cookiebeleid" />
+      <PageHero title="Cookiebeleid" />
 
       <Section>
-        <LegalContent updated="26 juni 2026">
+        <LegalContent updated="23 augustus 2026">
           <p>
-            Wanneer je de website van Brand &amp; Boost bezoekt, plaatsen wij cookies en vergelijkbare technieken op jouw
-            apparaat. In dit cookiebeleid leggen we uit welke cookies wij gebruiken, voor welke doeleinden we dit doen en
-            hoe je jouw cookievoorkeuren kunt beheren.
+            Wanneer je de website van Brand &amp; Boost bezoekt, gebruiken wij cookies en vergelijkbare technieken. In
+            dit cookiebeleid leggen we uit welke dat zijn, voor welke doeleinden we ze gebruiken en hoe je jouw
+            voorkeuren beheert.
           </p>
 
           <h2>1. Wat zijn cookies?</h2>
           <p>
             Cookies zijn kleine tekstbestanden die door een website op jouw computer, tablet of smartphone worden
             geplaatst op het moment dat je de website bezoekt. In deze tekstbestanden wordt informatie opgeslagen die bij
-            een later bezoek weer kan worden herkend door de website. Waar we in deze verklaring spreken over
-            &lsquo;cookies&rsquo;, bedoelen we ook vergelijkbare volgtechnieken, zoals pixels.
+            een later bezoek weer kan worden herkend door de website. Waar we in dit beleid spreken over
+            &lsquo;cookies&rsquo;, bedoelen we ook vergelijkbare technieken, zoals opslag in je browser (localStorage).
           </p>
 
           <h2>2. Welke cookies gebruiken we en waarom?</h2>
-          <p>Wij delen de cookies die we gebruiken op in drie categorieën:</p>
 
-          <h3>A. Functionele cookies (noodzakelijk)</h3>
+          <h3>A. Functionele cookies en opslag (noodzakelijk)</h3>
           <p>
-            Deze cookies zijn technisch noodzakelijk om onze website goed te laten functioneren en gebruiksvriendelijker
-            te maken. Ze zorgen er bijvoorbeeld voor dat jouw voorkeursinstellingen worden onthouden of dat formulieren
-            correct werken. Voor het plaatsen van deze cookies is volgens de wet geen voorafgaande toestemming vereist.
+            Deze zijn technisch noodzakelijk om onze website goed te laten functioneren. Zo onthouden wij in je browser
+            welke cookiekeuze je hebt gemaakt, zodat we daar niet bij elk bezoek opnieuw om hoeven te vragen. Voor deze
+            categorie is volgens de wet geen voorafgaande toestemming vereist.
           </p>
 
-          <h3>B. Analytische cookies</h3>
+          <h3>B. Analytische cookies (alleen met jouw toestemming)</h3>
           <p>
-            Wij gebruiken analytische cookies om het gebruik van onze website te meten en te analyseren. Met deze
-            statistieken verbeteren we continu de werking, vindbaarheid en de informatie op onze website.
+            Wij gebruiken Google Analytics om het gebruik van onze website te meten en te analyseren, bijvoorbeeld welke
+            pagina&apos;s worden bezocht en hoe bezoekers de website vinden. Met die statistieken verbeteren we de
+            werking, vindbaarheid en inhoud van de website. Deze cookies plaatsen wij uitsluitend nadat je daarvoor via
+            onze cookiemelding toestemming hebt gegeven. Wij hebben Google Analytics privacyvriendelijk ingesteld: je
+            IP-adres wordt gemaskeerd en wij delen de gegevens niet met derden voor advertentiedoeleinden.
           </p>
-          <ul>
-            <li>
-              <strong>Google Analytics:</strong> Wij hebben Google Analytics privacyvriendelijk ingesteld conform de
-              richtlijnen van de Autoriteit Persoonsgegevens. Dit betekent dat jouw IP-adres wordt gemaskeerd en dat
-              Google deze gegevens niet met derden mag delen of mag gebruiken voor andere Google-diensten.
-            </li>
-          </ul>
 
           <h3>C. Tracking- en marketingcookies</h3>
           <p>
-            Deze cookies houden jouw surfgedrag bij, zodat we op basis daarvan profielen kunnen opbouwen. Hiermee kunnen
-            we onze advertenties op andere platforms (zoals Meta en Google) relevanter maken en afstemmen op jouw
-            interesses. Voor het plaatsen van deze cookies vragen we vooraf altijd jouw uitdrukkelijke toestemming via
-            onze cookiebanner.
+            Op dit moment plaatst onze website <strong>geen</strong> tracking- of marketingcookies en geen cookies van
+            advertentieplatforms of social media. Mocht dat in de toekomst veranderen, dan werken wij dit beleid bij en
+            vragen wij daarvoor eerst opnieuw jouw uitdrukkelijke toestemming via de cookiemelding.
           </p>
 
-          <h2>3. Cookies van derde partijen (social media &amp; integraties)</h2>
+          <h2>3. Hoe kun je cookies weigeren of verwijderen?</h2>
           <p>
-            Op onze website maken we gebruik van functies en integraties van externe partijen. Deze partijen kunnen eigen
-            cookies plaatsen via onze website:
-          </p>
-          <ul>
-            <li>
-              <strong>Sociale media (Meta/Facebook, Instagram, LinkedIn):</strong> Op onze website zijn knoppen of pixels
-              geplaatst om pagina&apos;s te kunnen promoten of het effect van advertenties te meten.
-            </li>
-            <li>
-              <strong>Embedded video&apos;s (YouTube, Vimeo):</strong> Wanneer er video&apos;s op onze website worden
-              afgespeeld, plaatsen deze platformen cookies om de videoprestaties te analyseren en gebruikersvoorkeuren
-              bij te houden.
-            </li>
-            <li>
-              <strong>Calendly (of vergelijkbare planningstools):</strong> Indien je via onze website rechtstreeks een
-              afspraak of online kennismaking inplant, plaatst deze software cookies die noodzakelijk zijn om de
-              boekingsfunctionaliteit aan te bieden.
-            </li>
-          </ul>
-          <p>
-            <strong>Opmerking:</strong> Brand &amp; Boost heeft geen invloed op de cookies die deze derde partijen
-            zelfstandig plaatsen. We adviseren je de privacy- en cookieverklaringen van de desbetreffende partijen te
-            raadplegen voor meer informatie.
+            Via de cookiemelding op onze website kies je zelf of je analytische cookies accepteert; weigeren heeft geen
+            invloed op de werking van de website. Daarnaast kun je cookies handmatig verwijderen of het plaatsen van
+            cookies blokkeren via de instellingen van je internetbrowser. Raadpleeg de helpfunctie van jouw browser
+            (Google Chrome, Safari, Mozilla Firefox of Microsoft Edge) voor instructies. Wil je je keuze herzien, wis
+            dan de sitegegevens van brandandboost.nl in je browser; bij je volgende bezoek verschijnt de cookiemelding
+            opnieuw.
           </p>
 
-          <h2>4. Hoe kun je cookies weigeren of verwijderen?</h2>
-          <p>
-            Je kunt via de cookiebanner op onze website zelf kiezen welke trackingcookies je accepteert. Daarnaast kun je
-            cookies handmatig verwijderen of het automatisch plaatsen van cookies blokkeren via de instellingen van je
-            internetbrowser. Raadpleeg de helpfunctie of handleiding van jouw specifieke browser (Google Chrome, Safari,
-            Mozilla Firefox of Microsoft Edge) voor instructies over het beheren van cookies.
-          </p>
-          <p>
-            <strong>Let op:</strong> Als je cookies volledig weigert of verwijdert, kan het zijn dat bepaalde
-            functionaliteiten van onze website niet meer optimaal werken.
-          </p>
-
-          <h2>5. Contact en wijzigingen</h2>
+          <h2>4. Contact en wijzigingen</h2>
           <p>
             Dit cookiebeleid kan tussentijds worden aangepast om te blijven voldoen aan veranderende wet- en regelgeving
             of wijzigingen in onze diensten. De meest actuele versie is altijd terug te vinden op onze website.
@@ -113,11 +79,11 @@ export default function Cookiebeleid() {
             gerust contact met ons op:
           </p>
           <p>
-            Brand &amp; Boost Marketing Bureau
+            {site.name} Marketing Bureau
             <br />
-            Platostraat 31, 3076 BL Rotterdam
+            {site.address.street}, {site.address.postalCode} {site.address.city}
             <br />
-            E-mail: <a href="mailto:info@brandandboost.nl">info@brandandboost.nl</a>
+            E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
           </p>
         </LegalContent>
       </Section>

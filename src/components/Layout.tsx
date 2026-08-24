@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import { CookieConsent } from "@/components/CookieConsent";
@@ -22,7 +23,10 @@ export function Layout() {
       <Header />
 
       <main id="main" className="flex-1">
-        <Outlet />
+        {/* Suspense-grens voor de lazy routes (juridisch + bedankt). */}
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <Footer />

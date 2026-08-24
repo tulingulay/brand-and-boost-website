@@ -25,10 +25,6 @@ export function Section({ id, className, innerClassName, decoration, children }:
 }
 
 interface SectionHeadingProps {
-  /** Niet meer getoond, maar behouden zodat bestaande aanroepen blijven werken. */
-  eyebrow?: string;
-  /** Niet meer getoond, maar behouden zodat bestaande aanroepen blijven werken. */
-  index?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   align?: "left" | "center";

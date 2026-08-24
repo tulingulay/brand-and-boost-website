@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { services } from "@/data/services";
 import { site } from "@/data/site";
+import { LEAD_FLAG_KEY } from "@/lib/analytics";
+import { cn } from "@/lib/utils";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -14,6 +18,7 @@ interface FormValues {
   email: string;
   telefoon: string;
   bedrijf: string;
+  onderwerp: string;
   bericht: string;
 }
 
@@ -26,7 +31,10 @@ interface FormErrors {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const emptyValues: FormValues = { naam: "", email: "", telefoon: "", bedrijf: "", bericht: "" };
+/** Volgorde waarin de focus naar het eerste foutveld springt. */
+const ERROR_FIELD_ORDER = ["naam", "email", "telefoon", "bericht"] as const;
+
+const emptyValues: FormValues = { naam: "", email: "", telefoon: "", bedrijf: "", onderwerp: "", bericht: "" };
 
 function validate(values: FormValues): FormErrors {
   const errors: FormErrors = {};
@@ -53,20 +61,22 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   // Honeypot: bots vullen dit verborgen veld vaak in; mensen niet.
   const [honeypot, setHoneypot] = useState("");
+  const navigate = useNavigate();
 
   const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
 
   function update(field: keyof FormValues, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
-    if (field in errors) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
+    // Wis de foutmelding van dit veld zodra er weer getypt wordt.
+    setErrors((prev) =>
+      prev[field as keyof FormErrors] ? { ...prev, [field]: undefined } : prev,
+    );
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // Spam? Doe alsof het gelukt is en stop.
+    // Spam? Doe alsof het gelukt is en stop (zonder meting of redirect).
     if (honeypot) {
       setStatus("success");
       return;
@@ -74,7 +84,9 @@ export function ContactForm() {
 
     const nextErrors = validate(values);
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
+    const firstError = ERROR_FIELD_ORDER.find((field) => nextErrors[field]);
+    if (firstError) {
+      document.getElementById(firstError)?.focus();
       return;
     }
 
@@ -91,7 +103,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: `Nieuw bericht via brandandboost.nl — ${values.naam}`,
+          subject: `Nieuw bericht via brandandboost.nl · ${values.naam}`,
           from_name: "Brand & Boost website",
           // Speciale Web3Forms-velden: afzendernaam + reply-to naar de aanvrager.
           name: values.naam,
@@ -100,13 +112,17 @@ export function ContactForm() {
           // Leesbare labels zoals ze in de e-mail verschijnen.
           Telefoon: values.telefoon,
           Bedrijf: values.bedrijf || "Niet opgegeven",
+          Onderwerp: values.onderwerp || "Niet gekozen",
           Bericht: values.bericht,
         }),
       });
       const data = await response.json();
       if (data.success) {
-        setStatus("success");
         setValues(emptyValues);
+        // Naar de bedankpagina; de vlag zorgt dat alleen een echte
+        // verzending daar als conversie wordt gemeten.
+        sessionStorage.setItem(LEAD_FLAG_KEY, "1");
+        navigate("/bedankt");
       } else {
         setStatus("error");
       }
@@ -132,6 +148,21 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      {/* Zonder Web3Forms-key kan er niets verzonden worden: meld dat vooraf
+          in plaats van pas na de klik. */}
+      {!accessKey && (
+        <p
+          role="alert"
+          className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive"
+        >
+          Het formulier is tijdelijk niet beschikbaar. Mail ons via{" "}
+          <a href={`mailto:${site.email}`} className="underline">
+            {site.email}
+          </a>
+          , dan reageren wij binnen één werkdag.
+        </p>
+      )}
+
       {/* Honeypot - verborgen voor mensen, niet voor bots */}
       <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
         <label htmlFor="bedrijfsnaam-extra">Laat dit veld leeg</label>
@@ -226,6 +257,31 @@ export function ContactForm() {
         </div>
       </div>
 
+      {/* Optionele dienstkeuze: helpt ons het gesprek voor te bereiden,
+          maar werpt geen drempel op. Gevoed uit de dienstenlijst zelf. */}
+      <div className="space-y-1.5">
+        <Label htmlFor="onderwerp">Waar gaat je vraag over?</Label>
+        <select
+          id="onderwerp"
+          name="onderwerp"
+          value={values.onderwerp}
+          onChange={(e) => update("onderwerp", e.target.value)}
+          className={cn(
+            "flex h-12 w-full appearance-none rounded-xl border border-input bg-card px-4 py-2 text-base text-foreground shadow-sm transition-colors",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            !values.onderwerp && "text-muted-foreground",
+          )}
+        >
+          <option value="">Maak een keuze (niet verplicht)</option>
+          {services.map((service) => (
+            <option key={service.slug} value={service.title}>
+              {service.title}
+            </option>
+          ))}
+          <option value="Iets anders">Iets anders of weet ik nog niet</option>
+        </select>
+      </div>
+
       <div className="space-y-1.5">
         <Label htmlFor="bericht">
           Bericht <span className="text-primary">*</span>
@@ -275,6 +331,14 @@ export function ContactForm() {
           Velden met <span className="text-primary">*</span> zijn verplicht.
         </p>
       </div>
+
+      <p className="text-sm text-muted-foreground">
+        Wij gebruiken je gegevens alleen om op je bericht te reageren. Lees onze{" "}
+        <Link to="/privacyverklaring" className="font-semibold text-primary underline-offset-2 hover:underline">
+          privacyverklaring
+        </Link>
+        .
+      </p>
     </form>
   );
 }

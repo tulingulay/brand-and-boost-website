@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 
+import { OPEN_COOKIE_CONSENT_EVENT } from "@/components/CookieConsent";
 import { socialIcons } from "@/components/icons";
 import { legalNav, mainNav, site, socials } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 const navLink =
   "rounded-sm text-antraciet/70 transition-colors hover:text-kobalt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-creme";
-const kicker = "text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/45";
+const kicker = "text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/70";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -83,7 +85,7 @@ export function Footer() {
 
       {/* Onderbalk */}
       <div className="border-t border-antraciet/15">
-        <div className="container flex flex-col gap-3 py-6 text-xs uppercase tracking-[0.12em] text-antraciet/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container flex flex-col gap-3 py-6 text-xs uppercase tracking-[0.12em] text-antraciet/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.name} · KvK {site.kvk}
           </p>
@@ -95,6 +97,16 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              {/* Heropent de cookiemelding, zodat een keuze te herzien is. */}
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_CONSENT_EVENT))}
+                className={cn(navLink, "uppercase")}
+              >
+                Cookievoorkeuren
+              </button>
+            </li>
           </ul>
         </div>
       </div>

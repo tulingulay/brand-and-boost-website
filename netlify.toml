@@ -1,4 +1,4 @@
-# Netlify-configuratie voor de Brand & Boost website (Vite + React SPA).
+# Netlify-configuratie voor de Brand & Boost website (Vite + React, geprerenderd).
 
 [build]
   command = "npm run build"
@@ -8,10 +8,29 @@
   # Vite 5 vereist een moderne Node; 20 LTS is stabiel op Netlify.
   NODE_VERSION = "20"
 
-# Single Page App: laat alle routes via index.html afhandelen door React Router,
-# zodat deep links en verversen op bijv. /contact of /diensten niet op een
-# 404 uitkomen.
+# Elke route wordt bij de build als statisch HTML-bestand geschreven
+# (scripts/prerender.mjs). Netlify serveert bestaande bestanden altijd vóór
+# redirects, dus deze catch-all raakt alleen URL's die echt niet bestaan:
+# die krijgen nu een echte 404-status in plaats van een soft-404 met 200.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404
+
+# HTML nooit hard cachen: elke deploy moet direct zichtbaar zijn.
+# (Bij overlappende regels wint de láátst gedefinieerde waarde, dus de
+# specifiekere /assets-regel staat hieronder.)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Vite hasht alle bestanden in /assets, dus die mogen een jaar in de cache.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

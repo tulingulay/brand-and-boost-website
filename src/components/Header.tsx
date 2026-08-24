@@ -61,8 +61,13 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <Button asChild className="hidden sm:inline-flex">
-              <Link to="/contact">Neem contact op</Link>
+            {/* Altijd zichtbaar, ook op mobiel: onder 640px met kort label
+                zodat logo, knop en menuknop samen op 320px passen. */}
+            <Button asChild>
+              <Link to="/contact">
+                <span className="sm:hidden">Kennismaken</span>
+                <span className="hidden sm:inline">Neem contact op</span>
+              </Link>
             </Button>
 
             {/* Menuknop: de "O" uit het logo, met een pijl naar beneden die

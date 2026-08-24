@@ -1,15 +1,10 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-
+import { PrimaryCtaButton } from "@/components/PrimaryCta";
 import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/ui/button";
 
 interface CTASectionProps {
   title?: string;
   text?: string;
   buttonLabel?: string;
-  /** Niet meer getoond, maar behouden zodat bestaande aanroepen blijven werken. */
-  badge?: string;
 }
 
 const reassurances = ["Vrijblijvend", "Geen verplichtingen", "Persoonlijk antwoord"];
@@ -33,12 +28,7 @@ export function CTASection({
           </Reveal>
 
           <Reveal className="col-span-12 lg:col-span-4 lg:justify-self-end lg:text-right" delay={120}>
-            <Button asChild size="lg" variant="onDark">
-              <Link to="/contact">
-                {buttonLabel}
-                <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </Link>
-            </Button>
+            <PrimaryCtaButton label={buttonLabel} variant="onDark" />
             <p className="mt-5 text-sm text-creme/70">{reassurances.join("  ·  ")}</p>
           </Reveal>
         </div>

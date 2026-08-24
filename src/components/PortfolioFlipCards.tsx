@@ -1,20 +1,37 @@
+import { useState } from "react";
+
 import type { CaseItem } from "@/data/cases";
+import { cn } from "@/lib/utils";
 
 /**
  * Eén portfolio-flip-card: de voorkant toont het (transparante) logo van de
- * klant, bij hover of focus draait de kaart om en verschijnt het werk dat wij
- * maakten. Klanten zonder beschikbaar logo tonen wij als wordmark.
+ * klant, de achterkant het werk dat wij maakten. Draait bij hover, maar ook
+ * bij klik/Enter/Spatie zodat het op touchscreens en met het toetsenbord
+ * werkt. Voor screenreaders is het een echte knop met aria-pressed en is de
+ * niet-zichtbare zijde verborgen, zodat niet beide zijden worden voorgelezen.
  */
 export function PortfolioFlipCard({ item }: { item: CaseItem }) {
+  const [flipped, setFlipped] = useState(false);
+
   return (
-    <div
-      tabIndex={0}
-      aria-label={`${item.title} — hover of focus om het werk te zien`}
-      className="group/flip aspect-[16/10] rounded-[3px] [perspective:1200px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-creme"
+    <button
+      type="button"
+      onClick={() => setFlipped((v) => !v)}
+      aria-pressed={flipped}
+      aria-label={`${item.title}, toon het werk`}
+      className="group/flip block w-full aspect-[16/10] rounded-editorial text-left [perspective:1200px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-creme"
     >
-      <div className="relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d] group-hover/flip:[transform:rotateY(180deg)] group-focus/flip:[transform:rotateY(180deg)] motion-reduce:transition-none">
+      <div
+        className={cn(
+          "relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d] group-hover/flip:[transform:rotateY(180deg)] motion-reduce:transition-none",
+          flipped && "[transform:rotateY(180deg)]",
+        )}
+      >
         {/* Voorkant: logo */}
-        <div className="absolute inset-0 flex flex-col rounded-[3px] border border-antraciet/15 bg-white [backface-visibility:hidden]">
+        <div
+          aria-hidden={flipped}
+          className="absolute inset-0 flex flex-col rounded-editorial border border-antraciet/15 bg-white [backface-visibility:hidden]"
+        >
           <div className="flex flex-1 items-center justify-center p-4">
             {item.logo ? (
               <img
@@ -29,13 +46,16 @@ export function PortfolioFlipCard({ item }: { item: CaseItem }) {
               </span>
             )}
           </div>
-          <p className="border-t border-antraciet/10 px-5 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.18em] text-antraciet/40">
-            Hover voor het werk
+          <p className="border-t border-antraciet/10 px-5 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.18em] text-antraciet/70">
+            Tik voor het werk
           </p>
         </div>
 
         {/* Achterkant: het werk */}
-        <div className="absolute inset-0 overflow-hidden rounded-[3px] border-2 border-kobalt [transform:rotateY(180deg)] [backface-visibility:hidden]">
+        <div
+          aria-hidden={!flipped}
+          className="absolute inset-0 overflow-hidden rounded-editorial border-2 border-kobalt [transform:rotateY(180deg)] [backface-visibility:hidden]"
+        >
           <img
             src={item.image}
             alt={item.imageAlt}
@@ -44,6 +64,6 @@ export function PortfolioFlipCard({ item }: { item: CaseItem }) {
           />
         </div>
       </div>
-    </div>
+    </button>
   );
 }

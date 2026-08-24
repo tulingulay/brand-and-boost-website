@@ -9,12 +9,18 @@ export interface FaqItem {
 }
 
 export interface FaqCategory {
+  /** Anker-id op de FAQ-pagina, zodat er direct naar de categorie gelinkt kan worden. */
+  id: string;
   title: string;
+  /** Slug van de bijbehorende dienst (indien van toepassing): voedt de kruislinks dienst <-> FAQ. */
+  serviceSlug?: string;
   items: FaqItem[];
 }
 
 export const faqCategories: FaqCategory[] = [
   {
+    id: "social-media",
+    serviceSlug: "social-media-management",
     title: "Social media beheer",
     items: [
       {
@@ -40,6 +46,8 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "website",
+    serviceSlug: "webdevelopment",
     title: "Website development",
     items: [
       {
@@ -65,6 +73,8 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "videocontent",
+    serviceSlug: "contentcreatie",
     title: "Video content creatie",
     items: [
       {
@@ -85,6 +95,8 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "branding",
+    serviceSlug: "branding",
     title: "Branding",
     items: [
       {
@@ -105,6 +117,8 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "seo",
+    serviceSlug: "seo-sea-aeo-geo",
     title: "SEO / content",
     items: [
       {
@@ -125,6 +139,8 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "advertenties",
+    serviceSlug: "meta-advertenties",
     title: "SEA / Meta / LinkedIn advertenties",
     items: [
       {
@@ -145,6 +161,8 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "drukwerk",
+    serviceSlug: "custom-drukwerk",
     title: "Drukwerk",
     items: [
       {
@@ -160,6 +178,7 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "onboarding",
     title: "Onboarding & opstartfase",
     items: [
       {
@@ -185,6 +204,7 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "over-ons",
     title: "Over Brand & Boost",
     items: [
       {

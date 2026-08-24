@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
-import { SectionLabel } from "@/components/SectionLabel";
 import { SEO } from "@/components/SEO";
 import { coreValues } from "@/data/values";
 
@@ -32,7 +35,6 @@ export default function OnsVerhaal() {
       />
 
       <PageHero
-        eyebrow="Ons verhaal"
         title={
           <>
             Partnerschap, creativiteit en <Highlight variant="underline">groei</Highlight>.
@@ -45,7 +47,6 @@ export default function OnsVerhaal() {
       <Section className="bg-creme">
         <div className="grid grid-cols-12 gap-x-8 gap-y-8">
           <Reveal className="col-span-12 lg:col-span-5">
-            <SectionLabel index="01">Voor wie</SectionLabel>
             <h2 className="text-h2 text-antraciet">Voor wie wij het doen.</h2>
           </Reveal>
           <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7" delay={120}>
@@ -60,9 +61,6 @@ export default function OnsVerhaal() {
 
       {/* ===== 02 — Missie & Visie (kobalt vlak) ===== */}
       <Section className="bg-kobalt text-creme">
-        <SectionLabel index="03" light>
-          Missie &amp; visie
-        </SectionLabel>
         <h2 className="max-w-2xl text-h2 text-creme">Dit drijft ons.</h2>
 
         <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-10">
@@ -93,8 +91,6 @@ export default function OnsVerhaal() {
       {/* ===== 04 — Kernwaarden ===== */}
       <Section className="bg-white">
         <SectionHeading
-          index="04"
-          eyebrow="Kernwaarden"
           title={
             <>
               Waar wij voor staan.
@@ -117,9 +113,6 @@ export default function OnsVerhaal() {
 
       {/* ===== 05 — Merkbelofte (kobalt vlak) ===== */}
       <Section className="bg-kobalt text-creme">
-        <SectionLabel index="05" light>
-          Merkbelofte
-        </SectionLabel>
         <h2 className="max-w-2xl text-h2 text-creme">Dit beloven wij je.</h2>
 
         <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-3">
@@ -131,6 +124,24 @@ export default function OnsVerhaal() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </Section>
+
+      {/* Vervolgpaden: wie ons verhaal uit heeft, wil zien hoe wij werken. */}
+      <Section className="bg-creme">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-antraciet/15 pt-10">
+          <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+            <Link to="/proces">
+              Bekijk hoe wij werken
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+          <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
+            <Link to="/diensten">
+              Ontdek onze diensten
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
         </div>
       </Section>
 

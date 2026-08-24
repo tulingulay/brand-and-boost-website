@@ -2,6 +2,7 @@ import { LegalContent } from "@/components/LegalContent";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { SEO } from "@/components/SEO";
+import { site } from "@/data/site";
 
 export default function Privacyverklaring() {
   return (
@@ -12,7 +13,7 @@ export default function Privacyverklaring() {
         path="/privacyverklaring"
       />
 
-      <PageHero eyebrow="Juridisch" title="Privacyverklaring" />
+      <PageHero title="Privacyverklaring" />
 
       <Section>
         <LegalContent updated="26 juni 2026">
@@ -25,9 +26,9 @@ export default function Privacyverklaring() {
 
           <h2>1. Wie zijn wij?</h2>
           <p>
-            Brand &amp; Boost Marketing Bureau is gevestigd aan de Platostraat 31, 3076 BL te Rotterdam, ingeschreven in
-            het handelsregister van de Kamer van Koophandel onder nummer 98080733. Je kunt ons bereiken via{" "}
-            <a href="mailto:info@brandandboost.nl">info@brandandboost.nl</a>.
+            Brand &amp; Boost Marketing Bureau is gevestigd aan de {site.address.street}, {site.address.postalCode} te{" "}
+            {site.address.city}, ingeschreven in het handelsregister van de Kamer van Koophandel onder nummer{" "}
+            {site.kvk}. Je kunt ons bereiken via <a href={`mailto:${site.email}`}>{site.email}</a>.
           </p>
 
           <h2>2. Welke persoonsgegevens verzamelen wij en waarom?</h2>
@@ -143,7 +144,7 @@ export default function Privacyverklaring() {
           </ul>
           <p>
             Indien je gebruik wilt maken van een van deze rechten, kun je een schriftelijk verzoek indienen via{" "}
-            <a href="mailto:info@brandandboost.nl">info@brandandboost.nl</a>.
+            <a href={`mailto:${site.email}`}>{site.email}</a>.
           </p>
 
           <h2>9. Vragen, opmerkingen of klachten</h2>
@@ -154,9 +155,9 @@ export default function Privacyverklaring() {
           <p>
             Brand &amp; Boost Marketing Bureau
             <br />
-            Platostraat 31, 3076 BL Rotterdam
+            {site.address.street}, {site.address.postalCode} {site.address.city}
             <br />
-            E-mail: <a href="mailto:info@brandandboost.nl">info@brandandboost.nl</a>
+            E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
           </p>
           <p>
             Mochten we er samen niet uitkomen, dan heb je wettelijk het recht om een klacht in te dienen bij de nationale

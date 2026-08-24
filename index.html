@@ -5,37 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Standaard meta; react-helmet-async overschrijft dit per pagina -->
-    <title>Brand &amp; Boost — Meer dan marketing, een partner in groei.</title>
+    <!-- Standaard meta: alleen de fallback voor de dev-server. In de build
+         vervangt scripts/prerender.mjs dit blok per pagina door de output
+         van react-helmet-async (tussen de data-ssr-meta-markers). -->
+    <!--ssr-meta-start-->
+    <title>Brand &amp; Boost · Meer dan marketing, een partner in groei.</title>
     <meta
       name="description"
       content="Brand & Boost is een marketingpartner voor ambitieuze MKB-ondernemers. Geen uurtje-factuurtje, maar partnerschap, creativiteit en echte groei."
     />
-    <meta name="theme-color" content="#187DC1" />
-
-    <!-- Open Graph (standaard; per pagina overschreven) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Brand & Boost" />
     <meta property="og:locale" content="nl_NL" />
-    <meta property="og:title" content="Brand & Boost — Meer dan marketing, een partner in groei." />
+    <meta property="og:title" content="Brand & Boost · Meer dan marketing, een partner in groei." />
     <meta
       property="og:description"
       content="Marketingpartner voor ambitieuze MKB-ondernemers. Partnerschap, creativiteit en echte groei."
     />
-    <!-- TODO: vervang og-image door definitieve afbeelding (1200x630) -->
     <meta property="og:image" content="https://brandandboost.nl/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!--ssr-meta-end-->
 
-    <!-- Google Fonts: Bricolage Grotesque (koppen) + Montserrat (broodtekst) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="theme-color" content="#187DC1" />
+
+    <!-- Fonts worden ge-selfhost via @fontsource (zie src/main.tsx); dat
+         scheelt twee externe handshakes op het kritieke pad en er gaat
+         geen bezoekersdata meer naar Google Fonts. -->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

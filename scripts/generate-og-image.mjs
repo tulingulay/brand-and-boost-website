@@ -1,128 +1,56 @@
 /**
- * Genereert een placeholder og-image.png (1200x630) in de merkkleuren,
- * zonder externe libraries. Puur als tijdelijke social-share-afbeelding.
+ * Genereert public/og-image.png (1200x630) in de huisstijl: creme vlak,
+ * het kobaltblauwe wordmerk gecentreerd, een zonnegele markeerstreep
+ * eronder (zoals de hero-onderstreping op de site) en een kobalt voetbalk.
  *
- * TODO: vervang public/og-image.png door een definitieve afbeelding met logo
- * en tekst (1200x630). Regenereren kan met:  node scripts/generate-og-image.mjs
+ * Bewust zonder losse tekstregels: de systeemfonts van een build-agent
+ * bevatten Bricolage/Montserrat niet, en een tagline in een vervangend
+ * font zou de huisstijl breken. Titel en omschrijving van een gedeelde
+ * link komen uit de OG-metatags per pagina.
+ *
+ * Lokaal draaien en het resultaat committen:
+ *   node scripts/generate-og-image.mjs
  */
-import { deflateSync } from "node:zlib";
-import { writeFileSync } from "node:fs";
+
+import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
 
-const W = 1200;
-const H = 630;
+import sharp from "sharp";
 
-// RGB-buffer (color type 2)
-const channels = 3;
-const stride = W * channels;
-const raw = Buffer.alloc(H * (1 + stride));
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-function setPixel(x, y, r, g, b) {
-  if (x < 0 || x >= W || y < 0 || y >= H) return;
-  const rowStart = y * (1 + stride) + 1;
-  const i = rowStart + x * channels;
-  raw[i] = r;
-  raw[i + 1] = g;
-  raw[i + 2] = b;
-}
+const WIDTH = 1200;
+const HEIGHT = 630;
 
-function lerp(a, b, t) {
-  return Math.round(a + (b - a) * t);
-}
+// Huisstijl (zie tailwind.config.ts)
+const CREME = "#F6F1EB";
+const KOBALT = "#187DC1";
+const ZONNEGEEL = "#D4A017";
 
-// Achtergrond: verticaal kobalt-verloop
-const top = [27, 131, 201]; // #1B83C9
-const bottom = [17, 99, 158]; // #11639E
-for (let y = 0; y < H; y++) {
-  const t = y / (H - 1);
-  const r = lerp(top[0], bottom[0], t);
-  const g = lerp(top[1], bottom[1], t);
-  const b = lerp(top[2], bottom[2], t);
-  for (let x = 0; x < W; x++) setPixel(x, y, r, g, b);
-}
+const LOGO_WIDTH = 760;
 
-function fillRect(x0, y0, w, h, [r, g, b]) {
-  for (let y = y0; y < y0 + h; y++) for (let x = x0; x < x0 + w; x++) setPixel(x, y, r, g, b);
-}
+const background = `<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${WIDTH}" height="${HEIGHT}" fill="${CREME}" />
+  <!-- Markeerstreep onder het wordmerk, zoals de hero-onderstreping -->
+  <rect x="${(WIDTH - 340) / 2}" y="392" width="340" height="16" rx="8" fill="${ZONNEGEEL}" />
+  <!-- Kobalt voetbalk -->
+  <rect x="0" y="${HEIGHT - 22}" width="${WIDTH}" height="22" fill="${KOBALT}" />
+</svg>`;
 
-function fillCircle(cx, cy, radius, [r, g, b], alpha = 1) {
-  for (let y = cy - radius; y <= cy + radius; y++) {
-    for (let x = cx - radius; x <= cx + radius; x++) {
-      const dx = x - cx;
-      const dy = y - cy;
-      if (dx * dx + dy * dy <= radius * radius) {
-        if (alpha >= 1) setPixel(x, y, r, g, b);
-        else {
-          const row = y * (1 + stride) + 1 + x * channels;
-          if (x < 0 || x >= W || y < 0 || y >= H) continue;
-          raw[row] = lerp(raw[row], r, alpha);
-          raw[row + 1] = lerp(raw[row + 1], g, alpha);
-          raw[row + 2] = lerp(raw[row + 2], b, alpha);
-        }
-      }
-    }
-  }
-}
+const logo = await sharp(path.join(root, "public", "logo-blue.png"))
+  .resize({ width: LOGO_WIDTH })
+  .toBuffer();
+const logoMeta = await sharp(logo).metadata();
 
-const white = [255, 255, 255];
-const zonnegeel = [212, 160, 23];
+await sharp(Buffer.from(background))
+  .composite([
+    {
+      input: logo,
+      left: Math.round((WIDTH - LOGO_WIDTH) / 2),
+      top: Math.round((HEIGHT - (logoMeta.height ?? 180)) / 2) - 40,
+    },
+  ])
+  .png()
+  .toFile(path.join(root, "public", "og-image.png"));
 
-// Decoratieve cirkels
-fillCircle(1050, 130, 150, white, 0.1);
-fillCircle(150, 540, 120, zonnegeel, 0.16);
-
-// Oplopende staven (groei) linksonder
-const baseline = 470;
-const bars = [
-  { h: 90, c: [255, 255, 255], a: 0.55 },
-  { h: 150, c: [255, 255, 255], a: 0.8 },
-  { h: 210, c: zonnegeel, a: 1 },
-  { h: 280, c: white, a: 1 },
-];
-let bx = 120;
-for (const bar of bars) {
-  if (bar.a >= 1) fillRect(bx, baseline - bar.h, 90, bar.h, bar.c);
-  else for (let y = baseline - bar.h; y < baseline; y++) for (let x = bx; x < bx + 90; x++) {
-    const row = y * (1 + stride) + 1 + x * channels;
-    raw[row] = lerp(raw[row], bar.c[0], bar.a);
-    raw[row + 1] = lerp(raw[row + 1], bar.c[1], bar.a);
-    raw[row + 2] = lerp(raw[row + 2], bar.c[2], bar.a);
-  }
-  bx += 120;
-}
-
-// Zonnegeel accentstreep
-fillRect(120, baseline + 24, 450, 8, zonnegeel);
-
-// PNG-encoder
-function crc32(buf) {
-  let c = ~0;
-  for (let i = 0; i < buf.length; i++) {
-    c ^= buf[i];
-    for (let k = 0; k < 8; k++) c = (c >>> 1) ^ (0xedb88320 & -(c & 1));
-  }
-  return ~c >>> 0;
-}
-
-function chunk(type, data) {
-  const len = Buffer.alloc(4);
-  len.writeUInt32BE(data.length, 0);
-  const typeBuf = Buffer.from(type, "ascii");
-  const crcBuf = Buffer.alloc(4);
-  crcBuf.writeUInt32BE(crc32(Buffer.concat([typeBuf, data])), 0);
-  return Buffer.concat([len, typeBuf, data, crcBuf]);
-}
-
-const sig = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
-const ihdr = Buffer.alloc(13);
-ihdr.writeUInt32BE(W, 0);
-ihdr.writeUInt32BE(H, 4);
-ihdr[8] = 8; // bit depth
-ihdr[9] = 2; // color type RGB
-const idat = deflateSync(raw, { level: 9 });
-const png = Buffer.concat([sig, chunk("IHDR", ihdr), chunk("IDAT", idat), chunk("IEND", Buffer.alloc(0))]);
-
-const out = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "og-image.png");
-writeFileSync(out, png);
-console.log(`og-image.png geschreven (${png.length} bytes) -> ${out}`);
+console.log("public/og-image.png opnieuw gegenereerd (1200x630).");

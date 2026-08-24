@@ -9,11 +9,13 @@ export const site = {
   domain: "https://brandandboost.nl",
   tagline: "Meer dan marketing, een partner in groei.",
   email: "info@brandandboost.nl",
-  // Telefoon in verschillende notaties
-  phoneE164: "+31621411122",
-  phoneDisplay: "06 21 41 11 22",
-  phoneRaw: "0621411122",
   kvk: "98080733",
+  /**
+   * Agenda-link (Calendly/Cal.com). Nog leeg: zodra hier een URL staat,
+   * verwijzen de primaire CTA's automatisch naar de agenda in plaats van
+   * naar het contactformulier (zie PrimaryCtaButton).
+   */
+  schedulingUrl: "" as string,
   address: {
     street: "Platostraat 31",
     postalCode: "3076 BL",

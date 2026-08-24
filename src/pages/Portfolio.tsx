@@ -1,7 +1,7 @@
+import { CaseStory } from "@/components/CaseStory";
 import { CTASection } from "@/components/CTASection";
 import { Highlight } from "@/components/Highlight";
 import { PageHero } from "@/components/PageHero";
-import { PortfolioFlipCard } from "@/components/PortfolioFlipCards";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { SEO } from "@/components/SEO";
@@ -19,7 +19,6 @@ export default function Portfolio() {
       />
 
       <PageHero
-        eyebrow="Portfolio"
         title={
           <>
             Werk waar wij <Highlight variant="underline">trots</Highlight> op zijn.
@@ -38,34 +37,7 @@ export default function Portfolio() {
         <ol className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
           {cases.map((item, index) => (
             <li key={item.id}>
-              <Reveal>
-                <article className="grid grid-cols-12 items-start gap-x-8 gap-y-6">
-                  <div className={cn("col-span-12 lg:col-span-6", index % 2 === 1 && "lg:order-2 lg:col-start-7")}>
-                    <PortfolioFlipCard item={item} />
-                  </div>
-                  <div className={cn("col-span-12 lg:col-span-5", index % 2 === 1 ? "lg:order-1" : "lg:col-start-8")}>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-kobalt">{item.client}</p>
-                    <h3 className="mt-3 font-heading text-2xl font-bold text-antraciet sm:text-3xl">{item.title}</h3>
-
-                    <div className="mt-6 space-y-5">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">De vraag</p>
-                        <p className="mt-1.5 text-muted-foreground">{item.challenge}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">Onze boost</p>
-                        <p className="mt-1.5 text-muted-foreground">{item.approach}</p>
-                      </div>
-                      <div className="border-t-2 border-zonnegeel pt-4">
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-antraciet/45">
-                          Het resultaat
-                        </p>
-                        <p className="mt-1.5 font-heading text-lg font-semibold text-kobalt">{item.result}</p>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </Reveal>
+              <CaseStory item={item} index={index} />
             </li>
           ))}
         </ol>
@@ -95,7 +67,7 @@ export default function Portfolio() {
                     {review.quote}
                     <span aria-hidden="true" className="text-kobalt">&rdquo;</span>
                   </blockquote>
-                  <figcaption className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/55">
+                  <figcaption className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/70">
                     {review.name} · {review.company}
                   </figcaption>
                 </div>

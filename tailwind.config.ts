@@ -33,7 +33,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["'Bricolage Grotesque'", "system-ui", "sans-serif"],
+        // Self-hosted via @fontsource; het variabele bestand registreert
+        // zich als "Bricolage Grotesque Variable".
+        heading: ["'Bricolage Grotesque Variable'", "'Bricolage Grotesque'", "system-ui", "sans-serif"],
         sans: ["Montserrat", "system-ui", "sans-serif"],
       },
       fontSize: {
@@ -104,6 +106,8 @@ export default {
         },
       },
       borderRadius: {
+        // Editorial signatuur: vrijwel vlakke hoeken op kaarten en knoppen.
+        editorial: "3px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 0.35rem)",
         sm: "calc(var(--radius) - 0.6rem)",

@@ -8,6 +8,10 @@ export interface Review {
   quote: string;
   name: string;
   company: string;
+  /** Functie/rol, alleen tonen als die bekend is. */
+  role?: string;
+  /** Bron van de review (bijv. "Google"), alleen tonen als die bekend is. */
+  source?: string;
 }
 
 export const reviews: Review[] = [

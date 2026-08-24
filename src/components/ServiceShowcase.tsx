@@ -13,7 +13,16 @@ import { cn } from "@/lib/utils";
  */
 export function ServiceShowcase() {
   const [active, setActive] = useState(0);
+  // Vorige beeld blijft even in de DOM voor de crossfade; de overige zes
+  // worden niet gerenderd (scheelt laden van alle dienstfoto's tegelijk).
+  const [prev, setPrev] = useState<number | null>(null);
   const current = services[active];
+
+  function activate(i: number) {
+    if (i === active) return;
+    setPrev(active);
+    setActive(i);
+  }
 
   return (
     <div className="grid grid-cols-12 gap-x-8">
@@ -23,8 +32,8 @@ export function ServiceShowcase() {
           <li
             key={service.slug}
             className="border-b border-antraciet/15"
-            onMouseEnter={() => setActive(i)}
-            onFocus={() => setActive(i)}
+            onMouseEnter={() => activate(i)}
+            onFocus={() => activate(i)}
           >
             <Link
               to={`/diensten/${service.slug}`}
@@ -53,17 +62,22 @@ export function ServiceShowcase() {
       <div className="hidden lg:col-span-4 lg:col-start-9 lg:block">
         <div className="sticky top-28">
           <div className="relative aspect-[4/5] overflow-hidden border border-antraciet/15">
-            {services.map((service, i) => (
-              <img
-                key={service.slug}
-                src={service.image}
-                alt=""
-                className={cn(
-                  "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
-                  i === active ? "opacity-100" : "opacity-0",
-                )}
-              />
-            ))}
+            {services.map((service, i) => {
+              // Alleen het actieve en het vorige beeld staan in de DOM.
+              if (i !== active && i !== prev) return null;
+              return (
+                <img
+                  key={service.slug}
+                  src={service.image}
+                  alt=""
+                  decoding="async"
+                  className={cn(
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+                    i === active ? "opacity-100" : "opacity-0",
+                  )}
+                />
+              );
+            })}
           </div>
           <p className="mt-5 text-muted-foreground">{current.description}</p>
           <Link

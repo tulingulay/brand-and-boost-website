@@ -4,9 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
+import { PrimaryCtaButton } from "@/components/PrimaryCta";
 import { Highlight } from "@/components/Highlight";
 import { Reveal } from "@/components/Reveal";
-import { SectionLabel } from "@/components/SectionLabel";
+import { Section } from "@/components/Section";
 import { ServiceFlipCards } from "@/components/ServiceFlipCards";
 import { SEO } from "@/components/SEO";
 import { cases } from "@/data/cases";
@@ -38,12 +39,7 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-10">
             <Reveal className="col-span-12 lg:col-span-7" delay={120}>
               <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                <Button asChild size="lg">
-                  <Link to="/contact">
-                    Plan een strategiegesprek
-                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
-                  </Link>
-                </Button>
+                <PrimaryCtaButton />
                 <Button asChild variant="link" className="h-auto px-0 text-base text-antraciet">
                   <Link to="/diensten">
                     Bekijk onze diensten
@@ -55,7 +51,7 @@ export default function Home() {
 
             <Reveal className="col-span-12 lg:col-span-4 lg:col-start-9" delay={200}>
               <div className="border-t-2 border-kobalt pt-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/50">Onze filosofie</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/70">Onze filosofie</p>
                 <p className="mt-3 font-heading text-2xl font-semibold leading-tight text-antraciet sm:text-[1.7rem]">
                   Jij de business, wij de boost.
                 </p>
@@ -65,12 +61,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== Klantlogo's: vroeg vertrouwen, alleen echte klanten ===== */}
+      <section className="bg-creme">
+        <div className="container pb-section-sm">
+          <Reveal>
+            <div className="border-t border-antraciet/15 pt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-antraciet/70">Zij gingen je voor</p>
+              <ul className="mt-6 flex flex-wrap items-center gap-x-12 gap-y-6">
+                {cases.map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      to="/portfolio"
+                      aria-label={`${item.title}, bekijk de case in het portfolio`}
+                      className="inline-block opacity-80 transition-opacity hover:opacity-100"
+                    >
+                      {item.logo ? (
+                        <img src={item.logo} alt={item.title} loading="lazy" className="h-10 w-auto sm:h-12" />
+                      ) : (
+                        <span className="font-heading text-lg font-bold text-antraciet">{item.title}</span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== 01 — Over ons ===== */}
       <section className="bg-creme">
         <div className="container pb-section">
           <div className="grid grid-cols-12 gap-x-8 gap-y-8 border-t border-antraciet/15 pt-12 sm:pt-16">
             <Reveal className="col-span-12 lg:col-span-5">
-              <SectionLabel index="01">Over ons</SectionLabel>
               <h2 className="text-h2 text-antraciet">
                 Een marketingpartner die met je <Highlight color="zonnegeel">meegroeit.</Highlight>
               </h2>
@@ -101,13 +124,9 @@ export default function Home() {
       </section>
 
       {/* ===== 02 — Diensten (kobalt vlak) ===== */}
-      <section className="bg-kobalt text-creme">
-        <div className="container py-section">
+      <Section className="bg-kobalt text-creme">
           <div className="grid grid-cols-12 gap-x-8 gap-y-6">
             <Reveal className="col-span-12 lg:col-span-7">
-              <SectionLabel index="02" light>
-                Diensten
-              </SectionLabel>
               <h2 className="text-h2 text-creme">
                 Diensten die je merk laten groeien.
               </h2>
@@ -126,15 +145,12 @@ export default function Home() {
               </Link>
             </Button>
           </Reveal>
-        </div>
-      </section>
+      </Section>
 
       {/* ===== 03 — Waarom Brand & Boost ===== */}
-      <section className="bg-creme">
-        <div className="container py-section">
+      <Section className="bg-creme">
           <div className="grid grid-cols-12 gap-x-8 gap-y-12">
             <Reveal className="col-span-12 lg:col-span-5">
-              <SectionLabel index="03">Waarom Brand &amp; Boost</SectionLabel>
               <h2 className="text-h2 text-antraciet">Waar je ons aan herkent.</h2>
               <p className="mt-6 max-w-md font-heading text-xl font-semibold leading-snug text-kobalt">
                 Wij hoeven niet de grootste te zijn. Wél de stabielste en meest betrokken.
@@ -154,15 +170,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* ===== 04 — Portfolio ===== */}
-      <section className="bg-creme">
-        <div className="container py-section">
+      <Section className="bg-creme">
           <div className="grid grid-cols-12 gap-x-8 gap-y-6">
             <Reveal className="col-span-12 lg:col-span-7">
-              <SectionLabel index="04">Portfolio</SectionLabel>
               <h2 className="text-h2 text-antraciet">Bewijs boven beloftes.</h2>
             </Reveal>
           </div>
@@ -171,7 +184,7 @@ export default function Home() {
             {featuredCases.map((item, index) => (
               <Reveal key={item.id} delay={(index % 2) * 100}>
                 <Link to="/portfolio" className="group/case block">
-                  <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[3px] border border-antraciet/15 bg-white p-8 transition-colors duration-300 group-hover/case:border-kobalt">
+                  <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-editorial border border-antraciet/15 bg-white p-8 transition-colors duration-300 group-hover/case:border-kobalt">
                     {item.logo ? (
                       <img
                         src={item.logo}
@@ -199,16 +212,11 @@ export default function Home() {
               </Link>
             </Button>
           </Reveal>
-        </div>
-      </section>
+      </Section>
 
       {/* ===== 05 — Reviews (zonnegeel vlak) ===== */}
-      <section className="bg-zonnegeel text-antraciet">
-        <div className="container py-section">
+      <Section className="bg-zonnegeel text-antraciet">
           <div className="grid grid-cols-12 gap-x-8 gap-y-8">
-            <Reveal className="col-span-12 lg:col-span-3">
-              <SectionLabel index="05">Reviews</SectionLabel>
-            </Reveal>
             <Reveal className="col-span-12 lg:col-span-8 lg:col-start-4" delay={120}>
               <span aria-hidden="true" className="font-heading text-index font-bold leading-[0.5] text-kobalt">
                 &ldquo;
@@ -217,7 +225,7 @@ export default function Home() {
                 {reviews[0].quote}
                 <span aria-hidden="true" className="text-kobalt">&rdquo;</span>
               </blockquote>
-              <figcaption className="mt-7 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/55">
+              <figcaption className="mt-7 text-sm font-semibold uppercase tracking-[0.16em] text-antraciet/70">
                 {reviews[0].name} · {reviews[0].company}
               </figcaption>
               <Button asChild variant="link" className="mt-7 h-auto px-0 text-base text-antraciet">
@@ -228,15 +236,12 @@ export default function Home() {
               </Button>
             </Reveal>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* ===== 06 — Veelgestelde vragen (wit vlak) ===== */}
-      <section className="bg-white">
-        <div className="container py-section">
+      <Section className="bg-white">
           <div className="grid grid-cols-12 gap-x-8 gap-y-10">
             <Reveal className="col-span-12 lg:col-span-4">
-              <SectionLabel index="06">Veelgestelde vragen</SectionLabel>
               <h2 className="text-h2 text-antraciet">Goed om te weten.</h2>
               <Button asChild variant="link" className="mt-6 h-auto px-0 text-base text-antraciet">
                 <Link to="/faq">
@@ -257,8 +262,7 @@ export default function Home() {
               </Accordion>
             </Reveal>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* ===== Afsluitende CTA ===== */}
       <CTASection />

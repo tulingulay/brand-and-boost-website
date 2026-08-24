@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Search, X } from "lucide-react";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -7,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { SEO } from "@/components/SEO";
 import { FaqJsonLd } from "@/components/StructuredData";
 import { faqCategories, faqs } from "@/data/faq";
+import { services } from "@/data/services";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -46,21 +48,21 @@ export default function Faq() {
           <Reveal delay={160}>
             <form role="search" onSubmit={(event) => event.preventDefault()} className="group/search mt-8 max-w-2xl">
               <div className="flex items-center gap-3 border-2 border-antraciet/15 bg-white px-5 transition-colors focus-within:border-kobalt">
-                <Search className="h-5 w-5 shrink-0 text-antraciet/40" aria-hidden="true" />
+                <Search className="h-5 w-5 shrink-0 text-antraciet/70" aria-hidden="true" />
                 <input
                   type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Zoek een onderwerp of vraag…"
                   aria-label="Zoek in veelgestelde vragen"
-                  className="w-full bg-transparent py-4 font-heading text-lg text-antraciet placeholder:font-sans placeholder:text-base placeholder:font-normal placeholder:text-antraciet/40 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+                  className="w-full bg-transparent py-4 font-heading text-lg text-antraciet placeholder:font-sans placeholder:text-base placeholder:font-normal placeholder:text-antraciet/70 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
                 />
                 {query && (
                   <button
                     type="button"
                     onClick={() => setQuery("")}
                     aria-label="Zoekopdracht wissen"
-                    className="shrink-0 rounded-full p-1 text-antraciet/50 transition-colors hover:text-kobalt"
+                    className="shrink-0 rounded-full p-1 text-antraciet/70 transition-colors hover:text-kobalt"
                   >
                     <X className="h-5 w-5" aria-hidden="true" />
                   </button>
@@ -117,25 +119,43 @@ export default function Faq() {
                   .
                 </p>
               ) : (
-                results.map(({ category, ci, items }) => (
-                  <Reveal key={category.title}>
-                    <div>
-                      <h2 className="font-heading text-2xl font-bold text-antraciet">{category.title}</h2>
-                      <Accordion type="single" collapsible className="mt-5 border-t border-antraciet/15">
-                        {items.map((faq, i) => (
-                          <AccordionItem key={faq.question} value={`${ci}-${i}`} className="border-antraciet/15">
-                            <AccordionTrigger className="py-5 text-left font-heading text-lg hover:no-underline">
-                              {faq.question}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-base leading-relaxed text-muted-foreground">
-                              {faq.answer}
-                            </AccordionContent>
-                          </AccordionItem>
-                        ))}
-                      </Accordion>
-                    </div>
-                  </Reveal>
-                ))
+                results.map(({ category, ci, items }) => {
+                  const service = category.serviceSlug
+                    ? services.find((s) => s.slug === category.serviceSlug)
+                    : undefined;
+                  return (
+                    <Reveal key={category.title}>
+                      {/* Anker zodat dienstpagina's direct naar deze categorie linken. */}
+                      <div id={category.id}>
+                        <h2 className="font-heading text-2xl font-bold text-antraciet">{category.title}</h2>
+                        <Accordion type="single" collapsible className="mt-5 border-t border-antraciet/15">
+                          {items.map((faq, i) => (
+                            <AccordionItem key={faq.question} value={`${ci}-${i}`} className="border-antraciet/15">
+                              <AccordionTrigger className="py-5 text-left font-heading text-lg hover:no-underline">
+                                {faq.question}
+                              </AccordionTrigger>
+                              <AccordionContent className="text-base leading-relaxed text-muted-foreground">
+                                {faq.answer}
+                              </AccordionContent>
+                            </AccordionItem>
+                          ))}
+                        </Accordion>
+                        {service && (
+                          <Link
+                            to={`/diensten/${service.slug}`}
+                            className="group/dienst mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary underline-offset-[6px] hover:underline"
+                          >
+                            Meer over {service.title.toLowerCase()}
+                            <ArrowRight
+                              className="h-4 w-4 transition-transform group-hover/dienst:translate-x-0.5"
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        )}
+                      </div>
+                    </Reveal>
+                  );
+                })
               )}
             </div>
           </div>
@@ -165,7 +185,7 @@ function TopicChip({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "rounded-[3px] px-3.5 py-1.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-creme",
+        "rounded-editorial px-3.5 py-1.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kobalt focus-visible:ring-offset-2 focus-visible:ring-offset-creme",
         active
           ? "bg-kobalt text-creme"
           : "border border-antraciet/20 text-antraciet/70 hover:border-kobalt hover:text-kobalt",
