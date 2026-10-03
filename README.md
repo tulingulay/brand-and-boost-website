@@ -29,20 +29,50 @@ npm run build
 npm run preview
 ```
 
-Teksten aanpassen doe je direct in de HTML-bestanden in `site/`. Let op:
-header en footer staan op elke pagina; een menu-wijziging dus overal
-doorvoeren (of even zoeken-en-vervangen over `site/*.html`).
+---
 
-## Formulieren
+## Projectstructuur
 
-Drie formulieren (`gratis-audit`, `kennismaking-coaching`, `contact`)
-versturen via **Web3Forms** naar info@brandandboost.nl, met honeypot
-(`bot-veld`) en doorverwijzing naar `/bedankt` (daar vuurt het
-conversie-event). De key komt uit de environment variable
-`WEB3FORMS_KEY` (of het oude `VITE_WEB3FORMS_KEY`) en wordt bij de build
-ingevuld; zonder key tonen de formulieren een nette mail-fallback.
+```
+.
+├── index.html                # Basis-HTML, fonts, standaard meta
+├── public/                   # Statische bestanden
+│   ├── logo.svg              # TODO: placeholder-logo
+│   ├── favicon.svg
+│   ├── hero-illustration.svg # TODO: placeholder hero-beeld
+│   ├── og-image.png          # TODO: placeholder social-share-afbeelding
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── cases/                # TODO: placeholder casebeelden
+├── scripts/
+│   └── generate-og-image.mjs # Hergenereert de placeholder og-image
+└── src/
+    ├── main.tsx              # App-entry (Router + Helmet)
+    ├── App.tsx               # Routing
+    ├── index.css             # Design-tokens (kleuren als CSS-variabelen)
+    ├── components/
+    │   ├── ui/               # shadcn/ui-componenten
+    │   └── ...               # Header, Footer, SEO, kaarten, ContactForm, ...
+    ├── data/                 # Herhalende, getypte lijsten (zie hieronder)
+    └── pages/                # Eén bestand per pagina
+```
 
-## Cookies en meting
+### Teksten aanpassen
+
+- **Losse zichtbare teksten** (koppen, alinea's, knoplabels) staan als gewone
+  tekst in de JSX van de pagina's en componenten — zo zijn ze direct in de
+  visuele editor van Lovable aan te passen.
+- **Herhalende, gestructureerde lijsten** staan als getypte arrays in `src/data/`:
+  - `services.ts` — de 7 diensten
+  - `process.ts` — de 4 processtappen
+  - `values.ts` — de kernwaarden
+  - `faq.ts` — veelgestelde vragen (voedt ook de FAQ-structured-data)
+  - `cases.ts` — portfolio-cases
+  - `reviews.ts` — klantreviews
+  - `site.ts` — contactgegevens, navigatie en social links
+
+---
+
 
 `site.js` toont de cookiemelding (zelfde localStorage-sleutel als de
 vorige site, dus eerdere keuzes blijven gelden) en stuurt Google
