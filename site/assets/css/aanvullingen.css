@@ -1,0 +1,63 @@
+/* Brand & Boost — aanvullingen.css
+   Aanvullingen op site.css (die blijft letterlijk gelijk aan het
+   referentieontwerp): self-hosted fonts, echte beelden in de
+   scherm-vlakken, de cookiemelding en de Cookievoorkeuren-knop. */
+
+/* ---------- Fonts: zelf gehost (AVG), voorheen Google Fonts ---------- */
+@font-face {
+  font-family: "Montserrat"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/assets/fonts/montserrat-v31-latin-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat"; font-style: normal; font-weight: 800; font-display: swap;
+  src: url("/assets/fonts/montserrat-v31-latin-800.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat"; font-style: italic; font-weight: 800; font-display: swap;
+  src: url("/assets/fonts/montserrat-v31-latin-800italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/assets/fonts/figtree-v9-latin-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("/assets/fonts/figtree-v9-latin-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("/assets/fonts/figtree-v9-latin-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/assets/fonts/figtree-v9-latin-700.woff2") format("woff2");
+}
+
+/* ---------- Echte casebeelden in het scherm-vlak (16:10, gevuld) ---------- */
+.scherm img { width: 100%; height: 100%; object-fit: cover; grid-row: 1 / -1; }
+
+/* ---------- Cookiemelding (stijl van het referentieontwerp) ---------- */
+.cookiemelding {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90;
+  max-width: 560px; background: var(--wit); color: var(--diepblauw);
+  border: 2px solid var(--diepblauw); border-radius: var(--rond-m);
+  padding: 24px; box-shadow: var(--schaduw-blok);
+}
+@media (min-width: 640px) { .cookiemelding { left: 24px; right: auto; padding: 28px; } }
+.cookiemelding h2 { font: 700 18px/1.3 var(--f-kop); letter-spacing: -0.005em; }
+.cookiemelding p { margin-top: 10px; font-size: 15px; line-height: 1.55; }
+.cookiemelding p a { color: var(--blauw); }
+.cookiemelding__acties { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+.cookiemelding .knop { min-height: 48px; font-size: 16px; }
+.cookiemelding .knop .merk { width: 28px; height: 28px; }
+.cookiemelding .link { background: none; border: 0; padding: 0; cursor: pointer; font-size: 16px; }
+
+/* ---------- Cookievoorkeuren-knop in de footer ---------- */
+.voet__onder .cookievoorkeuren {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+}
+.voet__onder .cookievoorkeuren:hover { color: var(--blauw); text-decoration-thickness: 2px; }
+
+/* ---------- Formulierfout (gebruikt de bestaande meldingstijl) ---------- */
+.melding[hidden] { display: none; }

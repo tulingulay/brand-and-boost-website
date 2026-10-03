@@ -1,0 +1,101 @@
+# Netlify-configuratie voor de Brand & Boost website (statische site, nieuw ontwerp).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ===== Redirects: oude URL's naar de nieuwe pagina's (permanent) =====
+[[redirects]]
+  from = "/diensten"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ons-verhaal"
+  to = "/over-ons"
+  status = 301
+
+[[redirects]]
+  from = "/proces"
+  to = "/gratis-audit"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/cases"
+  status = 301
+
+# Losse dienstpagina's van de oude site
+[[redirects]]
+  from = "/diensten/social-media-management"
+  to = "/social-media"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/webdevelopment"
+  to = "/websites"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/branding"
+  to = "/ook-mogelijk#branding"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/contentcreatie"
+  to = "/ook-mogelijk#video"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/copywriting"
+  to = "/ook-mogelijk#copy"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/seo-sea-aeo-geo"
+  to = "/ook-mogelijk#vindbaarheid"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/meta-advertenties"
+  to = "/ook-mogelijk#advertenties"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/custom-drukwerk"
+  to = "/ook-mogelijk#drukwerk"
+  status = 301
+
+# Onbekende URL's krijgen een echte 404 (Netlify serveert bestaande
+# bestanden altijd vóór redirects).
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# ===== Headers =====
+# HTML nooit hard cachen: elke deploy moet direct zichtbaar zijn.
+# (Bij overlappende regels wint de láátst gedefinieerde waarde.)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Beelden, css en js mogen een uur in de cache.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Fontbestanden wijzigen vrijwel nooit.
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

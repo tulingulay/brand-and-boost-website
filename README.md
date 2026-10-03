@@ -1,40 +1,32 @@
-# Brand & Boost — website
+# Brand & Boost · website (nieuw ontwerp)
 
-Meertalige-vrije (alleen Nederlands), productieklare marketingwebsite voor
-**Brand & Boost**, een marketingbureau voor ambitieuze MKB-ondernemers.
+Statische website voor **Brand & Boost**: gewone HTML en CSS, zonder
+framework. De bron van het ontwerp is het referentieontwerp van Pien
+(blauw #006dbe, geel alleen voor de audit-knop, Montserrat + Figtree).
 
-Gebouwd op de Lovable-stack, zodat het schoon importeert in [Lovable](https://lovable.dev)
-en daar visueel bewerkbaar blijft:
+## Structuur
 
-- **React 18** + **TypeScript** + **Vite**
-- **Tailwind CSS** + **shadcn/ui**
-- **React Router** (meerdere pagina's)
-- **react-helmet-async** (SEO per pagina)
+```
+site/                      De site zelf: 15 pagina's, klaar om te bouwen
+  assets/css/site.css      Alle opmaak uit het referentieontwerp (letterlijk)
+  assets/css/aanvullingen.css  Self-hosted fonts, cookiemelding, casebeelden
+  assets/js/site.js        Cookiemelding, GA4 Consent Mode, formulieren, menu's
+  assets/fonts/            Montserrat + Figtree als woff2 (AVG: geen Google Fonts)
+  assets/img/              Logo, favicon, og-beeld, foto's en casebeelden
+scripts/build-site.mjs     Build: site/ -> dist/ + geheimen + sitemap
+netlify.toml               Redirects (oude URL's!), headers, build
+```
 
----
-
-## Lokaal draaien
-
-> Vereist **Node.js 18+** (ontwikkeld en getest met Node 24 LTS) en npm.
+## Werken aan de site
 
 ```bash
-# 1. Dependencies installeren
-npm install
+# Lokaal bekijken (zonder geheimen; formulieren tonen dan een mail-fallback)
+npm run dev          # -> http://localhost:3000
 
-# 2. Omgevingsvariabelen instellen (voor het contactformulier)
-cp .env.example .env
-#    -> open .env en vul VITE_WEB3FORMS_KEY in (zie TODO-checklist)
-
-# 3. Ontwikkelserver starten
-npm run dev
-#    -> http://localhost:8080
-
-# Productie-build maken en lokaal bekijken
+# Productie-build en bekijken
+cp .env.example .env     # eenmalig; vul WEB3FORMS_KEY (en evt. GA4_ID) in
 npm run build
 npm run preview
-
-# Types controleren
-npm run typecheck
 ```
 
 ---
@@ -82,70 +74,22 @@ npm run typecheck
 ---
 
 
-## Beeld & assets
+`site.js` toont de cookiemelding (zelfde localStorage-sleutel als de
+vorige site, dus eerdere keuzes blijven gelden) en stuurt Google
+Analytics 4 aan via Consent Mode v2: zonder `GA4_ID` wordt er niets
+geladen, en mét ID wordt er pas gemeten na "Akkoord". De keuze is te
+herzien via "Cookievoorkeuren" onderin de footer.
 
-- Bewaar afbeeldingen lokaal in `public/` (geen externe afbeeldingen hotlinken).
-- Voor illustraties: [undraw.co](https://undraw.co) (in te kleuren in de
-  merkkleuren) of vrije stockfoto's. Geen teamfoto's nodig.
-- Afbeeldingen worden lazy geladen en hebben beschrijvende alt-teksten.
+## Oude URL's
 
-### Cookiebanner
+Alle URL's van de vorige site (o.a. `/diensten/...`, `/portfolio`,
+`/proces`, `/ons-verhaal`) hebben een 301-redirect in `netlify.toml`.
+Nieuwe pagina verwijderen of hernoemen? Voeg daar dan een redirect toe.
 
-Er staat **geen** tracking of analytics op de site, dus een cookiebanner is niet
-nodig. Zodra je analytics, marketing-pixels of andere tracking toevoegt, is een
-cookiebanner (en een bijgewerkte privacyverklaring) wél verplicht.
+## Nog aan te leveren (zie ook het overdrachtsverslag)
 
----
-
-## SEO & AI-vindbaarheid
-
-Al ingebouwd:
-
-- Unieke `<title>` en `<meta name="description">` per pagina (`src/components/SEO.tsx`).
-- `<html lang="nl">`, semantische structuur (één `<h1>` per pagina), Open Graph & Twitter Cards.
-- Canonical-tags op het domein `https://brandandboost.nl`.
-- `public/robots.txt` (verwijst naar de sitemap) en `public/sitemap.xml`.
-- JSON-LD structured data: **Organization + LocalBusiness** (op elke pagina) en
-  **FAQPage** (op de FAQ-pagina, gevoed vanuit `src/data/faq.ts`).
-
-> Controleer na livegang het domein in de SEO-config (`src/data/site.ts` →
-> `domain`) en in `index.html` / `sitemap.xml` / `robots.txt`.
-
-### Merkkleuren
-
-| Naam | Hex | Tailwind-klasse |
-|---|---|---|
-| Kobaltblauw | `#187DC1` | `kobalt` / `primary` |
-| Zonnegeel | `#D4A017` | `zonnegeel` |
-| Kastanjebruin | `#6E3F27` | `kastanje` |
-| Creme | `#F6F1EB` | `creme` / `background` |
-| Antraciet | `#2D2D2D` | `antraciet` / `foreground` |
-
-> `primary` is een fractie donkerder dan de heldere merk-kobalt, zodat witte
-> tekst op knoppen en links overal WCAG AA-contrast (4.5:1) halen.
-
----
-
-## Naar GitHub pushen
-
-```bash
-git init
-git add .
-git commit -m "Brand & Boost website"
-git branch -M main
-git remote add origin https://github.com/<jouw-account>/<jouw-repo>.git
-git push -u origin main
-```
-
-> `.env`, `node_modules` en `dist` staan in `.gitignore` en worden niet meegepusht.
-
-## Importeren in Lovable
-
-1. Log in op [lovable.dev](https://lovable.dev).
-2. Koppel je GitHub-account en kies "een bestaande GitHub-repo importeren"
-   (of, in een nieuw/bestaand Lovable-project: **Settings → GitHub** → repo koppelen).
-3. Selecteer de zojuist gepushte repo. Lovable herkent de Vite + React +
-   Tailwind + shadcn/ui-stack automatisch.
-4. Bewerk teksten in de visuele editor; herhalende lijsten pas je aan in
-   `src/data/`. Wijzigingen synchroniseren met GitHub.
-5. Publiceer/host via Lovable.
+- Quotes van Tulin en Sydney voor de coachingpagina (sectie staat klaar
+  met `hidden` in `site/coaching.html`).
+- Screenshot van de case Keukenontwerpers Woerden + langere casetekst.
+- Aangepaste quote van Petra Scheffer voor de case You and Me.
+- Antwoord op "Kan ik maandelijks opzeggen?" voor de FAQ (opzegtermijn).
