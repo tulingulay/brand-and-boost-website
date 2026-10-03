@@ -31,3 +31,7 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Referentieontwerp en opdracht: nooit mee-deployen (dubbele inhoud)
+_referentie-blauw/
+PROMPT-claude-code.md

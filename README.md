@@ -1,161 +1,65 @@
-# Brand & Boost · website
+# Brand & Boost · website (nieuw ontwerp)
 
-Productieklare marketingwebsite (alleen Nederlands) voor **Brand & Boost**,
-een marketingbureau voor ambitieuze MKB-ondernemers.
+Statische website voor **Brand & Boost**: gewone HTML en CSS, zonder
+framework. De bron van het ontwerp is het referentieontwerp van Pien
+(blauw #006dbe, geel alleen voor de audit-knop, Montserrat + Figtree).
 
-- **React 18** + **TypeScript** + **Vite**
-- **Tailwind CSS** + **shadcn/ui**
-- **React Router** (meerdere pagina's)
-- **Prerendering**: elke route wordt bij de build als statische HTML
-  geschreven (`scripts/prerender.mjs`), met per pagina de juiste title,
-  meta, canonical en JSON-LD. React hydrateert daaroverheen.
-- Fonts self-hosted via `@fontsource` (geen Google Fonts-requests).
+## Structuur
 
----
+```
+site/                      De site zelf: 15 pagina's, klaar om te bouwen
+  assets/css/site.css      Alle opmaak uit het referentieontwerp (letterlijk)
+  assets/css/aanvullingen.css  Self-hosted fonts, cookiemelding, casebeelden
+  assets/js/site.js        Cookiemelding, GA4 Consent Mode, formulieren, menu's
+  assets/fonts/            Montserrat + Figtree als woff2 (AVG: geen Google Fonts)
+  assets/img/              Logo, favicon, og-beeld, foto's en casebeelden
+scripts/build-site.mjs     Build: site/ -> dist/ + geheimen + sitemap
+netlify.toml               Redirects (oude URL's!), headers, build
+```
 
-## Lokaal draaien
-
-> Vereist **Node.js 18+** (ontwikkeld en getest met Node 24 LTS) en npm.
+## Werken aan de site
 
 ```bash
-# 1. Dependencies installeren
-npm install
+# Lokaal bekijken (zonder geheimen; formulieren tonen dan een mail-fallback)
+npm run dev          # -> http://localhost:3000
 
-# 2. Omgevingsvariabelen instellen
-cp .env.example .env
-#    -> open .env en vul VITE_WEB3FORMS_KEY in (contactformulier)
-#    -> optioneel VITE_GA4_ID (Google Analytics 4, zie hieronder)
-
-# 3. Ontwikkelserver starten
-npm run dev
-#    -> http://localhost:8080
-
-# Productie-build (client + SSR + prerender + sitemap) en lokaal bekijken
+# Productie-build en bekijken
+cp .env.example .env     # eenmalig; vul WEB3FORMS_KEY (en evt. GA4_ID) in
 npm run build
 npm run preview
-
-# Types controleren
-npm run typecheck
 ```
 
-> Let op: `VITE_WEB3FORMS_KEY` en `VITE_GA4_ID` zijn **build-time**
-> variabelen. Ze moeten ook in de Netlify UI staan (Site settings →
-> Environment variables), anders werkt het formulier of de meting niet op
-> productie.
+Teksten aanpassen doe je direct in de HTML-bestanden in `site/`. Let op:
+header en footer staan op elke pagina; een menu-wijziging dus overal
+doorvoeren (of even zoeken-en-vervangen over `site/*.html`).
 
----
+## Formulieren
 
-## Projectstructuur
+Drie formulieren (`gratis-audit`, `kennismaking-coaching`, `contact`)
+versturen via **Web3Forms** naar info@brandandboost.nl, met honeypot
+(`bot-veld`) en doorverwijzing naar `/bedankt` (daar vuurt het
+conversie-event). De key komt uit de environment variable
+`WEB3FORMS_KEY` (of het oude `VITE_WEB3FORMS_KEY`) en wordt bij de build
+ingevuld; zonder key tonen de formulieren een nette mail-fallback.
 
-```
-.
-├── index.html                # Template; prerender vervangt het meta-blok per pagina
-├── netlify.toml              # Build, echte 404, caching- en security-headers
-├── public/                   # Statische bestanden (logo's, WebP-beelden, robots.txt)
-├── scripts/
-│   ├── prerender.mjs         # Schrijft dist/<route>/index.html + dist/sitemap.xml
-│   ├── optimize-images.mjs   # JPG/PNG -> geschaalde WebP (lokaal draaien, output committen)
-│   └── generate-og-image.mjs # Hergenereert public/og-image.png in huisstijl
-└── src/
-    ├── main.tsx              # Client-entry (hydrate + fonts + analytics-init)
-    ├── entry-server.tsx      # SSR-entry voor de prerender
-    ├── routes.ts             # Eén bron voor prerender + sitemap
-    ├── App.tsx               # Routing (juridische pagina's + /bedankt zijn lazy)
-    ├── index.css             # Design-tokens (kleuren als CSS-variabelen)
-    ├── lib/analytics.ts      # GA4 + Consent Mode v2 (no-op zonder VITE_GA4_ID)
-    ├── components/           # Header, Footer, SEO, CaseStory, ContactForm, ...
-    ├── data/                 # Herhalende, getypte lijsten (zie hieronder)
-    └── pages/                # Eén bestand per pagina
-```
+## Cookies en meting
 
-### Teksten aanpassen
+`site.js` toont de cookiemelding (zelfde localStorage-sleutel als de
+vorige site, dus eerdere keuzes blijven gelden) en stuurt Google
+Analytics 4 aan via Consent Mode v2: zonder `GA4_ID` wordt er niets
+geladen, en mét ID wordt er pas gemeten na "Akkoord". De keuze is te
+herzien via "Cookievoorkeuren" onderin de footer.
 
-- **Losse zichtbare teksten** (koppen, alinea's, knoplabels) staan als gewone
-  tekst in de JSX van de pagina's en componenten.
-- **Herhalende, gestructureerde lijsten** staan als getypte arrays in `src/data/`:
-  - `services.ts` — de 8 diensten
-  - `process.ts` — de 4 processtappen
-  - `values.ts` — de kernwaarden
-  - `faq.ts` — veelgestelde vragen (voedt ook de FAQ-structured-data en de
-    kruislinks dienst ↔ FAQ-categorie)
-  - `cases.ts` — portfolio-cases, met optionele velden `serviceIds`
-    (kruislinks), `metrics` (echte cijfers; leeg = sectie verschijnt niet),
-    `reviewName` (koppelt de klantquote) en `liveUrl`
-  - `reviews.ts` — klantreviews (optioneel `role`/`source`)
-  - `site.ts` — contactgegevens, navigatie, socials en `schedulingUrl`
-    (Calendly/Cal.com; zodra gevuld wijzen de primaire CTA's daarheen)
+## Oude URL's
 
-### Nieuwe pagina toevoegen
+Alle URL's van de vorige site (o.a. `/diensten/...`, `/portfolio`,
+`/proces`, `/ons-verhaal`) hebben een 301-redirect in `netlify.toml`.
+Nieuwe pagina verwijderen of hernoemen? Voeg daar dan een redirect toe.
 
-Route registreren in `src/App.tsx` **én** in `src/routes.ts` (prerender +
-sitemap volgen dan vanzelf bij de eerstvolgende build).
+## Nog aan te leveren (zie ook het overdrachtsverslag)
 
----
-
-## ✅ Aan te leveren / checklist
-
-| Onderdeel | Waar |
-|---|---|
-| **Web3Forms access key** | `.env` én Netlify env vars → `VITE_WEB3FORMS_KEY` |
-| **GA4 meet-ID** | `.env` én Netlify env vars → `VITE_GA4_ID` (formaat `G-XXXX…`) |
-| **Case-cijfers** | `src/data/cases.ts` → `metrics` (echte resultaten van de klant) |
-| **Live-URL You and Me** | `src/data/cases.ts` → `liveUrl` (huidige domein onbekend) |
-| **Social links** | `src/data/site.ts` (`socials`) — verschijnen dan vanzelf in footer, contact en JSON-LD |
-| **Agenda-link** (optioneel) | `src/data/site.ts` → `schedulingUrl` |
-| **Regio-bevestiging FAQ** | `src/data/faq.ts` — klopt "Rotterdam, heel Nederland"? |
-
-> Het contactformulier stuurt inzendingen naar **info@brandandboost.nl** via
-> Web3Forms en leidt na succes door naar **/bedankt** (daar wordt de
-> conversie gemeten). Zonder key toont het formulier een nette melding met
-> mailto-fallback.
-
----
-
-## Analytics & cookies
-
-- `src/lib/analytics.ts` initialiseert **GA4 met Consent Mode v2**: alles
-  start op "denied"; pas na "Akkoord" in de cookiemelding gaat
-  `analytics_storage` naar "granted". Advertentie-consent blijft altijd uit.
-- Zonder `VITE_GA4_ID` wordt er **niets** geladen en is `track()` een no-op.
-- De cookiemelding (`CookieConsent.tsx`) en het cookiebeleid beschrijven
-  precies deze situatie. Voeg je ooit marketing-pixels toe, werk dan beleid
-  én melding bij.
-- Events: `lead_form_submitted` vuurt op /bedankt (met sessionStorage-vlag
-  tegen dubbeltelling). Nieuwe events: `track("naam", {props})`.
-
----
-
-## SEO & AI-vindbaarheid
-
-Al ingebouwd:
-
-- Prerendering van alle 19 routes: crawlers, link-previews en AI-crawlers
-  zien volledige HTML met unieke title/description/canonical per pagina.
-- Echte **404-status** voor onbekende URL's (netlify.toml → `/404.html`).
-- `dist/sitemap.xml` wordt bij elke build gegenereerd uit `src/routes.ts`
-  (noindex-routes zoals /bedankt blijven eruit).
-- JSON-LD: **Organization** (elke pagina), **FAQPage** (/faq),
-  **BreadcrumbList + Service** (dienstpagina's).
-- Caching- en security-headers in `netlify.toml` (immutable assets, nosniff,
-  frame-deny, referrer- en permissions-policy).
-
-### Merkkleuren
-
-| Naam | Hex | Tailwind-klasse |
-|---|---|---|
-| Kobaltblauw | `#187DC1` | `kobalt` / `primary` |
-| Zonnegeel | `#D4A017` | `zonnegeel` |
-| Kastanjebruin | `#6E3F27` | `kastanje` |
-| Creme | `#F6F1EB` | `creme` / `background` |
-| Antraciet | `#2D2D2D` | `antraciet` / `foreground` |
-
-> `primary` is een fractie donkerder dan de heldere merk-kobalt, zodat witte
-> tekst op knoppen en links overal WCAG AA-contrast (4.5:1) haalt. Gedempte
-> tekstlabels gebruiken minimaal `text-antraciet/70` (contrast-conventie).
-
-### Beelden
-
-Content-afbeeldingen zijn WebP, geschaald op weergaveformaat. Nieuwe beelden:
-zet de JPG/PNG in de juiste map onder `public/`, draai lokaal
-`node scripts/optimize-images.mjs` en commit de `.webp`-output (de build op
-Netlify raakt beelden niet aan).
+- Quotes van Tulin en Sydney voor de coachingpagina (sectie staat klaar
+  met `hidden` in `site/coaching.html`).
+- Screenshot van de case Keukenontwerpers Woerden + langere casetekst.
+- Aangepaste quote van Petra Scheffer voor de case You and Me.
+- Antwoord op "Kan ik maandelijks opzeggen?" voor de FAQ (opzegtermijn).
