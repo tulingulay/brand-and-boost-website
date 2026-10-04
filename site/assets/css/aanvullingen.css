@@ -57,6 +57,26 @@
   background: none; border: 0; padding: 0; cursor: pointer;
   font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
 }
+
+/* ---------- Groter logo in de header ---------- */
+/* .kop erbij voor extra specificiteit: dit bestand laadt vóór site.css. */
+.kop .kop__logo img { height: 60px; width: auto; }
+
+/* ---------- Over ons: beide portretten even breed ---------- */
+/* Bij .persoon.om zet order:2 de foto in de brede 1.2fr-kolom; draai de
+   kolommen om zodat de foto net als bij Pien in de 0.8fr-kolom staat. */
+@media (min-width: 900px) {
+  .persoon.om { grid-template-columns: 1.2fr 0.8fr; }
+}
+
+/* ---------- Klantlogo bij een case ---------- */
+.case__logo { display: block; height: 76px; width: auto; margin-bottom: 20px; }
+
+/* ---------- Pijlers op de home: pijlen op één verticale lijn ---------- */
+.pijler__naam .merk { margin-left: auto; }
+
+/* ---------- Lange woorden in casekoppen afbreken (Keukenontwerpers) ---------- */
+.case .h2 { hyphens: auto; overflow-wrap: break-word; }
 .voet__onder .cookievoorkeuren:hover { color: var(--blauw); text-decoration-thickness: 2px; }
 
 /* ---------- Formulierfout (gebruikt de bestaande meldingstijl) ---------- */
