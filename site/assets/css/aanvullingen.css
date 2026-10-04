@@ -77,6 +77,13 @@
 
 /* ---------- Lange woorden in casekoppen afbreken (Keukenontwerpers) ---------- */
 .case .h2 { hyphens: auto; overflow-wrap: break-word; }
+
+/* ---------- Caselijst home: tags onder elkaar, kolommen op één lijn ---------- */
+/* .caselijst erbij voor extra specificiteit: dit bestand laadt vóór site.css. */
+@media (min-width: 900px) {
+  .caselijst .caserij { grid-template-columns: 1fr 1.2fr 120px; }
+  .caselijst .caserij .tags { flex-direction: column; align-items: start; gap: 6px; }
+}
 .voet__onder .cookievoorkeuren:hover { color: var(--blauw); text-decoration-thickness: 2px; }
 
 /* ---------- Formulierfout (gebruikt de bestaande meldingstijl) ---------- */
