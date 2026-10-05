@@ -33,8 +33,8 @@
   src: url("/assets/fonts/figtree-v9-latin-700.woff2") format("woff2");
 }
 
-/* ---------- Echte casebeelden in het scherm-vlak (16:10, gevuld) ---------- */
-.scherm img { width: 100%; height: 100%; object-fit: cover; grid-row: 1 / -1; }
+/* ---------- Echte casebeelden in het scherm-vlak, onder de browserbalk ---------- */
+.scherm img { width: 100%; height: 100%; object-fit: cover; object-position: top; min-height: 0; }
 
 /* ---------- Cookiemelding (stijl van het referentieontwerp) ---------- */
 .cookiemelding {
