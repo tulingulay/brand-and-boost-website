@@ -241,6 +241,63 @@ p { margin: 0; }
 .case blockquote footer { margin-top: 10px; font-size: 15px; color: var(--tekst-zacht); }
 @media (min-width: 900px) { .case { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } .case.om > :first-child { order: 2; } }
 
+/* ---------- Cases als bewijs: strakke kaarten, filter zonder JavaScript ---------- */
+.bewijs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 26px; font: 700 16px/1.4 var(--f-kop); }
+.bewijs__sterren { color: var(--geel); font-size: 20px; letter-spacing: 2px; -webkit-text-stroke: 1px var(--tekst); paint-order: stroke fill; }
+.donker .bewijs__sterren { -webkit-text-stroke: 0; }
+.bewijs a { color: inherit; }
+.filter__radio { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; }
+.filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+.filter label { padding: 10px 18px; border: 2px solid var(--blauw); border-radius: var(--rond-pil); background: var(--wit); color: var(--blauw); font: 700 15px/1.2 var(--f-kop); cursor: pointer; }
+#f-alles:checked ~ .filter label[for="f-alles"], #f-coaching:checked ~ .filter label[for="f-coaching"],
+#f-web:checked ~ .filter label[for="f-web"], #f-social:checked ~ .filter label[for="f-social"] { background: var(--blauw); color: var(--wit); }
+#f-alles:focus-visible ~ .filter label[for="f-alles"], #f-coaching:focus-visible ~ .filter label[for="f-coaching"],
+#f-web:focus-visible ~ .filter label[for="f-web"], #f-social:focus-visible ~ .filter label[for="f-social"] { outline: 3px solid var(--tekst); outline-offset: 3px; }
+#f-coaching:checked ~ .casekaarten .casekaart:not([data-dienst~="coaching"]),
+#f-web:checked ~ .casekaarten .casekaart:not([data-dienst~="web"]),
+#f-social:checked ~ .casekaarten .casekaart:not([data-dienst~="social"]) { display: none; }
+.casekaarten { display: grid; gap: 32px; }
+.casekaart { display: grid; gap: 26px; padding: 22px; border: 2px solid var(--blauw); border-radius: var(--rond-m); background: var(--wit); box-shadow: var(--schaduw-blok); scroll-margin-top: 110px; }
+.casekaart > * { min-width: 0; }
+@media (min-width: 900px) {
+  .casekaart { grid-template-columns: 5fr 6fr; gap: 44px; padding: 36px; align-items: center; }
+  .casekaart--breed { grid-template-columns: 1fr; gap: 32px; }
+  .casekaart__tekst--duo { display: grid; grid-template-columns: 5fr 6fr; gap: 44px; align-items: start; }
+}
+.casekaart__beeld img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border: 1px solid var(--lijn); border-radius: 12px; }
+.tegels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (min-width: 700px) { .tegels { grid-template-columns: repeat(4, 1fr); gap: 14px; } }
+.tegel { position: relative; margin: 0; }
+.tegel img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+.tegel .tag { position: absolute; left: 10px; bottom: 10px; max-width: calc(100% - 20px); border-radius: 10px; background: var(--wit); }
+.casekaart__naam { margin-top: 14px; font: 800 clamp(26px, 3.2vw, 34px)/1.1 var(--f-kop); letter-spacing: -0.02em; }
+.casekaart__kop { margin-top: 8px; font: 700 19px/1.35 var(--f-kop); letter-spacing: -0.01em; color: var(--blauw); }
+.casekaart dl { display: grid; gap: 0; margin: 20px 0 0; }
+.casekaart__tekst--duo dl { margin-top: 0; }
+.casekaart dl div { display: grid; gap: 2px; padding: 12px 0; border-top: 1px solid var(--lijn); }
+.casekaart dl div:last-child { border-bottom: 1px solid var(--lijn); }
+@media (min-width: 560px) { .casekaart dl div { grid-template-columns: 120px 1fr; gap: 16px; } }
+.casekaart dt { font: 700 12px/1.8 var(--f-kop); letter-spacing: 0.1em; text-transform: uppercase; color: var(--blauw); }
+.casekaart dd { margin: 0; font-size: 16px; line-height: 1.5; }
+.casekaart__quote { margin: 20px 0 0; padding: 16px 18px; border-left: 4px solid var(--geel); border-radius: 0 12px 12px 0; background: var(--lichtblauw); }
+.casekaart__quote p { font: 700 16px/1.45 var(--f-kop); letter-spacing: -0.005em; }
+.casekaart__quote p::before { content: "\201C"; }
+.casekaart__quote p::after { content: "\201D"; }
+.casekaart__quote footer { margin-top: 6px; font-size: 14px; color: var(--tekst-zacht); }
+.casekaart__dienst { margin-top: 20px; }
+.casekaart__dienst .link { font-size: 16px; }
+
+/* Werk op /websites: drie kaarten met beeld */
+.werk { display: grid; gap: 28px; }
+@media (min-width: 900px) { .werk { grid-template-columns: repeat(3, 1fr); } }
+.werkkaart { display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; padding: 14px 14px 22px; border: 2px solid var(--blauw); border-radius: var(--rond-m); background: var(--wit); box-shadow: var(--schaduw-blok); color: inherit; text-decoration: none; transition: transform var(--snel) ease-out; }
+.werkkaart:hover { transform: translateY(-4px); }
+.werkkaart img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border: 1px solid var(--lijn); border-radius: 12px; margin-bottom: 8px; }
+.werkkaart__naam { padding-inline: 6px; font: 800 22px/1.2 var(--f-kop); letter-spacing: -0.015em; }
+.werkkaart__wat { padding-inline: 6px; color: var(--tekst-zacht); font-size: 16px; line-height: 1.5; }
+.werkkaart__meer { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; padding-inline: 6px; font: 700 15px/1.3 var(--f-kop); color: var(--blauw); }
+.werkkaart__meer .merk { width: 18px; height: 18px; }
+
 /* ---------- Review ---------- */
 .review { max-width: 900px; }
 .review p { font: 800 clamp(26px, 4vw, 42px)/1.18 var(--f-kop); letter-spacing: -0.02em; text-wrap: balance; }
@@ -281,6 +338,7 @@ p { margin: 0; }
 #duur-jaar:checked ~ .pakketten .prijs--flex,
 #duur-flex:checked ~ .pakketten .prijs--jaar { visibility: hidden; }
 .bespaar { justify-self: start; margin-top: 6px; padding: 6px 12px; border-radius: var(--rond-pil); background: var(--geel); color: var(--tekst); font: 700 13px/1.2 var(--f-kop); letter-spacing: 0; }
+.pakket__prijs { font-size: clamp(44px, 4.6vw, 56px); }
 .bespaar--rustig { background: var(--lichtblauw); color: var(--blauw); }
 @media (min-width: 900px) { .pakketten.twee { grid-template-columns: repeat(2, 1fr); max-width: 880px; } }
 .pakket > .link { justify-self: start; }
@@ -326,7 +384,7 @@ p { margin: 0; }
 .mensen { display: grid; gap: 64px; }
 .persoon { display: grid; gap: 32px; }
 .persoon > * { min-width: 0; }
-@media (min-width: 900px) { .persoon { grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; } .persoon.om > :first-child { order: 2; } }
+@media (min-width: 900px) { .persoon { grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; } .persoon.om { grid-template-columns: 1.2fr 0.8fr; } .persoon.om > :first-child { order: 2; } }
 
 .waarden { display: grid; gap: 28px; }
 @media (min-width: 760px) { .waarden { grid-template-columns: repeat(2, 1fr); gap: 40px 56px; } }
@@ -421,5 +479,5 @@ h1 em, h2 em, .voet__slogan em, .markeer {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }
-  .knop:hover, .knop:active, .pakket:hover { transform: none; }
+  .knop:hover, .knop:active, .pakket:hover, .werkkaart:hover { transform: none; }
 }

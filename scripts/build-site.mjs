@@ -29,7 +29,11 @@ try {
   /* geen .env: prima, dan alleen echte environment variables */
 }
 
-const WEB3FORMS_KEY = process.env.WEB3FORMS_KEY ?? process.env.VITE_WEB3FORMS_KEY ?? "";
+// De Web3Forms-sleutel is geen geheim: hij staat altijd leesbaar in de pagina
+// en kan alleen mail naar info@brandandboost.nl sturen. Daarom mag hij hier als
+// standaard staan; een waarde in Netlify gaat voor.
+const WEB3FORMS_STANDAARD = "36bdac3d-590c-4e4b-b4fb-8e77260965a7";
+const WEB3FORMS_KEY = process.env.WEB3FORMS_KEY || process.env.VITE_WEB3FORMS_KEY || WEB3FORMS_STANDAARD;
 const GA4_ID = process.env.GA4_ID ?? process.env.VITE_GA4_ID ?? "";
 
 await rm(dist, { recursive: true, force: true });
