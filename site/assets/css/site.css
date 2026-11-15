@@ -380,30 +380,12 @@ details .antwoord p + p { margin-top: 12px; }
 .voet__onder { margin-top: 56px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.35); display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; color: var(--wit); }
 
 /* ---------- Grafische verdieping ---------- */
-/* Gele markering: één woord per grote kop. Altijd antraciet op geel, altijd recht. */
+/* Gele markering: één woord per grote kop krijgt een gele streep eronder.
+   De letters houden de kleur van de kop (wit op blauw, antraciet op licht). */
 h1 em, h2 em, .voet__slogan em, .markeer {
-  font-style: italic; color: var(--tekst); background: var(--geel);
-  padding: 0 0.14em; border-radius: 0.14em;
-  -webkit-box-decoration-break: clone; box-decoration-break: clone;
-}
-
-/* Boost-motief: het afspeelicoon uit de O van het logo, groot in hemelblauw. */
-.hero { overflow: hidden; }
-.hero__beeld { position: relative; display: grid; justify-items: center; }
-.hero__beeld .auditdoc { position: relative; z-index: 1; }
-.boost-motief {
-  position: absolute; z-index: 0; top: 50%; left: 50%; width: min(640px, 150%); aspect-ratio: 1;
-  transform: translate(-36%, -50%); color: var(--hemelblauw); pointer-events: none;
-}
-.boost-motief .pijl { stroke: var(--blauw); }
-@media (min-width: 1140px) {
-  .paginahero { position: relative; overflow: hidden; }
-  .paginahero::after {
-    content: ""; position: absolute; right: -90px; top: 50%; width: 460px; aspect-ratio: 1; transform: translateY(-50%);
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23bfddf4'/%3E%3Cpath d='M10.2 7.6 14.6 12l-4.4 4.4' fill='none' stroke='%23006dbe' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-  }
-  .paginahero .wrap { position: relative; z-index: 1; }
-  .paginahero .wrap > * { max-width: 720px; }
+  font-style: italic; color: inherit;
+  text-decoration: underline; text-decoration-color: var(--geel);
+  text-decoration-thickness: 0.09em; text-underline-offset: 0.14em; text-decoration-skip-ink: none;
 }
 
 /* Diepte in kaarten: harde schaduw, bij hover alleen recht optillen. */
