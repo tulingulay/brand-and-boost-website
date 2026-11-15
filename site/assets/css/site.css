@@ -270,6 +270,25 @@ p { margin: 0; }
 .pakket--aanrader .lijst { color: var(--wit); font-weight: 700; }
 .pakket--aanrader .lijst .merk { color: var(--geel); --uitsnede: var(--blauw); }
 .stempel { position: absolute; top: -15px; right: 24px; padding: 7px 14px; border-radius: var(--rond-pil); background: var(--geel); color: var(--diepblauw); font: 700 13px/1.2 var(--f-kop); letter-spacing: 0.08em; text-transform: uppercase; }
+/* Schakelaar jaarcontract / flexibel: radio's zonder JavaScript. Beide prijzen
+   staan in de HTML en delen één rastercel, zodat wisselen niets laat verspringen. */
+.duur__radio { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; }
+.duur { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 44px; padding: 4px; border: 2px solid var(--blauw); border-radius: var(--rond-pil); background: var(--wit); }
+.duur label { padding: 12px 22px; border-radius: var(--rond-pil); font: 700 15px/1.2 var(--f-kop); color: var(--blauw); text-align: center; cursor: pointer; }
+#duur-jaar:checked ~ .duur label[for="duur-jaar"],
+#duur-flex:checked ~ .duur label[for="duur-flex"] { background: var(--blauw); color: var(--wit); }
+#duur-jaar:focus-visible ~ .duur label[for="duur-jaar"],
+#duur-flex:focus-visible ~ .duur label[for="duur-flex"] { outline: 3px solid var(--diepblauw); outline-offset: 3px; }
+.pakket__prijzen { display: grid; }
+.pakket__prijzen > .pakket__prijs { grid-area: 1 / 1; align-content: start; }
+#duur-jaar:checked ~ .pakketten .prijs--flex,
+#duur-flex:checked ~ .pakketten .prijs--jaar { visibility: hidden; }
+.bespaar { justify-self: start; margin-top: 6px; padding: 6px 12px; border-radius: var(--rond-pil); background: var(--geel); color: var(--diepblauw); font: 700 13px/1.2 var(--f-kop); letter-spacing: 0; }
+.duur__uitleg { margin-top: 32px; max-width: 60ch; }
+.soort__prijs { margin-top: 8px; font: 800 26px/1.1 var(--f-kop); letter-spacing: -0.02em; color: var(--blauw); }
+.soort__prijs small { font: 500 14px/1.4 var(--f-tekst); letter-spacing: 0; color: var(--tekst-zacht); }
+.prijsblok { margin-top: 28px; padding: 22px 24px; border: 2px dashed var(--blauw); border-radius: var(--rond-m); background: var(--wit); font-size: 16px; line-height: 1.55; }
+.dienst__prijs { font: 700 15px/1.3 var(--f-kop); color: var(--blauw); }
 .opstart { margin-top: 40px; display: grid; gap: 10px; padding: 26px 28px; border: 2px dashed var(--blauw); border-radius: var(--rond-m); }
 @media (min-width: 900px) { .opstart { grid-template-columns: auto 1fr; gap: 32px; align-items: center; } }
 .opstart b { font: 800 26px/1.1 var(--f-kop); letter-spacing: -0.02em; }
