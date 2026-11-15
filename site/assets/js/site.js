@@ -5,8 +5,9 @@
    2. Google Analytics 4 met Consent Mode v2, alleen actief mét meet-ID
       en pas metend ná "Akkoord";
    3. formulieren via Web3Forms (aanvragen komen binnen op
-      info@brandandboost.nl), met honeypot en doorverwijzing naar /bedankt;
-   4. conversie-event op /bedankt.
+      info@brandandboost.nl), met honeypot en doorverwijzing naar
+      /bedankt-audit, /bedankt-coaching of /bedankt;
+   4. conversie-event op de bedankpagina's.
    De placeholders hieronder vult scripts/build-site.mjs bij de build in
    vanuit de environment variables (zie netlify.toml / .env.example). */
 
@@ -20,6 +21,9 @@
 
   var CONSENT_KEY = "bb-cookie-consent";
   var LEAD_FLAG = "bb-lead-verzonden";
+  // Elke aanvraag heeft een eigen bedankpagina, zodat GA4 ze apart kan tellen.
+  var BEDANKT = { "gratis-audit": "/bedankt-audit", "kennismaking-coaching": "/bedankt-coaching" };
+  function bedanktVoor(form) { return BEDANKT[form.getAttribute("name")] || "/bedankt"; }
 
   /* ---------- Opslag (privémodus-proof) ---------- */
   function leesConsent() {
@@ -133,7 +137,7 @@
         }).then(function (res) { return res.json(); }).then(function (data) {
           if (data.success) {
             try { sessionStorage.setItem(LEAD_FLAG, form.getAttribute("name") || "1"); } catch (e) { /* ok */ }
-            window.location.href = "/bedankt";
+            window.location.href = bedanktVoor(form);
           } else {
             throw new Error("mislukt");
           }
@@ -156,9 +160,9 @@
     el.textContent = tekst;
   }
 
-  /* ---------- Conversie-event op /bedankt ---------- */
+  /* ---------- Conversie-event op de bedankpagina's ---------- */
   function initBedankt() {
-    if (window.location.pathname.replace(/\/$/, "") !== "/bedankt") return;
+    if (!/^\/bedankt(-audit|-coaching)?$/.test(window.location.pathname.replace(/\/$/, "").replace(/\.html$/, ""))) return;
     try {
       var formulier = sessionStorage.getItem(LEAD_FLAG);
       if (formulier) {
