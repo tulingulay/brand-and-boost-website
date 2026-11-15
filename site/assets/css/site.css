@@ -125,7 +125,6 @@ p { margin: 0; }
 .h1-pagina { font-size: clamp(36px, 7vw, 60px); line-height: 1.02; letter-spacing: -0.025em; }
 .h2 { font-size: clamp(30px, 5.2vw, 50px); line-height: 1.06; }
 .h3 { font-size: 22px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
-.donker h1 em, .donker h2 em { color: var(--geel); }
 .intro { margin-top: 22px; max-width: 36ch; font-size: 20px; line-height: 1.5; }
 .donker .intro { font-size: clamp(20px, 2.6vw, 24px); font-weight: 500; line-height: 1.4; }
 .lees { max-width: 62ch; }
@@ -176,7 +175,7 @@ p { margin: 0; }
 /* ---------- Stappen (echte volgorde) ---------- */
 .stappen { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px; counter-reset: stap; }
 .stappen li { display: grid; gap: 12px; align-content: start; padding-top: 22px; border-top: 3px solid var(--blauw); }
-.stappen .nr { font: 800 54px/1 var(--f-kop); letter-spacing: -0.04em; color: var(--blauw); }
+.stappen .nr { display: inline-grid; place-items: center; justify-self: start; min-width: 76px; height: 76px; padding: 0 14px; border-radius: var(--rond-m); background: var(--hemelblauw); font: 800 42px/1 var(--f-kop); letter-spacing: -0.04em; color: var(--blauw); }
 .stappen p { color: var(--tekst); }
 @media (min-width: 860px) { .stappen { grid-template-columns: repeat(3, 1fr); gap: 40px; } .stappen.vier { grid-template-columns: repeat(4, 1fr); } }
 @media (min-width: 640px) and (max-width: 859px) { .stappen.vier { grid-template-columns: repeat(2, 1fr); } }
@@ -376,10 +375,53 @@ details .antwoord p + p { margin-top: 12px; }
 .voet a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--geel); }
 .voet__logo img { height: 52px; width: auto; border-radius: var(--rond-s); }
 .voet__slogan { margin-top: 18px; font: 800 22px/1.2 var(--f-kop); letter-spacing: -0.015em; }
-.voet__slogan em { font-style: italic; }
 .voet__onder { margin-top: 56px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.35); display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; color: var(--wit); }
+
+/* ---------- Grafische verdieping ---------- */
+/* Gele markering: één woord per grote kop. Altijd antraciet op geel, altijd recht. */
+h1 em, h2 em, .voet__slogan em, .markeer {
+  font-style: italic; color: var(--tekst); background: var(--geel);
+  padding: 0 0.14em; border-radius: 0.14em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+/* Boost-motief: het afspeelicoon uit de O van het logo, groot in hemelblauw. */
+.hero { overflow: hidden; }
+.hero__beeld { position: relative; display: grid; justify-items: center; }
+.hero__beeld .auditdoc { position: relative; z-index: 1; }
+.boost-motief {
+  position: absolute; z-index: 0; top: 50%; left: 50%; width: min(640px, 150%); aspect-ratio: 1;
+  transform: translate(-36%, -50%); color: var(--hemelblauw); pointer-events: none;
+}
+.boost-motief .pijl { stroke: var(--blauw); }
+@media (min-width: 1140px) {
+  .paginahero { position: relative; overflow: hidden; }
+  .paginahero::after {
+    content: ""; position: absolute; right: -90px; top: 50%; width: 460px; aspect-ratio: 1; transform: translateY(-50%);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23bfddf4'/%3E%3Cpath d='M10.2 7.6 14.6 12l-4.4 4.4' fill='none' stroke='%23006dbe' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .paginahero .wrap { position: relative; z-index: 1; }
+  .paginahero .wrap > * { max-width: 720px; }
+}
+
+/* Diepte in kaarten: harde schaduw, bij hover alleen recht optillen. */
+.pakket { transition: transform var(--snel) ease-out; }
+.pakket:not(.pakket--aanrader) { border-color: var(--blauw); box-shadow: var(--schaduw-blok); }
+.pakket:hover { transform: translateY(-4px); }
+
+/* Fotokader: afgerond kader met een verspringend geel vlak erachter.
+   Tot de fotoshoot: <div class="fotokader"><div class="fotokader__leeg">…</div></div> */
+.fotokader { position: relative; aspect-ratio: 4 / 5; margin: 0 14px 14px 0; }
+.fotokader::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border-radius: var(--rond-m); background: var(--geel); }
+.fotokader > img, .fotokader__leeg { position: relative; width: 100%; height: 100%; border-radius: var(--rond-m); }
+.fotokader > img { object-fit: cover; }
+.fotokader__leeg { display: grid; place-items: center; align-content: center; gap: 12px; padding: 24px; background: var(--lichtblauw); border: 2px solid var(--blauw); color: var(--blauw); font: 700 15px/1.3 var(--f-kop); text-align: center; }
+.fotokader__leeg .merk { width: 56px; height: 56px; color: var(--hemelblauw); --uitsnede: var(--blauw); }
+
+/* Iconen: één set lijniconen van 2px in logoblauw. */
+.icoon { display: block; width: 34px; height: 34px; margin-bottom: 6px; color: var(--blauw); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }
-  .knop:hover, .knop:active { transform: none; }
+  .knop:hover, .knop:active, .pakket:hover { transform: none; }
 }
