@@ -41,12 +41,12 @@
 
 [[redirects]]
   from = "/diensten/branding"
-  to = "/ook-mogelijk#branding"
+  to = "/ook-mogelijk"
   status = 301
 
 [[redirects]]
   from = "/diensten/contentcreatie"
-  to = "/ook-mogelijk#video"
+  to = "/ook-mogelijk"
   status = 301
 
 [[redirects]]
@@ -66,7 +66,7 @@
 
 [[redirects]]
   from = "/diensten/custom-drukwerk"
-  to = "/ook-mogelijk#drukwerk"
+  to = "/ook-mogelijk"
   status = 301
 
 # Onbekende URL's krijgen een echte 404 (Netlify serveert bestaande
