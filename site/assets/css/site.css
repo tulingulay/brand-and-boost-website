@@ -32,6 +32,7 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--blauw); text-underline-offset: 4px; }
+a[href^="tel:"] { white-space: nowrap; }
 :focus-visible { outline: 3px solid var(--tekst); outline-offset: 3px; border-radius: 4px; }
 .donker :focus-visible { outline-color: var(--geel); }
 h1, h2, h3 { font-family: var(--f-kop); font-weight: 800; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
@@ -163,7 +164,7 @@ p { margin: 0; }
 .auditdoc li .merk { width: 26px; height: 26px; color: var(--blauw); margin-top: 1px; }
 .auditdoc b { display: block; font: 700 17px/1.25 var(--f-kop); }
 .auditdoc div span { display: block; font-size: 15px; line-height: 1.45; color: var(--tekst-zacht); margin-top: 2px; }
-.auditdoc__voet { display: flex; justify-content: space-between; padding-top: 16px; font: 700 13px/1.2 var(--f-kop); color: var(--blauw); }
+.auditdoc__voet { display: flex; justify-content: space-between; gap: 16px; padding-top: 16px; font: 700 13px/1.2 var(--f-kop); color: var(--blauw); }
 
 /* Kanalenstrook */
 .kanalen { border-top: 1px solid rgba(255,255,255,0.28); }
