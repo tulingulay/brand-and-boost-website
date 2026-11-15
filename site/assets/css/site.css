@@ -383,7 +383,7 @@ p { margin: 0; }
 .mensen { display: grid; gap: 64px; }
 .persoon { display: grid; gap: 32px; }
 .persoon > * { min-width: 0; }
-@media (min-width: 900px) { .persoon { grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; } .persoon.om > :first-child { order: 2; } }
+@media (min-width: 900px) { .persoon { grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; } .persoon.om { grid-template-columns: 1.2fr 0.8fr; } .persoon.om > :first-child { order: 2; } }
 
 .waarden { display: grid; gap: 28px; }
 @media (min-width: 760px) { .waarden { grid-template-columns: repeat(2, 1fr); gap: 40px 56px; } }
