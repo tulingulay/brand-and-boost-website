@@ -280,6 +280,11 @@ p { margin: 0; }
 #duur-jaar:checked ~ .pakketten .prijs--flex,
 #duur-flex:checked ~ .pakketten .prijs--jaar { visibility: hidden; }
 .bespaar { justify-self: start; margin-top: 6px; padding: 6px 12px; border-radius: var(--rond-pil); background: var(--geel); color: var(--tekst); font: 700 13px/1.2 var(--f-kop); letter-spacing: 0; }
+.bespaar--rustig { background: var(--lichtblauw); color: var(--blauw); }
+@media (min-width: 900px) { .pakketten.twee { grid-template-columns: repeat(2, 1fr); max-width: 880px; } }
+.pakket > .link { justify-self: start; }
+.pakket--aanrader > .link { color: var(--wit); }
+.pakket--aanrader > .link .merk { color: var(--wit); --uitsnede: var(--blauw); }
 .duur__uitleg { margin-top: 32px; max-width: 60ch; }
 .soort__prijs { margin-top: 8px; font: 800 26px/1.1 var(--f-kop); letter-spacing: -0.02em; color: var(--blauw); }
 .soort__prijs small { font: 500 14px/1.4 var(--f-tekst); letter-spacing: 0; color: var(--tekst-zacht); }

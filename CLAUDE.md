@@ -22,7 +22,7 @@ PRIJZEN (excl. btw)
 - Social opstart: €295 eenmalig.
 - Websites: one-page vanaf €850, maatwerk 4-6 pagina's €2.450, uitgebreid vanaf €3.950.
   Altijd met hosting en domein €30 p/m en onderhoud en beveiliging vanaf €50 p/m, minimaal 12 maanden.
-- Coaching: €250 p/m bij een jaar, €275 p/m flexibel (na 3 maanden maandelijks opzegbaar),
+- Coaching: kort traject van 3 maanden €825 eenmalig (6 sessies), of jaarabonnement €250 p/m (24 sessies),
   voor twee sessies van een uur per maand.
 - Gratis audit: binnen 5 werkdagen.
 - Nergens "prijs op aanvraag".
