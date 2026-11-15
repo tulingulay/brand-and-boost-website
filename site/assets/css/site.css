@@ -338,6 +338,7 @@ p { margin: 0; }
 #duur-jaar:checked ~ .pakketten .prijs--flex,
 #duur-flex:checked ~ .pakketten .prijs--jaar { visibility: hidden; }
 .bespaar { justify-self: start; margin-top: 6px; padding: 6px 12px; border-radius: var(--rond-pil); background: var(--geel); color: var(--tekst); font: 700 13px/1.2 var(--f-kop); letter-spacing: 0; }
+.pakket__prijs { font-size: clamp(44px, 4.6vw, 56px); }
 .bespaar--rustig { background: var(--lichtblauw); color: var(--blauw); }
 @media (min-width: 900px) { .pakketten.twee { grid-template-columns: repeat(2, 1fr); max-width: 880px; } }
 .pakket > .link { justify-self: start; }
