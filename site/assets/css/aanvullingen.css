@@ -39,8 +39,8 @@
 /* ---------- Cookiemelding (stijl van het referentieontwerp) ---------- */
 .cookiemelding {
   position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90;
-  max-width: 560px; background: var(--wit); color: var(--diepblauw);
-  border: 2px solid var(--diepblauw); border-radius: var(--rond-m);
+  max-width: 560px; background: var(--wit); color: var(--tekst);
+  border: 2px solid var(--blauw); border-radius: var(--rond-m);
   padding: 24px; box-shadow: var(--schaduw-blok);
 }
 @media (min-width: 640px) { .cookiemelding { left: 24px; right: auto; padding: 28px; } }
@@ -57,7 +57,7 @@
   background: none; border: 0; padding: 0; cursor: pointer;
   font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
 }
-.voet__onder .cookievoorkeuren:hover { color: var(--blauw); text-decoration-thickness: 2px; }
+.voet__onder .cookievoorkeuren:hover { text-decoration-thickness: 2px; text-decoration-color: var(--geel); }
 
 /* ---------- Formulierfout (gebruikt de bestaande meldingstijl) ---------- */
 .melding[hidden] { display: none; }

@@ -41,6 +41,19 @@ let js = await readFile(jsPath, "utf8");
 js = js.replace("%WEB3FORMS_KEY%", WEB3FORMS_KEY).replace("%GA4_ID%", GA4_ID);
 await writeFile(jsPath, js);
 
+// FAQPage-schema: gegenereerd uit de vragen die echt op /faq staan.
+const faqPad = path.join(dist, "faq.html");
+let faq = await readFile(faqPad, "utf8");
+const platteTekst = (html) =>
+  html.replace(/<span class="merk"[\s\S]*?<\/svg><\/span>/g, "").replace(/<\/p>\s*<p>/g, " ").replace(/<[^>]+>/g, "")
+    .replaceAll("&amp;", "&").replaceAll("&#x27;", "'").replaceAll("&quot;", '"').replace(/\s+/g, " ").trim();
+const vragen = [...faq.matchAll(/<details><summary>([\s\S]*?)<\/summary><div class="antwoord">([\s\S]*?)<\/div><\/details>/g)]
+  .map((m) => ({ "@type": "Question", name: platteTekst(m[1]), acceptedAnswer: { "@type": "Answer", text: platteTekst(m[2]) } }));
+if (vragen.length === 0) throw new Error("Geen vragen gevonden in faq.html: FAQPage-schema niet gemaakt.");
+const faqSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: vragen }).replaceAll("<", "\\u003c");
+faq = faq.replace("</head>", `<script type="application/ld+json">${faqSchema}</script></head>`);
+await writeFile(faqPad, faq);
+
 // Sitemap: indexeerbare pagina's (bedankt en 404 niet), verse lastmod.
 const DOMAIN = "https://brandandboost.nl";
 const paden = [
@@ -59,5 +72,5 @@ await writeFile(
 
 console.log(
   `Build klaar: dist/ (${paden.length} pagina's in de sitemap; ` +
-  `Web3Forms-key ${WEB3FORMS_KEY ? "ingevuld" : "ONTBREEKT"}; GA4 ${GA4_ID ? "aan" : "uit"}).`,
+  `${vragen.length} vragen in het FAQ-schema; Web3Forms-key ${WEB3FORMS_KEY ? "ingevuld" : "ONTBREEKT"}; GA4 ${GA4_ID ? "aan" : "uit"}).`,
 );
