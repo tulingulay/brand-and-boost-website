@@ -246,6 +246,7 @@ p { margin: 0; }
 .review p { font: 800 clamp(26px, 4vw, 42px)/1.18 var(--f-kop); letter-spacing: -0.02em; text-wrap: balance; }
 .review p::before { content: "\201C"; color: var(--blauw); }
 .review p::after { content: "\201D"; color: var(--blauw); }
+.review--klein p { font-size: clamp(19px, 2.2vw, 24px); line-height: 1.35; letter-spacing: -0.01em; text-wrap: pretty; }
 .review footer { margin-top: 26px; display: flex; align-items: center; gap: 14px; font-weight: 600; }
 .review footer .merk { width: 26px; height: 26px; color: var(--blauw); }
 .review footer span { color: var(--tekst-zacht); font-weight: 400; }
