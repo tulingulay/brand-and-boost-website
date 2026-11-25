@@ -63,6 +63,7 @@ const DOMAIN = "https://brandandboost.nl";
 const paden = [
   "/", "/social-media", "/websites", "/coaching", "/ook-mogelijk",
   "/gratis-audit", "/over-ons", "/cases", "/faq", "/contact",
+  "/kennisbank", "/wat-kost-social-media-uitbesteden",
   "/algemene-voorwaarden", "/privacyverklaring", "/cookiebeleid",
 ];
 const vandaag = new Date().toISOString().slice(0, 10);

@@ -29,7 +29,31 @@ De site leest als ons eigen auditrapport: een omslag, genummerde hoofdstukken me
 | Citaat | `.citaat` met `.stift` | Groot citaat, hooguit één stuk met markeerstift |
 | Slot | `.slot`, `.afsluiter` | Geen kaart: blauwe lijn, één grote vraag, één knop |
 
+## Hero-varianten
+
+Niet elke pagina begint hetzelfde. Kies er één:
+
+| Variant | Klasse | Nu op |
+|---|---|---|
+| Standaard blauw | `.paginahero` | /social-media, /over-ons |
+| Met beeld over de rand | `.paginahero--beeld` + `<img class="paginahero__beeld">` | /websites |
+| Licht | `.s-tint.paginahero.paginahero--licht` | /coaching |
+| Kort | `.paginahero--kort` | /cases, /faq, /ook-mogelijk, /kennisbank |
+| Met het korte antwoord over de rand | `.artikelkop` + `.blad.kortantwoord` | kennisartikelen |
+
+## Kennisbank
+
+- Overzicht: `site/kennisbank.html`. Elk artikel is één `.pijler.artikelrij` met titel, één zin en de datum.
+- Artikel: kopieer `site/wat-kost-social-media-uitbesteden.html`. Opbouw: hero met het korte antwoord (40 tot 60 woorden), daarna `.artikel` met de marge (schrijver, datum, inhoud) en de tekst in `.artikel__tekst`. Elke `h2` krijgt vanzelf een nummer.
+- Tabellen staan in `.tabelrol`, zodat ze op een telefoon binnen hun eigen kader schuiven.
+- Nieuw artikel? Voeg het pad toe aan de lijst in `scripts/build-site.mjs` en aan `site/sitemap.xml`.
+- Alleen eigen prijzen en feiten. Geen marktcijfers zonder bron.
+
 ## Regels van dit systeem
+
+- De kop (menu) is logoblauw en loopt over in de hero.
+- Elk label telt mee als hoofdstuk. Alleen het label boven een `h1` krijgt geen nummer.
+- Geen icoon boven een titel: het icoon staat links, de tekst ernaast.
 
 - Hoeken zijn 6px (papier). Alleen knoppen en tags zijn rond.
 - Harde schaduw alleen op: de gele knop, het auditblad of formulier, en het aanrader-pakket.
