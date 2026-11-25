@@ -41,6 +41,30 @@ Niet elke pagina begint hetzelfde. Kies er één:
 | Kort | `.paginahero--kort` | /cases, /faq, /ook-mogelijk, /kennisbank |
 | Met het korte antwoord over de rand | `.artikelkop` + `.blad.kortantwoord` | kennisartikelen |
 
+## Logo
+
+- In de kop en de footer staat `site/assets/img/logo-woordmerk.png`: het woordmerk met de gele pijl, bijgesneden uit `BB_Logo_liggend_1600x660.png` van de Drive. De achtergrond is exact logoblauw, dus het valt weg in de blauwe kop.
+- `logo.png` blijft bestaan voor Google (schema) en mag niet weg.
+
+## Venster: de site van een klant in beeld
+
+- `.venster` is het kader voor een schermafbeelding. Geen nagetekende browserbalk.
+- `.venster--rol`: een opname van de hele pagina die bij aanwijzen langzaam door de site rolt. Gebruik dit voor cases (nu: Etouch op home).
+- `.venster--scrol`: de bezoeker scrolt zelf in het beeld. Alleen op de voorbeeld-audit, voor oud naast nieuw.
+- Een opname van de hele pagina is 1000 pixels breed, JPG. Maak hem zonder cookiemelding of pop-up in beeld.
+- Op home staat één klant uitgelicht (`.uitgelicht`): de site in een venster, de naam groot, en de content ernaast.
+
+## Auditrapport
+
+- De voorbeeld-audit is een vel (`.vel`) op lichtblauw: briefhoofd met logo, kop, gegevens, en genummerde delen (`.vel__deel`).
+- Oud naast nieuw staat in `.vergelijk`, met gele genummerde punten (`.pin`) die onder het beeld worden uitgelegd.
+- "Wat we telden" is een rij per onderwerp (`.telling__rij`) met een kolom Oud en een kolom Nieuw.
+- Kort houden: geen prijzen van ons, geen stappenplan, alleen wat we echt zagen.
+
+## Vragen onder een pagina
+
+- Een blok `.faqblok` met 3 of 4 vragen, overgenomen uit `/faq`. De build zet er vanzelf FAQ-schema bij op elke pagina met vragen.
+
 ## Kennisbank
 
 - Overzicht: `site/kennisbank.html`. Elk artikel is één `.pijler.artikelrij` met titel, één zin en de datum.
