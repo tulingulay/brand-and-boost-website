@@ -10,7 +10,7 @@
  *   GA4_ID         (of VITE_GA4_ID)         Google Analytics 4, optioneel
  */
 
-import { cp, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, readFile, rm, writeFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -45,18 +45,25 @@ let js = await readFile(jsPath, "utf8");
 js = js.replace("%WEB3FORMS_KEY%", WEB3FORMS_KEY).replace("%GA4_ID%", GA4_ID);
 await writeFile(jsPath, js);
 
-// FAQPage-schema: gegenereerd uit de vragen die echt op /faq staan.
-const faqPad = path.join(dist, "faq.html");
-let faq = await readFile(faqPad, "utf8");
+// FAQPage-schema: gegenereerd uit de vragen die echt op een pagina staan.
 const platteTekst = (html) =>
   html.replace(/<span class="merk"[\s\S]*?<\/svg><\/span>/g, "").replace(/<\/p>\s*<p>/g, " ").replace(/<[^>]+>/g, "")
     .replaceAll("&amp;", "&").replaceAll("&#x27;", "'").replaceAll("&quot;", '"').replace(/\s+/g, " ").trim();
-const vragen = [...faq.matchAll(/<details><summary>([\s\S]*?)<\/summary><div class="antwoord">([\s\S]*?)<\/div><\/details>/g)]
-  .map((m) => ({ "@type": "Question", name: platteTekst(m[1]), acceptedAnswer: { "@type": "Answer", text: platteTekst(m[2]) } }));
-if (vragen.length === 0) throw new Error("Geen vragen gevonden in faq.html: FAQPage-schema niet gemaakt.");
-const faqSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: vragen }).replaceAll("<", "\\u003c");
-faq = faq.replace("</head>", `<script type="application/ld+json">${faqSchema}</script></head>`);
-await writeFile(faqPad, faq);
+let vragenOpFaq = 0, paginasMetVragen = 0;
+for (const bestand of (await readdir(dist)).filter((f) => f.endsWith(".html"))) {
+  const pad = path.join(dist, bestand);
+  let html = await readFile(pad, "utf8");
+  const vragen = [...html.matchAll(/<details><summary>([\s\S]*?)<\/summary><div class="antwoord">([\s\S]*?)<\/div><\/details>/g)]
+    .map((m) => ({ "@type": "Question", name: platteTekst(m[1]), acceptedAnswer: { "@type": "Answer", text: platteTekst(m[2]) } }));
+  if (bestand === "faq.html") vragenOpFaq = vragen.length;
+  if (vragen.length === 0) continue;
+  paginasMetVragen++;
+  const faqSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: vragen }).replaceAll("<", "\\u003c");
+  html = html.replace("</head>", `<script type="application/ld+json">${faqSchema}</script></head>`);
+  await writeFile(pad, html);
+}
+if (vragenOpFaq === 0) throw new Error("Geen vragen gevonden in faq.html: FAQPage-schema niet gemaakt.");
+const vragen = { length: vragenOpFaq };
 
 // Sitemap: indexeerbare pagina's (bedankt en 404 niet), verse lastmod.
 const DOMAIN = "https://brandandboost.nl";
