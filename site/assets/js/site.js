@@ -125,9 +125,13 @@
         velden.subject = "Nieuw bericht via brandandboost.nl · " + (form.getAttribute("name") || "formulier");
         new FormData(form).forEach(function (waarde, naam) {
           if (naam === "bot-veld" || naam === "form-name") return;
+          if (waarde === "") return; // lege, niet-verplichte velden hoeven niet in de mail
           velden[naam] = waarde;
           if (naam === "email") velden.replyto = waarde;
         });
+        // Pakketvoorkeur in de onderwerpregel, zodat je het in je inbox meteen ziet.
+        var voorkeur = [velden.interesse !== "Weet ik nog niet" ? velden.interesse : "", velden.contract].filter(Boolean);
+        if (voorkeur.length) velden.subject += " · " + voorkeur.join(" · ");
         velden.formulier = form.getAttribute("name") || "";
 
         fetch("https://api.web3forms.com/submit", {

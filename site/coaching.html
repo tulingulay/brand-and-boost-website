@@ -131,7 +131,7 @@
         <li>Eén doel, met een plan en een eerste resultaat</li>
         <li>Elke sessie een keuze en een volgende stap</li>
       </ul>
-      <a class="link" href="#kennismaken">Plan een kennismaking <span class="pijl" aria-hidden="true"></span></a>
+      <a class="link" href="#kennismaken" data-kies="coaching-boost">Kies de Boost <span class="pijl" aria-hidden="true"></span></a>
     </article>
     <article class="prijskaart prijskaart--aanrader" data-in>
       <span class="prijskaart__stempel">Aanrader</span>
@@ -146,7 +146,7 @@
         <li>Tijd om te doen, te meten en bij te sturen</li>
         <li>De laagste prijs per sessie</li>
       </ul>
-      <a class="link" href="#kennismaken">Plan een kennismaking <span class="pijl" aria-hidden="true"></span></a>
+      <a class="link" href="#kennismaken" data-kies="coaching-halfjaar">Kies het halfjaartraject <span class="pijl" aria-hidden="true"></span></a>
     </article>
     <article class="prijskaart" data-in>
       <h3 class="prijskaart__naam">Jaartraject</h3>
@@ -159,7 +159,7 @@
         <li>Elke maand een vast moment om uit te zoomen</li>
         <li>Het hele jaar dezelfde coach</li>
       </ul>
-      <a class="link" href="#kennismaken">Plan een kennismaking <span class="pijl" aria-hidden="true"></span></a>
+      <a class="link" href="#kennismaken" data-kies="coaching-jaar">Kies het jaartraject <span class="pijl" aria-hidden="true"></span></a>
     </article>
   </div>
   <p class="klein">Alle prijzen excl. btw. In de kennismaking kijken we samen welk traject bij je past.</p>
@@ -180,6 +180,7 @@
     <div class="vel" data-in>
       <form class="form" name="kennismaking-coaching" method="POST" action="/bedankt">
         <p class="verborgen"><label>Laat dit leeg <input name="bot-veld" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="herkomst"><input type="hidden" name="contract">
         <div class="twee">
           <div class="veld"><label for="naam">Je naam</label><input id="naam" name="naam" type="text" required autocomplete="name"></div>
           <div class="veld"><label for="bedrijf">Je bedrijf <small>(niet verplicht)</small></label><input id="bedrijf" name="bedrijf" type="text" autocomplete="organization"></div>
@@ -188,6 +189,12 @@
           <div class="veld"><label for="email">Je e-mailadres</label><input id="email" name="email" type="email" required autocomplete="email"></div>
           <div class="veld"><label for="telefoon">Je telefoonnummer</label><input id="telefoon" name="telefoon" type="tel" inputmode="tel" required autocomplete="tel"></div>
         </div>
+        <div class="veld"><label for="interesse">Welk traject spreekt je aan?</label><select id="interesse" name="interesse">
+          <option value="Weet ik nog niet">Weet ik nog niet</option>
+          <option value="Coaching: Boost" data-kies="coaching-boost">Boost, 3 maanden</option>
+          <option value="Coaching: Halfjaartraject" data-kies="coaching-halfjaar">Halfjaartraject, 6 maanden</option>
+          <option value="Coaching: Jaartraject" data-kies="coaching-jaar">Jaartraject, 12 maanden</option>
+        </select></div>
         <div class="veld"><label for="werk">Waar wil je aan werken?</label><textarea id="werk" name="werk" required></textarea></div>
         <button class="knop" type="submit">Plan een kennismaking <span class="pijl" aria-hidden="true"></span></button>
       </form>
