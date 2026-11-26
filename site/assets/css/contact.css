@@ -1,0 +1,7 @@
+/* Alleen voor /contact. Kleuren via tokens. */
+.contact{padding-top:150px}
+.contactlijnen{display:grid;margin-top:32px;border-top:2px solid var(--lijn)}
+.contactlijnen li{display:grid;gap:2px;padding:16px 0;border-bottom:2px solid var(--lijn)}
+.contactlijnen a{font:800 clamp(24px,4.4vw,44px)/1.1 var(--display);letter-spacing:-.03em;text-decoration:none;overflow-wrap:anywhere;transition:color var(--snel)}
+.contactlijnen a:hover{color:var(--merk)}
+.contactlijnen small{font:500 14px/1.5 var(--tekst)}

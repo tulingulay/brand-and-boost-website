@@ -1,0 +1,48 @@
+/* Voor de leespagina's: juridisch, kennisbank, artikel en extra diensten. Kleuren alleen via tokens. */
+.soort{font-weight:700;color:var(--merk)}
+.soort a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.paginaheld .groot{overflow-wrap:break-word}
+
+/* Overzicht: elk artikel een grote regel */
+.artikelen{margin:0 calc(var(--rand)*-1);border-bottom:2px solid var(--lijn)}
+.artikelrij{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:center;padding:26px var(--rand);border-top:2px solid var(--lijn);text-decoration:none;transition:background-color .35s,color .35s}
+.artikelrij__titel{font:800 clamp(30px,6.4vw,76px)/.98 var(--display);letter-spacing:-.04em;transition:transform .35s}
+.artikelrij__zin{grid-column:1;font-size:clamp(17px,1.8vw,21px);line-height:1.45;max-width:34em}
+.artikelrij__datum{grid-column:1;font-weight:600;font-size:14px;color:var(--zacht)}
+.artikelrij__knop{grid-row:1;grid-column:2;width:48px;height:48px;border-radius:50%;background:var(--merk);display:grid;place-items:center}
+.artikelrij__knop::before{content:"";border-left:13px solid var(--bg);border-block:9px solid transparent;margin-left:4px}
+.artikelrij:hover{background:var(--blauw);color:var(--wit);--bg:var(--blauw);--zacht:var(--wit);--merk:var(--geel)}
+.artikelrij:hover .artikelrij__titel{transform:translateX(12px)}
+@media (min-width:960px){.artikelrij{padding-block:40px}.artikelrij__knop{width:64px;height:64px}}
+
+/* Artikel */
+.artikelheld{min-height:0;padding-bottom:clamp(40px,6vw,80px)}
+.kortantwoord{max-width:44em;display:grid;gap:12px;margin-top:10px}
+.kortantwoord__kop{display:grid;gap:2px}
+.kortantwoord__kop span{font-weight:700;font-size:14px;color:var(--merk)}
+.kortantwoord__kop b{font:800 clamp(26px,3.6vw,40px)/1.05 var(--display);letter-spacing:-.03em}
+.artikel{display:grid;grid-template-columns:minmax(0,1fr);gap:36px}
+.artikel__marge{display:grid;gap:16px;align-content:start;font-size:15px;padding-bottom:24px;border-bottom:2px solid var(--lijn)}
+.artikel__marge p{display:grid}
+.artikel__marge span{color:var(--zacht)}
+.artikel__marge ol{display:grid;gap:2px;margin-top:6px;padding-left:20px;list-style:decimal}
+.artikel__marge li::marker{color:var(--merk);font-weight:700}
+.artikel__marge a{display:inline-flex;align-items:center;min-height:36px;text-decoration:underline;text-decoration-color:var(--merk);text-decoration-thickness:2px;text-underline-offset:4px}
+.artikel__lead{font-size:clamp(19px,2vw,23px);line-height:1.5}
+.lees th[scope="col"]{font-size:14px;color:var(--zacht)}
+.lees th[scope="row"]{font-family:var(--display);font-weight:800}
+.lees table{min-width:520px}
+@media (min-width:960px){
+  .artikel{grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:clamp(48px,7vw,120px);align-items:start}
+  .artikel__marge{position:sticky;top:110px;border:0;padding:0}
+}
+
+/* Extra diensten */
+.extras{border-bottom:2px solid var(--lijn)}
+.extra{border-top:2px solid var(--lijn);padding:26px 0;display:grid;gap:8px}
+.extra .prijsregel{padding:0}
+.extra__naam{font:800 clamp(30px,6.4vw,76px)/.98 var(--display);letter-spacing:-.04em;overflow-wrap:break-word;min-width:0}
+.extra .prijsregel b{font-size:clamp(30px,5vw,60px);letter-spacing:-.035em}
+.extra p{max-width:38em}
+@media (max-width:519px){.extra .prijsregel{flex-wrap:wrap}.extra .prijsregel i{display:none}.extra .prijsregel b{width:100%}}
+@media (min-width:960px){.extra{padding-block:40px}}
