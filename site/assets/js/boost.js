@@ -146,4 +146,34 @@
       setTimeout(function () { nr = (nr + 1) % lijst.length; wissel.textContent = lijst[nr]; wissel.classList.remove("weg"); }, 260);
     }, 2400);
   }
+
+  /* 9. Pakketvoorkeur en herkomst: zo ziet Pien in de aanvraag waar iemand interesse in heeft. */
+  function kies(sleutel, contract) {
+    $$('select[name="interesse"]').forEach(function (sel) {
+      var optie = $('option[data-kies="' + sleutel + '"]', sel);
+      if (optie) sel.value = optie.value;
+    });
+    $$('input[name="contract"]').forEach(function (i) { i.value = contract || ""; });
+  }
+  var CONTRACT = { jaar: "Jaarcontract", flex: "Flexibel" };
+  try {
+    var meegegeven = new URLSearchParams(location.search);
+    if (meegegeven.get("interesse")) kies(meegegeven.get("interesse"), CONTRACT[meegegeven.get("contract")]);
+  } catch (e) { /* geen voorkeur meegegeven */ }
+  var herkomst = location.pathname;
+  try {
+    if (d.referrer) {
+      var vorige = new URL(d.referrer);
+      if (vorige.origin === location.origin && vorige.pathname !== location.pathname) herkomst = vorige.pathname + " > " + location.pathname;
+    }
+  } catch (e) { /* herkomst blijft de huidige pagina */ }
+  $$('input[name="herkomst"]').forEach(function (i) { i.value = herkomst; });
+  $$("a[data-kies]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var href = a.getAttribute("href");
+      if (href.charAt(0) === "#") { kies(a.dataset.kies, ""); return; }
+      var tarief = a.closest("[data-tarief]");
+      if (tarief) a.setAttribute("href", href.split("&contract=")[0] + "&contract=" + tarief.dataset.tarief);
+    });
+  });
 })();

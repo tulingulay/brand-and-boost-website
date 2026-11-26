@@ -287,7 +287,7 @@
     <div>
       <div class="vragen" style="margin-top:0">
         <details name="vraag"><summary>Wat kost social media uitbesteden?</summary><div><p>Je kiest uit drie pakketten. Met een jaarcontract (12 maanden vast): Start €295, Groei €495 en Compleet €795 per maand. Flexibel (na 3 maanden maandelijks opzegbaar): Start €325, Groei €545 en Compleet €875 per maand. Daarbij komt eenmalig €295 voor de opstart. Alle prijzen excl. btw.</p></div></details>
-        <details name="vraag"><summary>Wat kost een website?</summary><div><p>One-page: vanaf €850. Maatwerk van 4 tot 6 pagina’s: €2.450. Uitgebreid, met koppelingen: vanaf €3.950. Daarbij altijd hosting en domein (€30 per maand), minimaal 12 maanden. Onderhoud en beveiliging (vanaf €50 per maand) is optioneel, maar raden we sterk aan. Alle prijzen excl. btw. Je krijgt vooraf een vaste prijs, geen uurtje-factuurtje.</p></div></details>
+        <details name="vraag"><summary>Wat kost een website?</summary><div><p>One-page: vanaf €850. Maatwerk van 4 tot 6 pagina’s: vanaf €2.450. Uitgebreid, met koppelingen: vanaf €3.950. Daarbij altijd hosting en domein (€30 per maand), minimaal 12 maanden. Onderhoud en beveiliging (vanaf €50 per maand) is optioneel, maar raden we sterk aan. Alle prijzen excl. btw. Je krijgt vooraf een vaste prijs, geen uurtje-factuurtje.</p></div></details>
         <details name="vraag"><summary>Zit ik ergens aan vast?</summary><div><p>Je kiest zelf: een jaarcontract met een lagere maandprijs, of flexibel met na 3 maanden een opzegtermijn van één maand. Hosting loopt minimaal 12 maanden, en onderhoud ook als je dat erbij neemt.</p></div></details>
         <details name="vraag"><summary>Geven jullie garanties op omzet?</summary><div><p>Nee. Niemand kan je omzet garanderen. Wat we wel beloven: volle inzet en eerlijk zeggen wat werkt en wat niet.</p></div></details>
       </div>
@@ -306,6 +306,7 @@
     <div class="vel" data-in>
       <form class="form" name="gratis-audit" method="POST" action="/bedankt">
         <p class="verborgen"><label>Laat dit leeg <input name="bot-veld" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="herkomst"><input type="hidden" name="contract">
         <div class="twee">
           <div class="veld"><label for="naam">Je naam</label><input id="naam" name="naam" type="text" required autocomplete="name"></div>
           <div class="veld"><label for="bedrijf">Je bedrijf</label><input id="bedrijf" name="bedrijf" type="text" required autocomplete="organization"></div>
@@ -318,6 +319,20 @@
           <div class="veld"><label for="instagram">Je Instagram <small>(niet verplicht)</small></label><input id="instagram" name="instagram" type="text" placeholder="@jouwbedrijf…"></div>
           <div class="veld"><label for="website">Je website <small>(niet verplicht)</small></label><input id="website" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://…"></div>
         </div>
+        <div class="veld"><label for="interesse">Waar heb je interesse in?</label><select id="interesse" name="interesse">
+          <option value="Weet ik nog niet">Weet ik nog niet</option>
+          <optgroup label="Social media">
+            <option value="Social media: Start" data-kies="social-start">Start</option>
+            <option value="Social media: Groei" data-kies="social-groei">Groei</option>
+            <option value="Social media: Compleet" data-kies="social-compleet">Compleet</option>
+          </optgroup>
+          <optgroup label="Website">
+            <option value="Website: One-page" data-kies="website-one-page">One-page</option>
+            <option value="Website: Maatwerk" data-kies="website-maatwerk">Maatwerk, 4 tot 6 pagina’s</option>
+            <option value="Website: Uitgebreid" data-kies="website-uitgebreid">Uitgebreid, met koppelingen</option>
+          </optgroup>
+          <option value="Coaching" data-kies="coaching">Coaching</option>
+        </select></div>
         <div class="veld"><label for="vraag">Waar loop je nu tegenaan?</label><textarea id="vraag" name="vraag" required placeholder="Bijvoorbeeld: ik post wel, maar het levert geen klanten op…"></textarea></div>
         <button class="knop" type="submit">Stuur mij mijn gratis audit <span class="pijl" aria-hidden="true"></span></button>
       </form>

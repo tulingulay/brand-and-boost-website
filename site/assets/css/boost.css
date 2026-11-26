@@ -106,7 +106,7 @@ body .vel .stift{background:linear-gradient(var(--geel),var(--geel)) no-repeat 0
 }
 
 /* ---------- Secties ---------- */
-.s{padding:clamp(64px,8vw,112px) var(--rand)}
+.s{padding:clamp(40px,5vw,68px) var(--rand)}
 .s--krap{padding-block:clamp(48px,7vw,96px)}
 .s>*+*{margin-top:24px}
 .kolommen{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
@@ -229,7 +229,7 @@ html:not(.js) .stelling{height:auto}
 .vinkjes li::before{content:"";border-left:10px solid var(--merk);border-block:6.5px solid transparent;transform:translateY(1px)}
 
 /* ---------- Werk: de baan schuift zijwaarts ---------- */
-.werk{padding:clamp(64px,8vw,112px) 0}
+.werk{padding:clamp(40px,5vw,68px) 0}
 .werk__kop{padding:0 var(--rand);display:grid;gap:16px;margin-bottom:36px}
 .werk__baan{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--rand) 20px;scrollbar-width:none}
 .werk__baan::-webkit-scrollbar{display:none}
@@ -276,6 +276,7 @@ html:not(.js) .stelling{height:auto}
 .prijsregel{display:flex;align-items:baseline;gap:10px;padding:10px 0}
 .prijsregel>span:first-child{font-weight:600}
 .prijsregel i{flex:1;min-width:16px;border-bottom:2px dotted var(--lijn)}
+.prijsregel .stempel{align-self:center;font-family:var(--tekst);letter-spacing:0}
 .prijsregel b{font:800 clamp(20px,2.4vw,28px)/1 var(--display);letter-spacing:-.02em}
 
 /* ---------- Stappen, citaat, vragen ---------- */
@@ -314,15 +315,15 @@ html:not(.js) .stelling{height:auto}
 .veld{display:grid;gap:6px}
 .veld label{font-weight:700;font-size:15px}
 .veld label small{font-weight:500;color:var(--grijs)}
-.veld input,.veld textarea{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid var(--grijs);border-radius:6px;background:var(--wit);color:var(--inkt);font:400 16px/1.4 var(--tekst)}
+.veld input,.veld textarea,.veld select{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid var(--grijs);border-radius:6px;background:var(--wit);color:var(--inkt);font:400 16px/1.4 var(--tekst)}
 .veld textarea{min-height:112px;resize:vertical}
-.veld input:focus-visible,.veld textarea:focus-visible{outline:3px solid var(--blauw);outline-offset:2px;border-color:var(--blauw)}
+.veld input:focus-visible,.veld textarea:focus-visible,.veld select:focus-visible{outline:3px solid var(--blauw);outline-offset:2px;border-color:var(--blauw)}
 .form .knop{justify-self:start;margin-top:6px}
 .form .knop:disabled{opacity:.6;cursor:progress}
 .form .melding{padding:12px 14px;border-radius:6px;border:2px solid var(--inkt);background:var(--geel);color:var(--inkt);font-weight:600}
 
 /* ---------- Slot en voet ---------- */
-.slot{padding-bottom:clamp(56px,8vw,110px)}
+.slot{padding-bottom:clamp(48px,6vw,80px)}
 .voet{padding:40px var(--rand) 28px;border-top:2px solid var(--lijn);display:grid;gap:32px}
 .voet__logo{width:min(100%,960px)}
 .voet__rij{display:grid;gap:28px}
@@ -412,7 +413,7 @@ html:not(.js) .stelling{height:auto}
 .cookiemelding[hidden]{display:none}
 
 /* ---------- Hero van een gewone pagina ---------- */
-.paginaheld{min-height:60svh;display:flex;flex-direction:column;justify-content:flex-end;gap:26px;padding:150px var(--rand) clamp(48px,7vw,96px)}
+.paginaheld{min-height:60svh;display:flex;flex-direction:column;justify-content:flex-end;gap:26px;padding:140px var(--rand) clamp(36px,5vw,64px)}
 .paginaheld .groot{max-width:15em;font-size:clamp(34px,8.4vw,68px)}
 .js .paginaheld>*{animation:op .8s cubic-bezier(.2,.8,.2,1) both}
 .js .paginaheld>*:nth-child(2){animation-delay:.1s}.js .paginaheld>*:nth-child(3){animation-delay:.2s}.js .paginaheld>*:nth-child(4){animation-delay:.3s}

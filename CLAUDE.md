@@ -20,7 +20,8 @@ PRIJZEN (excl. btw)
 - Social, jaarcontract (12 maanden vast): Start €295, Groei €495, Compleet €795 per maand.
 - Social, flexibel (na 3 maanden maandelijks opzegbaar): Start €325, Groei €545, Compleet €875.
 - Social opstart: €295 eenmalig.
-- Websites: one-page vanaf €850, maatwerk 4-6 pagina's €2.450, uitgebreid vanaf €3.950.
+- Websites, allemaal vanaf-prijzen: one-page vanaf €850, maatwerk 4-6 pagina's vanaf €2.450 (de aanrader),
+  uitgebreid vanaf €3.950. Webshop of boekingssysteem kan erbij, altijd met een vaste prijs vooraf.
   Altijd met hosting en domein €30 p/m, minimaal 12 maanden. Onderhoud en beveiliging vanaf €50 p/m is optioneel
   maar sterk aangeraden (besluit 26 november 2026, in lijn met de algemene voorwaarden versie 3.1).
 - Coaching, prijs per sessie van een uur: Boost (3 maanden, 6 sessies) €137,50 per sessie = €275 p/m;
