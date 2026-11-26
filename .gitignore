@@ -35,3 +35,6 @@ pnpm-debug.log*
 # Referentieontwerp en opdracht: nooit mee-deployen (dubbele inhoud)
 _referentie-blauw/
 PROMPT-claude-code.md
+
+# Prototype van het herontwerp: staat nu in site/, niet mee-deployen
+herontwerp/

@@ -6,6 +6,18 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["scripts/serve.mjs", "site", "8080"],
       "port": 8080
+    },
+    {
+      "name": "dist",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve.mjs", "dist", "8081"],
+      "port": 8081
+    },
+    {
+      "name": "herontwerp",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve.mjs", "herontwerp", "8090"],
+      "port": 8090
     }
   ]
 }

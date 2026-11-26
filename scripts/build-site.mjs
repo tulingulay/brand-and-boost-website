@@ -53,7 +53,9 @@ let vragenOpFaq = 0, paginasMetVragen = 0;
 for (const bestand of (await readdir(dist)).filter((f) => f.endsWith(".html"))) {
   const pad = path.join(dist, bestand);
   let html = await readFile(pad, "utf8");
-  const vragen = [...html.matchAll(/<details><summary>([\s\S]*?)<\/summary><div class="antwoord">([\s\S]*?)<\/div><\/details>/g)]
+  // Een vraag is een <details> met direct na de <summary> een kale <div>. De openklapregels
+  // op home (met een div met klasse) vallen daar bewust buiten.
+  const vragen = [...html.matchAll(/<details[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<div>([\s\S]*?)<\/div>\s*<\/details>/g)]
     .map((m) => ({ "@type": "Question", name: platteTekst(m[1]), acceptedAnswer: { "@type": "Answer", text: platteTekst(m[2]) } }));
   if (bestand === "faq.html") vragenOpFaq = vragen.length;
   if (vragen.length === 0) continue;
@@ -67,9 +69,17 @@ const vragen = { length: vragenOpFaq };
 
 // Sitemap: indexeerbare pagina's (bedankt en 404 niet), verse lastmod.
 const DOMAIN = "https://brandandboost.nl";
+// Losse casepagina's komen vanzelf in de sitemap. Bestanden die met een streepje
+// beginnen (het sjabloon) zijn werkbestanden en gaan niet mee naar de live site.
+const casesMap = path.join(dist, "cases");
+const casePaden = [];
+for (const f of (await readdir(casesMap)).filter((n) => n.endsWith(".html")).sort()) {
+  if (f.startsWith("_")) { await rm(path.join(casesMap, f)); continue; }
+  casePaden.push("/cases/" + f.replace(/\.html$/, ""));
+}
 const paden = [
-  "/", "/social-media", "/websites", "/coaching", "/ook-mogelijk",
-  "/gratis-audit", "/over-ons", "/cases", "/faq", "/contact",
+  "/", "/social-media", "/websites", "/coaching", "/prijzen", "/ook-mogelijk",
+  "/gratis-audit", "/voorbeeld-audit", "/over-ons", "/cases", ...casePaden, "/faq", "/contact",
   "/kennisbank", "/wat-kost-social-media-uitbesteden",
   "/algemene-voorwaarden", "/privacyverklaring", "/cookiebeleid",
 ];

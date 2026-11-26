@@ -1,0 +1,22 @@
+/* Alleen voor /websites. */
+/* Hero met de schermopname ernaast: een liggend venster waarin de site vanzelf langzaam doorrolt. */
+.paginaheld__beeld{aspect-ratio:4/3;max-width:560px;width:100%}
+.rolvenster{display:block;container-type:size}
+.rolvenster img{width:100%;animation:rol 24s ease-in-out infinite alternate}
+.rolvenster:hover img,.rolvenster:focus-visible img{animation-play-state:paused}
+@keyframes rol{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(calc(-100% + 100cqh))}}
+@media (min-width:960px){
+  .paginaheld--beeld{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:clamp(48px,6vw,96px);row-gap:26px;align-content:end;align-items:end}
+  .paginaheld--beeld>*{grid-column:1}
+  .paginaheld--beeld .paginaheld__beeld{grid-column:2;grid-row:1/span 3;justify-self:end;align-self:end}
+}
+/* De drie sitesoorten als kaarten: "vanaf" klein voor de prijs. */
+.prijskaart__vanaf{font:600 16px/1 var(--tekst);letter-spacing:0;vertical-align:middle}
+/* Altijd erbij. */
+.erbij{margin-top:8px;border-top:2px solid var(--fg)}
+.erbij>div{padding:18px 0;border-bottom:2px solid var(--lijn)}
+.erbij .prijsregel{flex-wrap:wrap;padding:0}
+.erbij .prijsregel>span:first-child{font:800 clamp(21px,2.4vw,28px)/1.15 var(--display);letter-spacing:-.02em}
+.erbij p{margin-top:4px;color:var(--zacht)}
+.erbij__som{margin-top:28px;font:800 clamp(22px,2.6vw,32px)/1.15 var(--display);letter-spacing:-.025em}
+.werk__google{font-weight:600}

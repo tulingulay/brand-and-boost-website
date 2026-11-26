@@ -1,0 +1,11 @@
+/* Bedankpagina's en 404. Kleuren via tokens. */
+.dank{min-height:92svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:26px;padding:140px var(--rand) clamp(56px,8vw,96px)}
+.dank .groot{font-size:clamp(42px,12vw,150px);max-width:9.5em;overflow-wrap:break-word}
+.js .dank>*{animation:op .8s cubic-bezier(.2,.8,.2,1) both}
+.js .dank>*:nth-child(2){animation-delay:.1s}
+.js .dank>*:nth-child(3){animation-delay:.2s}
+.js .dank>*:nth-child(4){animation-delay:.3s}
+.js .dank>*:nth-child(5){animation-delay:.4s}
+.dank .held__feiten{flex-direction:column;gap:8px;font-size:17px}
+.dank__nr{font:800 clamp(22px,3vw,34px)/1 var(--display);letter-spacing:-.02em;color:var(--merk)}
+.dank__links{display:flex;flex-wrap:wrap;gap:4px 28px;padding-top:20px;border-top:2px solid var(--lijn);align-self:stretch}

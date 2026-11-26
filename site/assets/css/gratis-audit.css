@@ -1,0 +1,12 @@
+/* Alleen voor /gratis-audit. Bouwt op boost.css, alleen tokens. */
+.auditheld{padding-top:clamp(120px,13vw,180px)}
+.auditheld .held__feiten{margin-top:28px;flex-direction:column;gap:6px}
+.vel__kop{margin-bottom:22px;display:grid;gap:4px}
+.telling{margin-top:clamp(40px,6vw,72px);border-top:2px solid var(--fg)}
+.telling__rij{padding:24px 0;border-bottom:2px solid var(--lijn);display:grid;gap:12px}
+.telling__rij .oudnieuw{margin-top:0}
+.vergelijk__uitleg{display:grid;gap:14px;margin-top:22px}
+.vergelijk__uitleg p{display:grid;grid-template-columns:68px minmax(0,1fr);gap:12px;align-items:baseline}
+@media (min-width:960px){
+  .telling__rij{grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:40px;align-items:baseline}
+}

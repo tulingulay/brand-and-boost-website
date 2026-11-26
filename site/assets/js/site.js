@@ -67,7 +67,6 @@
   }
 
   /* ---------- Cookiemelding ---------- */
-  var MERK = '<span class="merk" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="12" fill="currentColor"/><path class="pijl" d="M10.2 7.6 14.6 12l-4.4 4.4" fill="none" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   var melding = null;
 
   function toonMelding() {
@@ -79,10 +78,11 @@
     melding.innerHTML =
       '<h2>Wij maken gebruik van cookies</h2>' +
       '<p>Wij gebruiken functionele cookies om deze website goed te laten werken. Klik je op Akkoord, dan gebruiken wij daarnaast analytische cookies (Google Analytics, privacyvriendelijk ingesteld) om te meten hoe de website wordt gebruikt. Weiger je, dan meten wij niets; de website werkt dan gewoon.</p>' +
-      '<p>Zie voor meer informatie onze <a href="/privacyverklaring">privacy-</a> en <a href="/cookiebeleid">cookieverklaring</a>.</p>' +
+      '<p>Meer weten? Lees onze <a href="/privacyverklaring">privacyverklaring</a> en ons <a href="/cookiebeleid">cookiebeleid</a>.</p>' +
+      // Weigeren is even groot en even makkelijk als akkoord.
       '<div class="cookiemelding__acties">' +
-      '<button type="button" class="knop" data-keuze="accepted">Akkoord ' + MERK + '</button>' +
-      '<button type="button" class="link" data-keuze="rejected">Weigeren</button>' +
+      '<button type="button" data-keuze="accepted">Akkoord</button>' +
+      '<button type="button" data-keuze="rejected">Weigeren</button>' +
       '</div>';
     melding.addEventListener("click", function (e) {
       var knop = e.target.closest("[data-keuze]");

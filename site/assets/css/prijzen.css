@@ -1,0 +1,15 @@
+/* Alleen voor /prijzen. Bouwt op boost.css, alleen tokens. */
+.sprongen{display:flex;flex-wrap:wrap;gap:4px 26px}
+.groep__kop{display:grid;gap:18px;align-content:start}
+.groep .prijsregels{border-top:2px solid var(--fg)}
+.groep .prijsregel{padding:16px 0 4px}
+.groep .prijsregel+.klein{padding-bottom:14px;border-bottom:2px solid var(--lijn)}
+.groep .prijsregel .stempel{align-self:center}
+.groep h3{margin-top:40px;margin-bottom:10px}
+.groep__noot{margin-top:18px;max-width:38em}
+.nul{font:800 clamp(120px,34vw,380px)/.8 var(--display);letter-spacing:-.06em;color:var(--merk);font-variant-numeric:tabular-nums}
+.nul__rij{display:grid;gap:32px;align-items:end}
+@media (min-width:960px){
+  .groep__kop{position:sticky;top:120px}
+  .nul__rij{grid-template-columns:auto minmax(0,1fr);gap:clamp(48px,7vw,120px)}
+}
